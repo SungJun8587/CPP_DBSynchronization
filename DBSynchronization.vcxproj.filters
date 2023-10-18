@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="UtilCore">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Library\UtilCore\BaseGlobal.cpp">
+      <Filter>UtilCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Library\UtilCore\BaseODBC.cpp">
+      <Filter>UtilCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Library\UtilCore\CustomAllocator.cpp">
+      <Filter>UtilCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Library\UtilCore\DBBind.cpp">
+      <Filter>UtilCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Library\UtilCore\DBModel.cpp">
+      <Filter>UtilCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Library\UtilCore\DBSynchronizer.cpp">
+      <Filter>UtilCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Library\UtilCore\JSONBase.cpp">
+      <Filter>UtilCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Library\UtilCore\Log.cpp">
+      <Filter>UtilCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Library\UtilCore\MemBuffer.cpp">
+      <Filter>UtilCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Library\UtilCore\Memory.cpp">
+      <Filter>UtilCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Library\UtilCore\MemoryPool.cpp">
+      <Filter>UtilCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Library\UtilCore\ShellUtil.cpp">
+      <Filter>UtilCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Library\UtilCore\StringUtil.cpp">
+      <Filter>UtilCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Library\UtilCore\XMLParser.cpp">
+      <Filter>UtilCore</Filter>
+    </ClCompile>
+    <ClCompile Include="DBSynchronization.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="..\Library\UtilCore\CommonUtil.cpp">
+      <Filter>UtilCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Library\UtilCore\ServerConfig.cpp">
+      <Filter>UtilCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Library\UtilCore\JSONParser.cpp">
+      <Filter>UtilCore</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Library\UtilCore\BaseODBC.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\BaseDefine.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\BaseGlobal.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\BaseMacro.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\BaseRedefineDataType.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\Containers.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\CustomAllocator.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\DBBind.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\DBModel.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\DBSynchronizer.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\JSONBase.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\Log.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\MemBuffer.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\Memory.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\MemoryPool.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\ObjectPool.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\ShellUtil.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\StringUtil.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\XMLParser.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="..\Library\UtilCore\CommonUtil.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\ServerConfig.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\ServerConnectInfo.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\Singleton.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\JSONParser.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\BaseSQL.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Library\UtilCore\BaseODBC.inl">
+      <Filter>UtilCore</Filter>
+    </None>
+    <None Include="..\Library\UtilCore\DB_ColAttr.inl">
+      <Filter>UtilCore</Filter>
+    </None>
+    <None Include="..\Library\UtilCore\DB_Error.inl">
+      <Filter>UtilCore</Filter>
+    </None>
+    <None Include="..\Library\UtilCore\DB_ParamAttr.inl">
+      <Filter>UtilCore</Filter>
+    </None>
+    <None Include="..\Library\UtilCore\JSONParser.inl">
+      <Filter>UtilCore</Filter>
+    </None>
+  </ItemGroup>
+</Project>

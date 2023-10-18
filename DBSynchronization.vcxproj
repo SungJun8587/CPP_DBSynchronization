@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{2b2cfcda-bb7a-4dce-8f8e-03c48484c721}</ProjectGuid>
+    <RootNamespace>DBSynchronization</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <IncludePath>E:\GitHub\CPP\Library\UtilCore;E:\GitHub\CPP\Library\ExternalLib\gperftools-gperftools-2.12\src\windows;E:\GitHub\CPP\Library\ExternalLib\rapidjson-master\include;E:\GitHub\CPP\Library\ExternalLib\JSON-Utilities-master\source;$(ProjectDir);$(IncludePath)</IncludePath>
+    <LibraryPath>E:\GitHub\CPP\Library\ExternalLib\Bin\Win32\Debug;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <SourcePath>$(SourcePath)</SourcePath>
+    <IncludePath>E:\GitHub\CPP\Library\UtilCore;E:\GitHub\CPP\Library\ExternalLib\gperftools-gperftools-2.12\src\windows;E:\GitHub\CPP\Library\ExternalLib\rapidjson-master\include;E:\GitHub\CPP\Library\ExternalLib\JSON-Utilities-master\source;E:\GitHub\CPP\Library\ExternalLib\RapidXML-master\RapidXML;$(ProjectDir);$(IncludePath)</IncludePath>
+    <LibraryPath>E:\GitHub\CPP\Library\ExternalLib\Bin\x64\Debug;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <IncludePath>E:\GitHub\CPP\Library\UtilCore;E:\GitHub\CPP\Library\ExternalLib\gperftools-gperftools-2.12\src\windows;E:\GitHub\CPP\Library\ExternalLib\rapidjson-master\include;E:\GitHub\CPP\Library\ExternalLib\JSON-Utilities-master\source;$(ProjectDir);$(IncludePath)</IncludePath>
+    <LibraryPath>E:\GitHub\CPP\Library\ExternalLib\Bin\Win32\Release-Patch;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <IncludePath>E:\GitHub\CPP\Library\UtilCore;E:\GitHub\CPP\Library\ExternalLib\gperftools-gperftools-2.12\src\windows;E:\GitHub\CPP\Library\ExternalLib\rapidjson-master\include;E:\GitHub\CPP\Library\ExternalLib\JSON-Utilities-master\source;E:\GitHub\CPP\Library\ExternalLib\RapidXML-master\RapidXML;$(ProjectDir);$(IncludePath)</IncludePath>
+    <LibraryPath>E:\GitHub\CPP\Library\ExternalLib\Bin\x64\Release-Patch;$(LibraryPath)</LibraryPath>
+    <SourcePath>$(SourcePath)</SourcePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <ForceSymbolReferences>_tcmalloc;%(ForceSymbolReferences)</ForceSymbolReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <ForceSymbolReferences>_tcmalloc;%(ForceSymbolReferences)</ForceSymbolReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <ForceSymbolReferences>_tcmalloc;%(ForceSymbolReferences)</ForceSymbolReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <ForceSymbolReferences>_tcmalloc;%(ForceSymbolReferences)</ForceSymbolReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Library\UtilCore\BaseGlobal.cpp" />
+    <ClCompile Include="..\Library\UtilCore\BaseODBC.cpp" />
+    <ClCompile Include="..\Library\UtilCore\CommonUtil.cpp" />
+    <ClCompile Include="..\Library\UtilCore\CustomAllocator.cpp" />
+    <ClCompile Include="..\Library\UtilCore\DBBind.cpp" />
+    <ClCompile Include="..\Library\UtilCore\DBModel.cpp" />
+    <ClCompile Include="..\Library\UtilCore\DBSynchronizer.cpp" />
+    <ClCompile Include="..\Library\UtilCore\JSONBase.cpp" />
+    <ClCompile Include="..\Library\UtilCore\JSONParser.cpp" />
+    <ClCompile Include="..\Library\UtilCore\Log.cpp" />
+    <ClCompile Include="..\Library\UtilCore\MemBuffer.cpp" />
+    <ClCompile Include="..\Library\UtilCore\Memory.cpp" />
+    <ClCompile Include="..\Library\UtilCore\MemoryPool.cpp" />
+    <ClCompile Include="..\Library\UtilCore\ServerConfig.cpp" />
+    <ClCompile Include="..\Library\UtilCore\ShellUtil.cpp" />
+    <ClCompile Include="..\Library\UtilCore\StringUtil.cpp" />
+    <ClCompile Include="..\Library\UtilCore\XMLParser.cpp" />
+    <ClCompile Include="pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="DBSynchronization.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Library\UtilCore\BaseDefine.h" />
+    <ClInclude Include="..\Library\UtilCore\BaseGlobal.h" />
+    <ClInclude Include="..\Library\UtilCore\BaseMacro.h" />
+    <ClInclude Include="..\Library\UtilCore\BaseRedefineDataType.h" />
+    <ClInclude Include="..\Library\UtilCore\BaseSQL.h" />
+    <ClInclude Include="..\Library\UtilCore\CommonUtil.h" />
+    <ClInclude Include="..\Library\UtilCore\Containers.h" />
+    <ClInclude Include="..\Library\UtilCore\CustomAllocator.h" />
+    <ClInclude Include="..\Library\UtilCore\DBBind.h" />
+    <ClInclude Include="..\Library\UtilCore\DBModel.h" />
+    <ClInclude Include="..\Library\UtilCore\DBSynchronizer.h" />
+    <ClInclude Include="..\Library\UtilCore\JSONBase.h" />
+    <ClInclude Include="..\Library\UtilCore\JSONParser.h" />
+    <ClInclude Include="..\Library\UtilCore\Log.h" />
+    <ClInclude Include="..\Library\UtilCore\MemBuffer.h" />
+    <ClInclude Include="..\Library\UtilCore\Memory.h" />
+    <ClInclude Include="..\Library\UtilCore\MemoryPool.h" />
+    <ClInclude Include="..\Library\UtilCore\ObjectPool.h" />
+    <ClInclude Include="..\Library\UtilCore\ServerConfig.h" />
+    <ClInclude Include="..\Library\UtilCore\ServerConnectInfo.h" />
+    <ClInclude Include="..\Library\UtilCore\ShellUtil.h" />
+    <ClInclude Include="..\Library\UtilCore\Singleton.h" />
+    <ClInclude Include="..\Library\UtilCore\StringUtil.h" />
+    <ClInclude Include="..\Library\UtilCore\XMLParser.h" />
+    <ClInclude Include="..\Library\UtilCore\BaseODBC.h" />
+    <ClInclude Include="pch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Library\UtilCore\BaseODBC.inl" />
+    <None Include="..\Library\UtilCore\DB_ColAttr.inl" />
+    <None Include="..\Library\UtilCore\DB_Error.inl" />
+    <None Include="..\Library\UtilCore\DB_ParamAttr.inl" />
+    <None Include="..\Library\UtilCore\JSONParser.inl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

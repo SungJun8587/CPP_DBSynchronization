@@ -1,0 +1,2078 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GameDB>
+	<Table tszName="tbl_table1" desc="테스트 테이블" auto_increment_value="-3689348814741910324">
+		<Column seq="1" tszName="No" type="INT" notnull="true" desc=""/>
+		<Column seq="2" tszName="Seq" type="INT" notnull="true" desc=""/>
+		<Column seq="3" tszName="Text" type="VARCHAR(45)" notnull="false" desc=""/>
+		<Column seq="4" tszName="Idx" type="INT" notnull="false" default="0" desc=""/>
+		<Column seq="5" tszName="Text2" type="VARCHAR(45)" notnull="false" desc=""/>
+		<Column seq="6" tszName="Idx2" type="INT" notnull="true" default="1" desc=""/>
+		<Column seq="7" tszName="Idx3" type="INT" notnull="true" default="1" desc=""/>
+		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" tszName="No" order="ASC"/>
+			<Column seq="2" tszName="Seq" order="ASC"/>
+		</Index>
+	</Table>
+	<Table tszName="tbl_table2" desc="테스트2" auto_increment_value="-3689348814741910324">
+		<Column seq="1" tszName="No" type="INT UNSIGNED" notnull="true" default="1" identity="0,0" desc="일련번호"/>
+		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" tszName="No" order="ASC"/>
+		</Index>
+	</Table>
+	<Table tszName="tbl_test2" desc="" auto_increment_value="-3689348814741910324">
+		<Column seq="1" tszName="No" type="INT" notnull="true" default="1" desc=""/>
+		<Column seq="2" tszName="TestNo" type="INT" notnull="true" default="1" desc=""/>
+		<Column seq="3" tszName="TestSeq" type="INT" notnull="true" default="1" desc=""/>
+		<Column seq="4" tszName="Text" type="VARCHAR(45)" notnull="false" default="1" desc=""/>
+		<Column seq="5" tszName="Idx" type="INT" notnull="false" default="1" desc=""/>
+		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" tszName="No" order="ASC"/>
+		</Index>
+		<Index tszName="ix_tbl_Test2_TestNoSeq_idx" kind="NONCLUSTERED">
+			<Column seq="1" tszName="TestNo" order="ASC"/>
+			<Column seq="2" tszName="TestSeq" order="DESC"/>
+		</Index>
+		<Index tszName="ix_tbl_Test2_idx" kind="NONCLUSTERED" type="UNIQUE">
+			<UniqueKey/>
+			<Column seq="1" tszName="Idx" order="ASC"/>
+		</Index>
+		<ForeignKey tszName="ix_tbl_Test2_TestNoSeq" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable tszName="tbl_test2">
+				<Column tszName="TestNo"/>
+				<Column tszName="TestSeq"/>
+			</ForeignKeyTable>
+			<ReferenceKeyTable tszName="tbl_table1">
+				<Column tszName="No"/>
+				<Column tszName="Seq"/>
+			</ReferenceKeyTable>
+		</ForeignKey>
+	</Table>
+	<Table tszName="tblb_bbs" desc="일반형 게시판" auto_increment_value="12026856">
+		<Column seq="1" tszName="No" type="INT UNSIGNED" notnull="true" default="1" identity="0,0" desc="일련번호"/>
+		<Column seq="2" tszName="Subject" type="VARCHAR(100)" notnull="true" default="1" desc="제목"/>
+		<Column seq="3" tszName="Content" type="LONGTEXT" notnull="true" default="1" desc="내용"/>
+		<Column seq="4" tszName="MbIdx" type="BIGINT UNSIGNED" notnull="true" default="1" desc="글쓴이 일련번호"/>
+		<Column seq="5" tszName="Name" type="VARCHAR(20)" notnull="true" default="1" desc="글쓴이 명"/>
+		<Column seq="6" tszName="IP" type="VARCHAR(20)" notnull="true" default="1" desc="글쓴이 IP"/>
+		<Column seq="7" tszName="HtmlFlag" type="BIT(1)" notnull="true" default="1" desc="HTML 여부(0/1 : 무/유)"/>
+		<Column seq="8" tszName="Hit" type="INT" notnull="true" default="0" desc="조회수"/>
+		<Column seq="9" tszName="Recom" type="INT" notnull="true" default="0" desc="추천수"/>
+		<Column seq="10" tszName="UnRecom" type="INT" notnull="true" default="0" desc="비추수"/>
+		<Column seq="11" tszName="CommentCnt" type="INT" notnull="true" default="0" desc="댓글수"/>
+		<Column seq="12" tszName="RegDate" type="DATETIME" notnull="true" default="Now()" desc="등록일시"/>
+		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" tszName="No" order="ASC"/>
+		</Index>
+		<Index tszName="ix_NC_tblb_bbs_Subject" kind="NONCLUSTERED">
+			<Column seq="1" tszName="RegDate" order="ASC"/>
+			<Column seq="2" tszName="Subject" order="ASC"/>
+		</Index>
+		<Index tszName="ix_NC_tblb_bbs_No" kind="NONCLUSTERED">
+			<Column seq="1" tszName="No" order="DESC"/>
+		</Index>
+		<Index tszName="ix_NC_tblb_bbs_Name" kind="NONCLUSTERED">
+			<Column seq="1" tszName="RegDate" order="ASC"/>
+			<Column seq="2" tszName="Name" order="ASC"/>
+		</Index>
+	</Table>
+	<Table tszName="tblb_bbs_attgenfile" desc="일반형 게시판 첨부 일반 파일 정보" auto_increment_value="12026856">
+		<Column seq="1" tszName="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
+		<Column seq="2" tszName="BbsNo" type="INT UNSIGNED" notnull="false" default="Now()" desc="게시물 일련번호"/>
+		<Column seq="3" tszName="FilePath" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 서브 경로"/>
+		<Column seq="4" tszName="FileName" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 명"/>
+		<Column seq="5" tszName="FileSize" type="INT" notnull="false" default="Now()" desc="첨부 파일 크기"/>
+		<Column seq="6" tszName="FileExt" type="VARCHAR(10)" notnull="false" default="Now()" desc="첨부 파일 확장자"/>
+		<Column seq="7" tszName="RegDate" type="DATETIME" notnull="false" default="Now()" desc="등록일시"/>
+		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" tszName="No" order="ASC"/>
+		</Index>
+		<Index tszName="ix_tblb_bbs_attgenfile_idx" kind="NONCLUSTERED">
+			<Column seq="1" tszName="BbsNo" order="ASC"/>
+		</Index>
+		<ForeignKey tszName="fk_tblb_bbs_attgenfile_tblb_bbs_BbsNo" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable tszName="tblb_bbs_attgenfile">
+				<Column tszName="BbsNo"/>
+			</ForeignKeyTable>
+			<ReferenceKeyTable tszName="tblb_bbs">
+				<Column tszName="No"/>
+			</ReferenceKeyTable>
+		</ForeignKey>
+	</Table>
+	<Table tszName="tblb_bbs_attimgfile" desc="일반형 게시판 첨부 이미지 파일 정보" auto_increment_value="12026856">
+		<Column seq="1" tszName="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
+		<Column seq="2" tszName="BbsNo" type="INT UNSIGNED" notnull="false" default="Now()" desc="게시물 일련번호"/>
+		<Column seq="3" tszName="FilePath" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 서브 경로"/>
+		<Column seq="4" tszName="FileName" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 명"/>
+		<Column seq="5" tszName="FileSize" type="INT" notnull="false" default="Now()" desc="첨부 파일 크기"/>
+		<Column seq="6" tszName="FileExt" type="VARCHAR(10)" notnull="false" default="Now()" desc="첨부 파일 확장자"/>
+		<Column seq="7" tszName="RegDate" type="DATETIME" notnull="false" default="Now()" desc="등록일시"/>
+		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" tszName="No" order="ASC"/>
+		</Index>
+		<Index tszName="ix_tblb_bbs_attimgfile_idx" kind="NONCLUSTERED">
+			<Column seq="1" tszName="BbsNo" order="ASC"/>
+		</Index>
+		<ForeignKey tszName="fk_tblb_bbs_attimgfile_tblb_bbs_BbsNo" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable tszName="tblb_bbs_attimgfile">
+				<Column tszName="BbsNo"/>
+			</ForeignKeyTable>
+			<ReferenceKeyTable tszName="tblb_bbs">
+				<Column tszName="No"/>
+			</ReferenceKeyTable>
+		</ForeignKey>
+	</Table>
+	<Table tszName="tblb_bbs_comment" desc="일반형 게시판 댓글" auto_increment_value="12026856">
+		<Column seq="1" tszName="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
+		<Column seq="2" tszName="BbsNo" type="INT UNSIGNED" notnull="true" default="Now()" desc="게시물 일련번호"/>
+		<Column seq="3" tszName="Memo" type="VARCHAR(1000)" notnull="true" default="Now()" desc="내용"/>
+		<Column seq="4" tszName="MbIdx" type="BIGINT UNSIGNED" notnull="true" default="Now()" desc="글쓴이 일련번호"/>
+		<Column seq="5" tszName="Name" type="VARCHAR(20)" notnull="true" default="Now()" desc="글쓴이 명"/>
+		<Column seq="6" tszName="IP" type="VARCHAR(20)" notnull="true" default="Now()" desc="글쓴이 IP"/>
+		<Column seq="7" tszName="RegDate" type="DATETIME" notnull="true" default="Now()" desc="등록일시"/>
+		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" tszName="No" order="ASC"/>
+		</Index>
+		<Index tszName="ix_tblb_bbs_comment_idx" kind="NONCLUSTERED">
+			<Column seq="1" tszName="BbsNo" order="ASC"/>
+		</Index>
+		<ForeignKey tszName="fk_tblb_bbs_comment_comment_tblm_member_MbIdx" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable tszName="tblb_bbs_comment">
+				<Column tszName="MbIdx"/>
+			</ForeignKeyTable>
+			<ReferenceKeyTable tszName="tblm_member">
+				<Column tszName="MbIdx"/>
+			</ReferenceKeyTable>
+		</ForeignKey>
+		<ForeignKey tszName="fk_tblb_bbs_comment_tblb_bbs_BbsNo" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable tszName="tblb_bbs_comment">
+				<Column tszName="BbsNo"/>
+			</ForeignKeyTable>
+			<ReferenceKeyTable tszName="tblb_bbs">
+				<Column tszName="No"/>
+			</ReferenceKeyTable>
+		</ForeignKey>
+	</Table>
+	<Table tszName="tblb_board" desc="일반형 게시판" auto_increment_value="2000000">
+		<Column seq="1" tszName="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
+		<Column seq="2" tszName="SegNo" type="INT UNSIGNED" notnull="true" default="Now()" desc="게시물 그룹 일련번호"/>
+		<Column seq="3" tszName="Subject" type="VARCHAR(100)" notnull="true" default="Now()" desc="제목"/>
+		<Column seq="4" tszName="Content" type="LONGTEXT" notnull="true" default="Now()" desc="내용"/>
+		<Column seq="5" tszName="MbIdx" type="BIGINT UNSIGNED" notnull="true" default="Now()" desc="글쓴이 일련번호"/>
+		<Column seq="6" tszName="Name" type="VARCHAR(20)" notnull="true" default="Now()" desc="글쓴이 명"/>
+		<Column seq="7" tszName="IP" type="VARCHAR(20)" notnull="true" default="Now()" desc="글쓴이 IP"/>
+		<Column seq="8" tszName="HtmlFlag" type="CHAR(1)" notnull="true" default="Now()" desc="HTML 여부(0/1 : 무/유)"/>
+		<Column seq="9" tszName="Hit" type="INT" notnull="true" default="0" desc="조회수"/>
+		<Column seq="10" tszName="Recom" type="INT" notnull="true" default="0" desc="추천수"/>
+		<Column seq="11" tszName="UnRecom" type="INT" notnull="true" default="0" desc="비추수"/>
+		<Column seq="12" tszName="CommentCnt" type="INT" notnull="true" default="0" desc="댓글수"/>
+		<Column seq="13" tszName="RegDate" type="DATETIME" notnull="true" default="Now()" desc="등록일시"/>
+		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" tszName="No" order="ASC"/>
+		</Index>
+		<Index tszName="ix_NC_tblb_board_Subject" kind="NONCLUSTERED">
+			<Column seq="1" tszName="RegDate" order="ASC"/>
+			<Column seq="2" tszName="Subject" order="ASC"/>
+		</Index>
+		<Index tszName="ix_NC_tblb_board_SegNo" kind="NONCLUSTERED">
+			<Column seq="1" tszName="SegNo" order="ASC"/>
+		</Index>
+		<Index tszName="ix_NC_tblb_board_Name" kind="NONCLUSTERED">
+			<Column seq="1" tszName="RegDate" order="ASC"/>
+			<Column seq="2" tszName="Name" order="ASC"/>
+		</Index>
+		<ForeignKey tszName="fk_tblb_board_tblbm_board_segment_SegNo" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable tszName="tblb_board">
+				<Column tszName="SegNo"/>
+			</ForeignKeyTable>
+			<ReferenceKeyTable tszName="tblbm_board_segment">
+				<Column tszName="No"/>
+			</ReferenceKeyTable>
+		</ForeignKey>
+		<ForeignKey tszName="fk_tblb_board_tblm_member_MbIdx" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable tszName="tblb_board">
+				<Column tszName="MbIdx"/>
+			</ForeignKeyTable>
+			<ReferenceKeyTable tszName="tblm_member">
+				<Column tszName="MbIdx"/>
+			</ReferenceKeyTable>
+		</ForeignKey>
+	</Table>
+	<Table tszName="tblb_board_attgenfile" desc="일반형 게시판 첨부 일반 파일 정보" auto_increment_value="2000000">
+		<Column seq="1" tszName="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
+		<Column seq="2" tszName="BbsNo" type="INT UNSIGNED" notnull="false" default="Now()" desc="게시물 일련번호"/>
+		<Column seq="3" tszName="FilePath" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 서브 경로"/>
+		<Column seq="4" tszName="FileName" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 명"/>
+		<Column seq="5" tszName="FileSize" type="INT" notnull="false" default="Now()" desc="첨부 파일 크기"/>
+		<Column seq="6" tszName="FileExt" type="VARCHAR(10)" notnull="false" default="Now()" desc="첨부 파일 확장자"/>
+		<Column seq="7" tszName="RegDate" type="DATETIME" notnull="false" default="Now()" desc="등록일시"/>
+		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" tszName="No" order="ASC"/>
+		</Index>
+		<Index tszName="IX_NC_tblb_board_attgenfile_BbsNo" kind="NONCLUSTERED">
+			<Column seq="1" tszName="BbsNo" order="ASC"/>
+		</Index>
+		<ForeignKey tszName="fk_tblb_board_attgenfile_tblb_board_BbsNo" update_rule="CASCADE" delete_rule="NO ACTION">
+			<ForeignKeyTable tszName="tblb_board_attgenfile">
+				<Column tszName="BbsNo"/>
+			</ForeignKeyTable>
+			<ReferenceKeyTable tszName="tblb_board">
+				<Column tszName="No"/>
+			</ReferenceKeyTable>
+		</ForeignKey>
+	</Table>
+	<Table tszName="tblb_board_attimgfile" desc="일반형 게시판 첨부 이미지 파일 정보" auto_increment_value="2000000">
+		<Column seq="1" tszName="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
+		<Column seq="2" tszName="BbsNo" type="INT UNSIGNED" notnull="false" default="Now()" desc="게시물 일련번호"/>
+		<Column seq="3" tszName="FilePath" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 서브 경로"/>
+		<Column seq="4" tszName="FileName" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 명"/>
+		<Column seq="5" tszName="FileSize" type="INT" notnull="false" default="Now()" desc="첨부 파일 크기"/>
+		<Column seq="6" tszName="FileExt" type="VARCHAR(10)" notnull="false" default="Now()" desc="첨부 파일 확장자"/>
+		<Column seq="7" tszName="RegDate" type="DATETIME" notnull="false" default="Now()" desc="등록일시"/>
+		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" tszName="No" order="ASC"/>
+		</Index>
+		<ForeignKey tszName="fk_tblb_board_attimgfile_tblb_board_BbsNo" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable tszName="tblb_board_attimgfile">
+				<Column tszName="BbsNo"/>
+			</ForeignKeyTable>
+			<ReferenceKeyTable tszName="tblb_board">
+				<Column tszName="No"/>
+			</ReferenceKeyTable>
+		</ForeignKey>
+	</Table>
+	<Table tszName="tblb_board_comment" desc="일반형 게시판 댓글" auto_increment_value="2000000">
+		<Column seq="1" tszName="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
+		<Column seq="2" tszName="BbsNo" type="INT UNSIGNED" notnull="true" default="Now()" desc="게시물 일련번호"/>
+		<Column seq="3" tszName="Memo" type="VARCHAR(1000)" notnull="true" default="Now()" desc="내용"/>
+		<Column seq="4" tszName="MbIdx" type="BIGINT UNSIGNED" notnull="true" default="Now()" desc="글쓴이 일련번호"/>
+		<Column seq="5" tszName="Name" type="VARCHAR(20)" notnull="true" default="Now()" desc="글쓴이 명"/>
+		<Column seq="6" tszName="IP" type="VARCHAR(20)" notnull="true" default="Now()" desc="글쓴이 IP"/>
+		<Column seq="7" tszName="RegDate" type="DATETIME" notnull="true" default="Now()" desc="등록일시"/>
+		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" tszName="No" order="ASC"/>
+		</Index>
+		<Index tszName="ix_NC_tblb_board_comment_BbsNo" kind="NONCLUSTERED">
+			<Column seq="1" tszName="BbsNo" order="ASC"/>
+		</Index>
+		<ForeignKey tszName="fk_tblb_board_comment_tblb_board_BbsNo" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable tszName="tblb_board_comment">
+				<Column tszName="BbsNo"/>
+			</ForeignKeyTable>
+			<ReferenceKeyTable tszName="tblb_board">
+				<Column tszName="No"/>
+			</ReferenceKeyTable>
+		</ForeignKey>
+		<ForeignKey tszName="fk_tblb_board_comment_tblm_member_MbIdx" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable tszName="tblb_board_comment">
+				<Column tszName="MbIdx"/>
+			</ForeignKeyTable>
+			<ReferenceKeyTable tszName="tblm_member">
+				<Column tszName="MbIdx"/>
+			</ReferenceKeyTable>
+		</ForeignKey>
+	</Table>
+	<Table tszName="tblbm_bbsconfig" desc="게시판 정보" auto_increment_value="3">
+		<Column seq="1" tszName="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
+		<Column seq="2" tszName="TbName" type="VARCHAR(20)" notnull="true" default="Now()" desc="게시판 코드"/>
+		<Column seq="3" tszName="BbsName" type="VARCHAR(20)" notnull="true" default="Now()" desc="게시판 이름"/>
+		<Column seq="4" tszName="BbsInfo" type="VARCHAR(150)" notnull="false" default="Now()" desc="게시판 설명"/>
+		<Column seq="5" tszName="BbsClass" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="게시판 종류(0/1/2/3/4/5 : 공지사항/일반/갤러리/퀴즈/설문/이벤트)"/>
+		<Column seq="6" tszName="BbsCount" type="INT UNSIGNED" notnull="true" default="Now()" desc="게시물 수"/>
+		<Column seq="7" tszName="IsCategory" type="BIT(1)" notnull="true" default="Now()" desc="카테고리 사용여부(0/1 : 무/유)"/>
+		<Column seq="8" tszName="IsHtml" type="BIT(1)" notnull="true" default="Now()" desc="HTML 사용여부(0/1 : 무/유)"/>
+		<Column seq="9" tszName="IsComment" type="BIT(1)" notnull="true" default="Now()" desc="댓글 사용여부(0/1 : 무/유)"/>
+		<Column seq="10" tszName="IsVote" type="BIT(1)" notnull="true" default="Now()" desc="추천 사용여부(0/1 : 무/유)"/>
+		<Column seq="11" tszName="PgSize" type="SMALLINT UNSIGNED" notnull="true" default="Now()" desc="페이지당 게시물 수"/>
+		<Column seq="12" tszName="AttFileCnt" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="첨부 파일 수"/>
+		<Column seq="13" tszName="AllowFileExt" type="VARCHAR(100)" notnull="false" default="Now()" desc="첨부 가능 파일 확장자(Ex. png,jpg,gif)"/>
+		<Column seq="14" tszName="APaper" type="SMALLINT UNSIGNED" notnull="true" default="Now()" desc="도배방지 연속 글쓰기 제한 초"/>
+		<Column seq="15" tszName="CPaper" type="SMALLINT UNSIGNED" notnull="true" default="Now()" desc="도배방지 연속 댓글 제한 초"/>
+		<Column seq="16" tszName="BbsSearchTerm" type="SMALLINT UNSIGNED" notnull="true" default="Now()" desc="검색날짜제한(해당 기간사이에 쓰여진 글만 검색할 수 있게 제한)"/>
+		<Column seq="17" tszName="DenyWord" type="VARCHAR(300)" notnull="false" default="Now()" desc="불량 단어 제한"/>
+		<Column seq="18" tszName="Grant_Html" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="HTML 사용 권한(1~10)"/>
+		<Column seq="19" tszName="Grant_List" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="목록 보기 사용 권한(1~10)"/>
+		<Column seq="20" tszName="Grant_View" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="내용 보기 사용 권한(1~10)"/>
+		<Column seq="21" tszName="Grant_Comment" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="댓글 쓰기 사용 권한(1~10)"/>
+		<Column seq="22" tszName="Grant_Write" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="글 쓰기 사용 권한(1~10)"/>
+		<Column seq="23" tszName="Grant_Reply" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="답글 쓰기 사용 권한(1~10)"/>
+		<Column seq="24" tszName="Grant_Delete" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="글 삭제 사용 권한(1~10)"/>
+		<Column seq="25" tszName="Grant_Notice" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="공지사항 작성 권한(1~10)"/>
+		<Column seq="26" tszName="IsStatics" type="BIT(1)" notnull="true" default="Now()" desc="통계페이지 표시 여부(0/1 : 무/유)"/>
+		<Column seq="27" tszName="RegDate" type="DATETIME" notnull="true" default="Now()" desc="등록일시"/>
+		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" tszName="No" order="ASC"/>
+		</Index>
+		<Index tszName="ix_UNC_tblbm_bbsconfig_TbName" kind="NONCLUSTERED" type="UNIQUE">
+			<UniqueKey/>
+			<Column seq="1" tszName="TbName" order="ASC"/>
+		</Index>
+	</Table>
+	<Table tszName="tblbm_board_segment" desc="게시물 그룹 정보" auto_increment_value="200">
+		<Column seq="1" tszName="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
+		<Column seq="2" tszName="BbsCount" type="INT UNSIGNED" notnull="true" default="0" desc="해당 그룹에 게시물 수"/>
+		<Column seq="3" tszName="SumBbsCount" type="INT UNSIGNED" notnull="true" default="0" desc="해당 그룹까지 누적 게시물 수"/>
+		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" tszName="No" order="ASC"/>
+		</Index>
+	</Table>
+	<Table tszName="tblm_member" desc="유저 정보" auto_increment_value="35005">
+		<Column seq="1" tszName="MbIdx" type="BIGINT UNSIGNED" notnull="true" default="0" identity="0,0" desc="일련번호"/>
+		<Column seq="2" tszName="Name" type="VARCHAR(32)" notnull="true" default="0" desc="성명"/>
+		<Column seq="3" tszName="RegDate" type="DATETIME" notnull="true" default="Now()" desc="등록일시"/>
+		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" tszName="MbIdx" order="ASC"/>
+		</Index>
+	</Table>
+	<Table tszName="tblm_test" desc="" auto_increment_value="73">
+		<Column seq="1" tszName="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc=""/>
+		<Column seq="2" tszName="Name1" type="VARCHAR(45)" notnull="false" default="Now()" desc=""/>
+		<Column seq="3" tszName="Name2" type="VARCHAR(45)" notnull="false" default="Now()" desc=""/>
+		<Column seq="4" tszName="Flag" type="BIT(1)" notnull="false" default="Now()" desc=""/>
+		<Column seq="5" tszName="Age" type="INT" notnull="false" default="Now()" desc=""/>
+		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" tszName="No" order="ASC"/>
+		</Index>
+	</Table>
+	<Procedure tszName="BbsConfigGrantEdit" desc="게시판 정보 수정">
+		<Param tszName="vTbName" type="VARCHAR(20)" desc=""/>
+		<Param tszName="vGrant_Html" type="TINYINT UNSIGNED" desc=""/>
+		<Param tszName="vGrant_List" type="TINYINT UNSIGNED" desc=""/>
+		<Param tszName="vGrant_View" type="TINYINT UNSIGNED" desc=""/>
+		<Param tszName="vGrant_Comment" type="TINYINT UNSIGNED" desc=""/>
+		<Param tszName="vGrant_Write" type="TINYINT UNSIGNED" desc=""/>
+		<Param tszName="vGrant_Reply" type="TINYINT UNSIGNED" desc=""/>
+		<Param tszName="vGrant_Delete" type="TINYINT UNSIGNED" desc=""/>
+		<Param tszName="vGrant_Notice" type="TINYINT UNSIGNED" desc=""/>
+		<Param tszName="vRetVal" type="INT" desc=""/>
+		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BbsConfigGrantEdit`(
+    vTbName VARCHAR(20),          		# 게시판 코드
+    vGrant_Html TINYINT UNSIGNED,      	# HTML 사용 권한(1~10)
+    vGrant_List TINYINT UNSIGNED,      	# 목록 보기 사용 권한(1~10)
+    vGrant_View TINYINT UNSIGNED,      	# 내용 보기 사용 권한(1~10)
+    vGrant_Comment TINYINT UNSIGNED,   	# 댓글 쓰기 사용 권한(1~10)
+    vGrant_Write TINYINT UNSIGNED,     	# 글 쓰기 사용 권한(1~10)
+    vGrant_Reply TINYINT UNSIGNED,     	# 답글 쓰기 사용 권한(1~10)
+    vGrant_Delete TINYINT UNSIGNED,    	# 글 삭제 사용 권한(1~10)
+    vGrant_Notice TINYINT UNSIGNED,    	# 공지사항 작성 권한(1~10)
+    OUT vRetVal INT           			# 처리코드(0/99 : 정상/DB 오류)
+)
+    COMMENT &apos;게시판 정보 수정&apos;
+BEGIN
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        SET vRetVal = 99;
+    END;
+
+    UPDATE tblbm_BbsConfig SET Grant_Html = vGrant_Html, Grant_List = vGrant_List, Grant_View = vGrant_View, Grant_Comment = vGrant_Comment, Grant_Write = vGrant_Write, Grant_Reply = vGrant_Reply, Grant_Delete = vGrant_Delete, Grant_Notice = vGrant_Notice
+    WHERE TbName = vTbName;
+
+    SET vRetVal = 0;
+END</body>
+	</Procedure>
+	<Procedure tszName="BbsConfigProcess" desc="게시판 정보 등록/수정/삭제">
+		<Param tszName="vProMethod" type="VARCHAR(15)" desc=""/>
+		<Param tszName="vNo" type="INT UNSIGNED" desc=""/>
+		<Param tszName="vTbName" type="VARCHAR(20)" desc=""/>
+		<Param tszName="vBbsName" type="VARCHAR(20)" desc=""/>
+		<Param tszName="vBbsInfo" type="VARCHAR(150)" desc=""/>
+		<Param tszName="vBbsClass" type="TINYINT UNSIGNED" desc=""/>
+		<Param tszName="vBbsCount" type="INT UNSIGNED" desc=""/>
+		<Param tszName="vIsCategory" type="BIT(1)" desc=""/>
+		<Param tszName="vIsHtml" type="BIT(1)" desc=""/>
+		<Param tszName="vIsComment" type="BIT(1)" desc=""/>
+		<Param tszName="vIsVote" type="BIT(1)" desc=""/>
+		<Param tszName="vPgSize" type="SMALLINT UNSIGNED" desc=""/>
+		<Param tszName="vAttFileCnt" type="TINYINT UNSIGNED" desc=""/>
+		<Param tszName="vAllowFileExt" type="VARCHAR(100)" desc=""/>
+		<Param tszName="vAPaper" type="SMALLINT UNSIGNED" desc=""/>
+		<Param tszName="vCPaper" type="SMALLINT UNSIGNED" desc=""/>
+		<Param tszName="vBbsSearchTerm" type="SMALLINT UNSIGNED" desc=""/>
+		<Param tszName="vDenyWord" type="VARCHAR(300)" desc=""/>
+		<Param tszName="vIsStatics" type="BIT(1)" desc=""/>
+		<Param tszName="vBbsAfInfo" type="VARCHAR(8000)" desc=""/>
+		<Param tszName="vOutIdx" type="INT UNSIGNED" desc=""/>
+		<Param tszName="vRetVal" type="INT" desc=""/>
+		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BbsConfigProcess`(
+    vProMethod VARCHAR(15),     		# ADD/EDIT/DELETE : 등록/수정/삭제 
+    vNo INT UNSIGNED,           		# 일련번호
+    vTbName VARCHAR(20),        		# 게시판 코드
+    vBbsName VARCHAR(20),       		# 게시판 이름 
+    vBbsInfo VARCHAR(150),      		# 게시판 설명
+    vBbsClass TINYINT UNSIGNED, 		# 게시판 종류(0/1/2/3/4/5 : 공지사항/일반/갤러리/퀴즈/설문/이벤트)
+    vBbsCount INT UNSIGNED,     		# 게시물 수
+    vIsCategory BIT(1),         		# 카테고리 사용여부(0/1 : 무/유)
+    vIsHtml BIT(1),             		# HTML 사용여부(0/1 : 무/유)
+    vIsComment BIT(1),          		# 댓글 사용여부(0/1 : 무/유)
+    vIsVote BIT(1),             		# 추천 사용여부(0/1 : 무/유)
+    vPgSize SMALLINT UNSIGNED,      	# 페이지당 게시물 수
+    vAttFileCnt TINYINT UNSIGNED,   	# 첨부 파일 수
+    vAllowFileExt VARCHAR(100), 		# 첨부 가능 파일 확장자(Ex. png,jpg,gif)
+    vAPaper SMALLINT UNSIGNED,        	# 도배방지 연속 글쓰기 제한 초
+    vCPaper SMALLINT UNSIGNED,        	# 도배방지 연속 댓글 제한 초
+    vBbsSearchTerm SMALLINT UNSIGNED, 	# 검색날짜제한(해당 기간사이에 쓰여진 글만 검색할 수 있게 제한)
+    vDenyWord VARCHAR(300),     		# 불량 단어 제한
+    vIsStatics BIT(1),         			# 통계페이지 표시 여부(0/1 : 무/유)
+    vBbsAfInfo VARCHAR(8000),   		# 게시판 테이블 추가필드 정보(Ex. &apos;필드ID,필드명,자료형,자료형길이;필드ID,필드명,자료형,자료형길이&apos; -&gt; &apos;Af1,계급,INT,4;Af2,길드IDX,INT,4&apos;)
+    OUT vOutIdx INT UNSIGNED,        	# 게시판 정보 등록후 일련번호
+    OUT vRetVal INT         			# 처리코드(0/1/99 : 정상/게시판 코드 존재/DB 오류)
+)
+    COMMENT &apos;게시판 정보 등록/수정/삭제&apos;
+MAIN_ROUTINE:BEGIN
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        SET vRetVal = 99;
+    END;
+
+    IF vProMethod = &apos;ADD&apos; THEN
+        IF NOT EXISTS(SELECT 1 FROM tblbm_BbsConfig WHERE TbName = vTbName) THEN
+            SET vRetVal = 1;
+            LEAVE MAIN_ROUTINE;
+        END IF;
+
+        INSERT tblbm_BbsConfig(TbName, BbsName, BbsInfo, BbsClass, BbsCount, IsCategory, IsHtml, IsComment, IsVote, PgSize, AttFileCnt, AllowFileExt, APaper, CPaper, BbsSearchTerm, DenyWord, IsStatics, RegDate) 
+        VALUES(vTbName, vBbsName, vBbsInfo, vBbsClass, vBbsCount, vIsCategory, vIsHtml, vIsComment, vIsVote, vPgSize, vAttFileCnt, vAllowFileExt, vAPaper, vCPaper, vBbsSearchTerm, vDenyWord, vIsStatics, NOW());
+
+        SET vOutIdx = LAST_INSERT_ID();
+    ELSEIF vProMethod = &apos;EDIT&apos; THEN
+        UPDATE tblbm_BbsConfig SET BbsName = vBbsName, BbsInfo = vBbsInfo, BbsClass = vBbsClass, BbsCount = vBbsCount, IsCategory = vIsCategory, IsHtml = vIsHtml, IsComment = vIsComment, IsVote = vIsVote, PgSize = vPgSize, 
+        AttFileCnt = vAttFileCnt, AllowFileExt = vAllowFileExt, APaper = vAPaper, CPaper = vCPaper, BbsSearchTerm = vBbsSearchTerm, DenyWord = vDenyWord, IsStatics = vIsStatics, RegDate = NOW()
+        WHERE TbName = vTbName;
+
+        SET vOutIdx = vNo;
+    ELSEIF vProMethod = &apos;DELETE&apos; THEN
+        DELETE FROM tblbm_BbsConfig WHERE No = vNo;
+
+        SET vOutIdx = vNo;
+    ELSE
+        SET vRetVal = 99;
+        LEAVE MAIN_ROUTINE;
+    END IF;
+
+    SET vRetVal = 0;
+END</body>
+	</Procedure>
+	<Procedure tszName="BbsGet" desc="게시물 정보 보기">
+		<Param tszName="vNo" type="INT UNSIGNED" desc=""/>
+		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BbsGet`(
+    vNo INT UNSIGNED    # 게시물 일련번호
+)
+    COMMENT &apos;게시물 정보 보기&apos;
+BEGIN
+    SELECT `No`, Content, MbIdx, Name, IP, HtmlFlag, Hit, Recom, UnRecom, CommentCnt, RegDate
+    FROM tblb_Bbs WHERE No = vNo; 
+END</body>
+	</Procedure>
+	<Procedure tszName="BbsPagingTest" desc="게시판 페이징 구현">
+		<Param tszName="vCurPage" type="INT" desc=""/>
+		<Param tszName="vNextStepNo" type="BIGINT" desc=""/>
+		<Param tszName="vSearchTerm" type="INT" desc=""/>
+		<Param tszName="vSearchType" type="VARCHAR(15)" desc=""/>
+		<Param tszName="vSearchString" type="VARCHAR(30)" desc=""/>
+		<Param tszName="vPageSize" type="INT" desc=""/>
+		<Param tszName="vOutPrevStepNo" type="BIGINT" desc=""/>
+		<Param tszName="vOutNextStepNo" type="BIGINT" desc=""/>
+		<Param tszName="vOutTotBbsCount" type="BIGINT" desc=""/>
+		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BbsPagingTest`(
+    vCurPage INT,              		# 현재 페이지
+    vNextStepNo BIGINT,           	# 각1페이지(11, 21, 31, 41, 51, ~)의 최상위글 일련번호  
+    vSearchTerm INT,  				# 검색 날짜 제한(성능 저하를 막기위해 해당 기간사이에 쓰여진 글만 검색할 수 있게 제한)
+    vSearchType VARCHAR(15),        # 검색 타입(글쓴이/제목/내용 : Name/Subject/Content)
+    vSearchString VARCHAR(30),      # 검색 어
+    vPageSize INT,        		# 페이지당 게시물 수
+    OUT vOutPrevStepNo BIGINT,    	# 이전버튼 최상위글 일련번호 
+    OUT vOutNextStepNo BIGINT,    	# 이후버튼 최상위글 일련번호
+    OUT vOutTotBbsCount BIGINT 		# 전체 게시물 수
+)
+    COMMENT &apos;게시판 페이징 구현&apos;
+BEGIN
+    DECLARE vReadCnt INT;
+    DECLARE vTotReadCnt INT;
+    DECLARE vStepTotReadCnt INT;
+    
+    # 검색 타입이 있고 검색 날짜 제한이 설정되지 않았을 때 전체 게시물 범위로 설정
+    IF (vSearchType = &apos;Name&apos; OR vSearchType = &apos;Subject&apos; OR vSearchType = &apos;Content&apos;) AND LENGTH(vSearchString) &gt; 0 AND vSearchTerm &lt; 1 THEN
+        SET vSearchTerm = (SELECT DATEDIFF(CURDATE(), RegDate) FROM tblb_bbs ORDER BY No ASC LIMIT 1);    
+    END IF;
+  
+    # 전체 게시물 수 구하기
+    IF vSearchType = &apos;Name&apos; AND LENGTH(vSearchString) &gt; 0 THEN
+        SET vOutTotBbsCount = (SELECT COUNT(*) FROM tblb_bbs WHERE RegDate &gt; ADDDATE(CURDATE(), INTERVAL -vSearchTerm DAY) AND Name LIKE CONCAT(vSearchString, &apos;%&apos;)); 
+    ELSEIF vSearchType = &apos;Subject&apos; AND LENGTH(vSearchString) &gt; 0 THEN
+        SET vOutTotBbsCount = (SELECT COUNT(*) FROM tblb_bbs WHERE RegDate &gt; ADDDATE(CURDATE(), INTERVAL -vSearchTerm DAY) AND Subject LIKE CONCAT(&apos;%&apos;, vSearchString, &apos;%&apos;)); 
+    ELSEIF vSearchType = &apos;Content&apos; AND LENGTH(vSearchString) &gt; 0 THEN
+        SET vOutTotBbsCount = (SELECT COUNT(*) FROM tblb_bbs WHERE RegDate &gt; ADDDATE(CURDATE(), INTERVAL -vSearchTerm DAY) AND Content LIKE CONCAT(&apos;%&apos;, vSearchString, &apos;%&apos;)); 
+    ELSE
+        SET vOutTotBbsCount = (SELECT BbsCount FROM tblbm_bbsconfig WHERE TbName = &apos;bbs&apos;); 
+    END IF;
+    
+    SET vOutTotBbsCount = IFNULL(vOutTotBbsCount, 0);
+    
+    IF vOutTotBbsCount - (vCurPage * vPageSize) + vPageSize &lt;= 0 THEN
+        IF vOutTotBbsCount % vPageSize = 0 THEN
+            SET vCurPage = vOutTotBbsCount / vPageSize;
+        ELSE
+            SET vCurPage = (vOutTotBbsCount / vPageSize) + 1;
+        END IF;
+    END IF;
+
+    IF vCurPage &lt; 1 THEN  
+        SET vCurPage = 1;
+    END IF;    
+  
+    SET vReadCnt = (CASE WHEN vCurPage % 10 = 0 THEN 10 ELSE vCurPage % 10 END);  # 현재 페이지의 한자리숫자
+    
+    # 1~10페이지는 vNextStepNo = 0인 경우이고, 11페이지 이후부터는 vNextStepNo &gt; 0 이어야 함.
+    IF vNextStepNo = 0 THEN
+        IF vSearchType = &apos;Name&apos; AND LENGTH(vSearchString) &gt; 0 THEN
+            SET vNextStepNo = (SELECT No FROM tblb_bbs WHERE RegDate &gt; ADDDATE(CURDATE(), INTERVAL -vSearchTerm DAY) AND Name LIKE CONCAT(vSearchString, &apos;%&apos;) ORDER BY No DESC LIMIT 1); 
+        ELSEIF vSearchType = &apos;Subject&apos; AND LENGTH(vSearchString) &gt; 0 THEN
+            SET vNextStepNo = (SELECT No FROM tblb_bbs WHERE RegDate &gt; ADDDATE(CURDATE(), INTERVAL -vSearchTerm DAY) AND Subject LIKE CONCAT(&apos;%&apos;, vSearchString, &apos;%&apos;) ORDER BY No DESC LIMIT 1); 
+        ELSEIF vSearchType = &apos;Content&apos; AND LENGTH(vSearchString) &gt; 0 THEN
+            SET vNextStepNo = (SELECT No FROM tblb_bbs WHERE RegDate &gt; ADDDATE(CURDATE(), INTERVAL -vSearchTerm DAY) AND Content LIKE CONCAT(&apos;%&apos;, vSearchString, &apos;%&apos;) ORDER BY No DESC LIMIT 1); 
+        ELSE
+            SET vNextStepNo = (SELECT No FROM tblb_bbs ORDER BY No DESC LIMIT 1); 
+        END IF;
+    END IF;
+    
+    SET vTotReadCnt = vPageSize * vReadCnt - vPageSize;    # 현재 페이지에 보여질 게시물 목록을 얻기 위해서 읽어올 게시물 수
+    SET vStepTotReadCnt = (vPageSize * 10) + 1;            # 이전, 이후버튼 최상위글 일련번호를 얻기 위해서 읽어올 게시물 수
+
+    IF vSearchType = &apos;Name&apos; AND LENGTH(vSearchString) &gt; 0 THEN
+        SELECT No, Subject, MbIdx, Name, Hit, Recom, UnRecom, CommentCnt, DATE_FORMAT(RegDate, &apos;%Y-%m-%d %h:%k&apos;) AS RegDate   
+        FROM tblb_bbs 
+        WHERE RegDate &gt; ADDDATE(CURDATE(), INTERVAL -vSearchTerm DAY) AND Name LIKE CONCAT(vSearchString, &apos;%&apos;) AND No &lt;= vNextStepNo 
+        ORDER BY No DESC LIMIT vTotReadCnt, vPageSize;
+
+        # 이후버튼 최상위글 일련번호 구하기
+        SET vOutNextStepNo = (SELECT a.No FROM
+            (
+                SELECT No FROM tblb_bbs WHERE RegDate &gt; ADDDATE(CURDATE(), INTERVAL -vSearchTerm DAY) AND Name LIKE CONCAT(vSearchString, &apos;%&apos;) AND No &lt;= vNextStepNo 
+                ORDER BY No DESC LIMIT vStepTotReadCnt
+            ) AS a
+            ORDER BY a.No ASC LIMIT 1);
+    ELSEIF vSearchType = &apos;Subject&apos; AND LENGTH(vSearchString) &gt; 0 THEN
+        SELECT No, Subject, MbIdx, Name, Hit, Recom, UnRecom, CommentCnt, DATE_FORMAT(RegDate, &apos;%Y-%m-%d %h:%k&apos;) AS RegDate
+        FROM tblb_bbs 
+        WHERE RegDate &gt; ADDDATE(CURDATE(), INTERVAL -vSearchTerm DAY) AND Subject LIKE CONCAT(&apos;%&apos;, vSearchString, &apos;%&apos;) AND No &lt;= vNextStepNo 
+        ORDER BY No DESC LIMIT vTotReadCnt, vPageSize;
+
+        # 이후버튼 최상위글 일련번호 구하기
+        SET vOutNextStepNo = (SELECT a.No FROM
+            (
+                SELECT No FROM tblb_bbs WHERE RegDate &gt; ADDDATE(CURDATE(), INTERVAL -vSearchTerm DAY) AND Subject LIKE CONCAT(&apos;%&apos;, vSearchString, &apos;%&apos;) AND No &lt;= vNextStepNo 
+                ORDER BY No DESC LIMIT vStepTotReadCnt
+            ) AS a
+            ORDER BY a.No ASC LIMIT 1);
+    ELSEIF vSearchType = &apos;Content&apos; AND LENGTH(vSearchString) &gt; 0 THEN
+        SELECT No, Subject, MbIdx, Name, Hit, Recom, UnRecom, CommentCnt, DATE_FORMAT(RegDate, &apos;%Y-%m-%d %h:%k&apos;) AS RegDate 
+        FROM tblb_bbs 
+        WHERE RegDate &gt; ADDDATE(CURDATE(), INTERVAL -vSearchTerm DAY) AND Content LIKE CONCAT(&apos;%&apos;, vSearchString, &apos;%&apos;) AND No &lt;= vNextStepNo 
+        ORDER BY No DESC LIMIT vTotReadCnt, vPageSize;
+
+        # 이후버튼 최상위글 일련번호 구하기
+        SET vOutNextStepNo = (SELECT a.No FROM
+            (
+                SELECT No FROM tblb_bbs WHERE RegDate &gt; ADDDATE(CURDATE(), INTERVAL -vSearchTerm DAY) AND Content LIKE CONCAT(&apos;%&apos;, vSearchString, &apos;%&apos;) AND No &lt;= vNextStepNo 
+                ORDER BY No DESC LIMIT vStepTotReadCnt
+            ) AS a
+            ORDER BY a.No ASC LIMIT 1);
+    ELSE
+        SELECT No, Subject, MbIdx, Name, Hit, Recom, UnRecom, CommentCnt, DATE_FORMAT(RegDate, &apos;%Y-%m-%d %h:%k&apos;) AS RegDate 
+        FROM tblb_bbs 
+        WHERE No &lt;= vNextStepNo 
+        ORDER BY No DESC LIMIT vTotReadCnt, vPageSize;
+
+        # 이후버튼 최상위글 일련번호 구하기
+        SET vOutNextStepNo = (SELECT a.No FROM
+            (
+                SELECT No FROM tblb_bbs WHERE No &lt;= vNextStepNo 
+                ORDER BY No DESC LIMIT vStepTotReadCnt
+            ) AS a
+            ORDER BY a.No ASC LIMIT 1);
+    END IF;
+    
+    # 이전버튼 최상위글 일련번호 구하기
+    SET vOutPrevStepNo = 0;
+
+    IF vCurPage &gt; 10 THEN       # 10페이지 이하는 이전페이지 목록이 없으므로(SET vOutPrevStepNo = 0)
+        IF vSearchType = &apos;Name&apos; AND LENGTH(vSearchString) &gt; 0 THEN
+            SET vOutPrevStepNo = (SELECT a.No FROM
+                (
+                    SELECT No FROM tblb_bbs WHERE RegDate &gt; ADDDATE(CURDATE(), INTERVAL -vSearchTerm DAY) AND Name LIKE CONCAT(vSearchString, &apos;%&apos;) AND No &gt;= vNextStepNo 
+                    ORDER BY No ASC LIMIT vStepTotReadCnt
+                ) AS a
+                ORDER BY a.No DESC LIMIT 1);
+        ELSEIF vSearchType = &apos;Subject&apos; AND LENGTH(vSearchString) &gt; 0 THEN
+            SET vOutPrevStepNo = (SELECT a.No FROM
+                (
+                    SELECT No FROM tblb_bbs WHERE RegDate &gt; ADDDATE(CURDATE(), INTERVAL -vSearchTerm DAY) AND Subject LIKE CONCAT(&apos;%&apos;, vSearchString, &apos;%&apos;) AND No &gt;= vNextStepNo 
+                    ORDER BY No ASC LIMIT vStepTotReadCnt
+                ) AS a
+                ORDER BY a.No DESC LIMIT 1);
+        ELSEIF vSearchType = &apos;Content&apos; AND LENGTH(vSearchString) &gt; 0 THEN
+            SET vOutPrevStepNo = (SELECT a.No FROM
+                (
+                    SELECT No FROM tblb_bbs WHERE RegDate &gt; ADDDATE(CURDATE(), INTERVAL -vSearchTerm DAY) AND Content LIKE CONCAT(&apos;%&apos;, vSearchString, &apos;%&apos;) AND No &gt;= vNextStepNo 
+                    ORDER BY No ASC LIMIT vStepTotReadCnt
+                ) AS a
+                ORDER BY a.No DESC LIMIT 1);
+        ELSE
+            SET vOutPrevStepNo = (SELECT a.No FROM
+                (
+                    SELECT No FROM tblb_bbs WHERE No &gt;= vNextStepNo 
+                    ORDER BY No ASC LIMIT vStepTotReadCnt
+                ) AS a
+                ORDER BY a.No DESC LIMIT 1);
+        END IF;
+    END IF;
+    
+    SET vOutNextStepNo = IFNULL(vOutNextStepNo, 0);
+    SET vOutPrevStepNo = IFNULL(vOutPrevStepNo, 0);
+END</body>
+	</Procedure>
+	<Procedure tszName="BbsProcess" desc="게시물 등록/수정/삭제">
+		<Param tszName="vProMethod" type="VARCHAR(15)" desc=""/>
+		<Param tszName="vNo" type="INT UNSIGNED" desc=""/>
+		<Param tszName="vSubject" type="VARCHAR(100)" desc=""/>
+		<Param tszName="vContent" type="LONGTEXT" desc=""/>
+		<Param tszName="vMbIdx" type="BIGINT UNSIGNED" desc=""/>
+		<Param tszName="vName" type="VARCHAR(20)" desc=""/>
+		<Param tszName="vIP" type="VARCHAR(20)" desc=""/>
+		<Param tszName="vHtmlFlag" type="BIT(1)" desc=""/>
+		<Param tszName="vOutNo" type="INT UNSIGNED" desc=""/>
+		<Param tszName="vRetVal" type="INT" desc=""/>
+		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BbsProcess`(
+    vProMethod VARCHAR(15),     # ADD/EDIT/DELETE : 등록/수정/삭제 
+    vNo INT UNSIGNED,           # 게시물 일련번호
+    vSubject VARCHAR(100),      # 제목
+    vContent LONGTEXT,          # 내용 
+    vMbIdx BIGINT UNSIGNED,     # 글쓴이 일련번호
+    vName VARCHAR(20),          # 글쓴이 명
+    vIP VARCHAR(20),            # 글쓴이 IP
+    vHtmlFlag BIT(1),              # HTML 여부(0/1 : 무/유)
+    OUT vOutNo INT UNSIGNED,   # 글 등록후 일련번호
+    OUT vRetVal INT                # 처리코드(0/1/99 : 정상/타인 글 수정, 삭제 금지/DB 오류)
+)
+    COMMENT &apos;게시물 등록/수정/삭제&apos;
+MAIN_ROUTINE:BEGIN
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        ROLLBACK;
+        SET vRetVal = 99;
+    END;
+
+    # SET SQL_SAFE_UPDATES = 0; # Safe Update 모드 상태 해제(Safe Update 모드는 업데이트시 Key 컬럼 검색만 허용)
+    SET AUTOCOMMIT = 0;         # AUTOCOMMIT 해제
+
+    START TRANSACTION;
+
+    IF vProMethod = &apos;ADD&apos; THEN
+        INSERT INTO tblb_bbs(Subject, Content, MbIdx, Name, IP, HtmlFlag, Hit, Recom, UnRecom, CommentCnt, RegDate) 
+        VALUES(vSubject, vContent, vMbIdx, vName, vIP, vHtmlFlag, 0, 0, 0, 0, NOW());
+
+        SET vOutNo = LAST_INSERT_ID();
+    ELSEIF vProMethod = &apos;EDIT&apos; THEN
+        IF NOT EXISTS(SELECT 1 FROM tblb_bbs WHERE No = vNo AND MbIdx = vMbIdx) THEN
+            SET vRetVal = 1;
+            ROLLBACK;
+
+            LEAVE MAIN_ROUTINE;
+        END IF;
+
+        UPDATE tblb_bbs SET Subject = vSubject, Content = vContent, MbIdx = vMbIdx, Name = vName, IP = vIP, HtmlFlag = vHtmlFlag
+        WHERE No = vNo AND MbIdx = vMbIdx;
+
+        SET vOutNo = vNo;
+    ELSEIF vProMethod = &apos;DELETE&apos; THEN
+        DELETE FROM tblb_bbs_Comment WHERE BbsNo = vNo;
+        DELETE FROM tblb_bbs WHERE No = vNo AND MbIdx = vMbIdx;
+
+        SET vOutNo = vNo;
+    ELSE
+        SET vRetVal = 99;
+        LEAVE MAIN_ROUTINE;
+    END IF;
+
+    COMMIT;
+
+    SET vRetVal = 0;
+END</body>
+	</Procedure>
+	<Procedure tszName="BoardAttGenFileGet" desc="일반형 게시판 첨부 일반 파일 정보">
+		<Param tszName="vBbsNo" type="INT UNSIGNED" desc=""/>
+		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BoardAttGenFileGet`(
+    vBbsNo INT UNSIGNED		# 게시물 일련번호
+)
+    COMMENT &apos;일반형 게시판 첨부 일반 파일 정보&apos;
+BEGIN
+    SELECT No, BbsNo, FilePath, FileName, FileSize, FileExt  
+    FROM tblb_board_attgenfile WHERE BbsNo = vBbsNo;
+END</body>
+	</Procedure>
+	<Procedure tszName="BoardAttGenFileMultiProcess" desc="일반형 게시판 첨부 일반 파일 멀티 등록/삭제">
+		<Param tszName="vProMethod" type="VARCHAR(15)" desc=""/>
+		<Param tszName="vBbsNo" type="INT UNSIGNED" desc=""/>
+		<Param tszName="vFileInfo" type="VARCHAR(8000)" desc=""/>
+		<Param tszName="vRetVal" type="INT" desc=""/>
+		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BoardAttGenFileMultiProcess`(
+    vProMethod VARCHAR(15),     # ADD/EDIT/DELETE : 등록/수정/삭제 
+    vBbsNo INT UNSIGNED,		# 게시물 일련번호
+    vFileInfo VARCHAR(8000),    # 파일정보(첨부 파일 서브 경로,첨부 파일 명,첨부 파일 크기,첨부 파일 확장자;첨부 파일 서브 경로,첨부 파일 명,첨부 파일 크기,첨부 파일 확장자 ~)
+    OUT vRetVal INT         	# 처리코드(0/1/99 : 정상/게시판 코드 존재/DB 오류)
+)
+    COMMENT &apos;일반형 게시판 첨부 일반 파일 멀티 등록/삭제&apos;
+MAIN_ROUTINE:BEGIN
+    DECLARE vFilePath VARCHAR(260);
+    DECLARE vFileName VARCHAR(260);
+    DECLARE vFileSize INT;
+    DECLARE vFileExt VARCHAR(10);
+    
+    DECLARE vTemp VARCHAR(260);
+    DECLARE vSubStr1 VARCHAR(260);
+    DECLARE vEnd1 VARCHAR(260);
+    DECLARE vPosition1 INT;
+    DECLARE vSubStr2 VARCHAR(260);
+    DECLARE vEnd2 VARCHAR(260);
+    DECLARE vPosition2 INT;
+
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        SET vRetVal = 99;
+    END;
+
+    IF vProMethod = &apos;ADD&apos; THEN
+        SET vPosition1 = 1;
+        SET vSubStr1 = (SELECT CharSplitFnc(vData, &apos;;&apos;, vPosition1));
+        SET vEnd1 = IFNULL(vSubStr1, &apos;&apos;);
+        WHILE vEnd1 &lt;&gt; &apos;&apos; DO
+            SET vSubStr1 = (SELECT CharSplitFnc(vData, &apos;;&apos;, vPosition1));
+            SET vEnd1 = IFNULL(vSubStr1, &apos;&apos;);
+            IF vEnd1 &lt;&gt; &apos;&apos; THEN
+                SET vTemp = vSubStr1;
+            
+                SET vPosition2 = 1;        
+                SET vSubStr2 = (SELECT CharSplitFnc(vTemp, &apos;,&apos;, vPosition2));
+                SET vEnd2 = IFNULL(vSubStr2, &apos;&apos;);
+                IF vEnd2 &lt;&gt; &apos;&apos; THEN
+                    SET vSubStr2 = (SELECT CharSplitFnc(vTemp, &apos;,&apos;, vPosition2));
+                    SET vEnd2 = IFNULL(vSubStr2, &apos;&apos;);
+                
+                    SET vFilePath = vSubStr2;
+                    SET vFileName = (SELECT CharSplitFnc(vTemp, &apos;,&apos;, vPosition2 + 1));
+                    SET vFileSize = (SELECT CharSplitFnc(vTemp, &apos;,&apos;, vPosition2 + 2));
+                    SET vFileExt = (SELECT CharSplitFnc(vTemp, &apos;,&apos;, vPosition2 + 3));
+                
+                    INSERT INTO tblb_board_attgenfile(BbsNo, FilePath, FileName, FileSize, FileExt, RegDate)
+                    VALUES(vBbsNo, vFilePath, vFileName, vFileSize, vFileExt, NOW()); 
+                END IF;
+            END IF;
+
+            SET vPosition1 = vPosition1 + 1;        
+        END WHILE;    
+    ELSEIF vProMethod = &apos;DELETE&apos; THEN
+        DELETE FROM tblb_board_attgenfile WHERE BbsNo = vBbsNo;
+    ELSE
+        SET vRetVal = 99;
+        LEAVE MAIN_ROUTINE;
+    END IF;
+
+    SET vRetVal = 0;
+END</body>
+	</Procedure>
+	<Procedure tszName="BoardAttImgFileGet" desc="일반형 게시판 첨부 이미지 파일 정보">
+		<Param tszName="vBbsNo" type="INT UNSIGNED" desc=""/>
+		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BoardAttImgFileGet`(
+    vBbsNo INT UNSIGNED		# 게시물 일련번호
+)
+    COMMENT &apos;일반형 게시판 첨부 이미지 파일 정보&apos;
+BEGIN
+    SELECT No, BbsNo, FilePath, FileName, FileSize, FileExt  
+    FROM tblb_board_attimgfile WHERE BbsNo = vBbsNo;
+END</body>
+	</Procedure>
+	<Procedure tszName="BoardAttImgFileMultiProcess" desc="일반형 게시판 첨부 이미지 파일 멀티 등록/삭제">
+		<Param tszName="vProMethod" type="VARCHAR(15)" desc=""/>
+		<Param tszName="vBbsNo" type="INT UNSIGNED" desc=""/>
+		<Param tszName="vFileInfo" type="VARCHAR(8000)" desc=""/>
+		<Param tszName="vRetVal" type="INT" desc=""/>
+		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BoardAttImgFileMultiProcess`(
+    vProMethod VARCHAR(15),     # ADD/EDIT/DELETE : 등록/수정/삭제 
+    vBbsNo INT UNSIGNED,        # 게시물 일련번호
+    vFileInfo VARCHAR(8000),    # 파일정보(첨부 파일 서브 경로,첨부 파일 명,첨부 파일 크기,첨부 파일 확장자;첨부 파일 서브 경로,첨부 파일 명,첨부 파일 크기,첨부 파일 확장자 ~)
+    OUT vRetVal INT         	# 처리코드(0/1/99 : 정상/게시판 코드 존재/DB 오류)
+)
+    COMMENT &apos;일반형 게시판 첨부 이미지 파일 멀티 등록/삭제&apos;
+MAIN_ROUTINE:BEGIN
+    DECLARE vFilePath VARCHAR(260);
+    DECLARE vFileName VARCHAR(260);
+    DECLARE vFileSize INT;
+    DECLARE vFileExt VARCHAR(10);
+    
+    DECLARE vTemp VARCHAR(260);
+    DECLARE vSubStr1 VARCHAR(260);
+    DECLARE vEnd1 VARCHAR(260);
+    DECLARE vPosition1 INT;
+    DECLARE vSubStr2 VARCHAR(260);
+    DECLARE vEnd2 VARCHAR(260);
+    DECLARE vPosition2 INT;
+
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        SET vRetVal = 99;
+    END;
+
+    IF vProMethod = &apos;ADD&apos; THEN
+        SET vPosition1 = 1;
+        SET vSubStr1 = (SELECT CharSplitFnc(vData, &apos;;&apos;, vPosition1));
+        SET vEnd1 = IFNULL(vSubStr1, &apos;&apos;);
+        WHILE vEnd1 &lt;&gt; &apos;&apos; DO
+            SET vSubStr1 = (SELECT CharSplitFnc(vData, &apos;;&apos;, vPosition1));
+            SET vEnd1 = IFNULL(vSubStr1, &apos;&apos;);
+            IF vEnd1 &lt;&gt; &apos;&apos; THEN
+                SET vTemp = vSubStr1;
+            
+                SET vPosition2 = 1;        
+                SET vSubStr2 = (SELECT CharSplitFnc(vTemp, &apos;,&apos;, vPosition2));
+                SET vEnd2 = IFNULL(vSubStr2, &apos;&apos;);
+                IF vEnd2 &lt;&gt; &apos;&apos; THEN
+                    SET vSubStr2 = (SELECT CharSplitFnc(vTemp, &apos;,&apos;, vPosition2));
+                    SET vEnd2 = IFNULL(vSubStr2, &apos;&apos;);
+                
+                    SET vFilePath = vSubStr2;
+                    SET vFileName = (SELECT CharSplitFnc(vTemp, &apos;,&apos;, vPosition2 + 1));
+                    SET vFileSize = (SELECT CharSplitFnc(vTemp, &apos;,&apos;, vPosition2 + 2));
+                    SET vFileExt = (SELECT CharSplitFnc(vTemp, &apos;,&apos;, vPosition2 + 3));
+                
+                    INSERT INTO tblb_board_attimgfile(BbsNo, FilePath, FileName, FileSize, FileExt, RegDate)
+                    VALUES(vBbsNo, vFilePath, vFileName, vFileSize, vFileExt, NOW()); 
+                END IF;
+            END IF;
+
+            SET vPosition1 = vPosition1 + 1;        
+        END WHILE;    
+    ELSEIF vProMethod = &apos;DELETE&apos; THEN
+        DELETE FROM tblb_board_attimgfile WHERE BbsNo = vBbsNo;
+    ELSE
+        SET vRetVal = 99;
+        LEAVE MAIN_ROUTINE;
+    END IF;
+
+    SET vRetVal = 0;
+END</body>
+	</Procedure>
+	<Procedure tszName="BoardCnt" desc="게시판 전체 게시물 수 얻기">
+		<Param tszName="vSearchTerm" type="SMALLINT UNSIGNED" desc=""/>
+		<Param tszName="vSearchType" type="VARCHAR(15)" desc=""/>
+		<Param tszName="vSearchString" type="VARCHAR(30)" desc=""/>
+		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BoardCnt`(
+    vSearchTerm SMALLINT UNSIGNED,  # 검색 날짜 제한(성능 저하를 막기위해 해당 기간사이에 쓰여진 글만 검색할 수 있게 제한)
+    vSearchType VARCHAR(15),        # 검색 타입(글쓴이/제목/내용 : Name/Subject/Content)
+    vSearchString VARCHAR(30)       # 검색 어
+)
+    COMMENT &apos;게시판 전체 게시물 수 얻기&apos;
+BEGIN
+	DECLARE vOutTotBbsCount INT UNSIGNED;
+    
+    # 검색 타입이 있고 검색 날짜 제한이 설정되지 않았을 때 전체 게시물 범위로 설정
+	IF (vSearchType = &apos;Name&apos; OR vSearchType = &apos;Subject&apos; OR vSearchType = &apos;Content&apos;) AND LENGTH(vSearchString) &gt; 0 AND vSearchTerm &lt; 1 THEN
+        SET vSearchTerm = (SELECT DATEDIFF(CURDATE(), RegDate) FROM tblb_board ORDER BY No ASC LIMIT 1);    
+    END IF;
+    
+    # 전체 게시물 수 구하기
+    IF vSearchType = &apos;Name&apos; AND LENGTH(vSearchString) &gt; 0 THEN
+        SET vOutTotBbsCount = (SELECT COUNT(*) FROM tblb_board WHERE RegDate &gt; ADDDATE(CURDATE(), INTERVAL -vSearchTerm DAY) AND Name LIKE CONCAT(vSearchString, &apos;%&apos;)); 
+    ELSEIF vSearchType = &apos;Subject&apos; AND LENGTH(vSearchString) &gt; 0 THEN
+        SET vOutTotBbsCount = (SELECT COUNT(*) FROM tblb_board WHERE RegDate &gt; ADDDATE(CURDATE(), INTERVAL -vSearchTerm DAY) AND Subject LIKE CONCAT(&apos;%&apos;, vSearchString, &apos;%&apos;)); 
+    ELSEIF vSearchType = &apos;Content&apos; AND LENGTH(vSearchString) &gt; 0 THEN
+        SET vOutTotBbsCount = (SELECT COUNT(*) FROM tblb_board WHERE RegDate &gt; ADDDATE(CURDATE(), INTERVAL -vSearchTerm DAY) AND Content LIKE CONCAT(&apos;%&apos;, vSearchString, &apos;%&apos;)); 
+    ELSE
+        SET vOutTotBbsCount = (SELECT SUM(BbsCount) FROM tblbm_board_segment);
+    END IF;
+    
+    SET vOutTotBbsCount = IFNULL(vOutTotBbsCount, 0);
+    
+    SELECT vOutTotBbsCount AS TotBbsCount;
+END</body>
+	</Procedure>
+	<Procedure tszName="BoardCommentGet" desc="댓글 정보 보기">
+		<Param tszName="vCommNo" type="INT UNSIGNED" desc=""/>
+		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BoardCommentGet`(
+    vCommNo INT UNSIGNED	# 댓글 일련번호
+)
+    COMMENT &apos;댓글 정보 보기&apos;
+BEGIN
+    SELECT No, BbsNo, Memo, MbIdx, Name, IP, RegDate
+    FROM tblb_Board_Comment WHERE No = vCommNo;
+END</body>
+	</Procedure>
+	<Procedure tszName="BoardCommentProcess" desc="댓글 정보 등록/수정/삭제">
+		<Param tszName="vCommNo" type="INT UNSIGNED" desc=""/>
+		<Param tszName="vBbsNo" type="INT UNSIGNED" desc=""/>
+		<Param tszName="vMemo" type="VARCHAR(1000)" desc=""/>
+		<Param tszName="vMbIdx" type="BIGINT UNSIGNED" desc=""/>
+		<Param tszName="vName" type="VARCHAR(20)" desc=""/>
+		<Param tszName="vIP" type="VARCHAR(20)" desc=""/>
+		<Param tszName="vRetVal" type="INT" desc=""/>
+		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BoardCommentProcess`(
+    vCommNo INT UNSIGNED,       # 댓글 일련번호
+    vBbsNo INT UNSIGNED,        # 게시물 일련번호
+    vMemo VARCHAR(1000),    	# 내용
+    vMbIdx BIGINT UNSIGNED,     # 글쓴이 일련번호
+    vName VARCHAR(20),      	# 글쓴이 명
+    vIP VARCHAR(20),        	# 글쓴이 IP
+    OUT vRetVal INT     		# 처리코드(0/1/99 : 정상/타인 댓글 수정, 삭제 금지/DB 오류)
+)
+    COMMENT &apos;댓글 정보 등록/수정/삭제&apos;
+MAIN_ROUTINE:BEGIN
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        ROLLBACK;
+        SET vRetVal = 99;
+    END;
+
+    # SET SQL_SAFE_UPDATES = 0; # Safe Update 모드 상태 해제(Safe Update 모드는 업데이트시 Key 컬럼 검색만 허용)
+    SET AUTOCOMMIT = 0;         # AUTOCOMMIT 해제
+
+    START TRANSACTION;
+
+    IF vProMethod = &apos;ADD&apos; THEN
+        INSERT INTO tblb_Board_Comment(BbsNo, Memo, MbIdx, Name, IP, RegDate) 
+        VALUES(vBbsNo, vMemo, vMbIdx, vName, vIP, NOW());
+
+        UPDATE tblb_Board SET CommentCnt = CommentCnt + 1 WHERE No = vBbsNo;
+    ELSEIF vProMethod = &apos;EDIT&apos; THEN
+        IF NOT EXISTS(SELECT 1 FROM tblb_Board_Comment WHERE No = vCommNo AND MbIdx = vMbIdx) THEN
+            SET vRetVal = 1;
+            ROLLBACK;
+
+            LEAVE MAIN_ROUTINE;
+        END IF;
+
+        UPDATE tblb_Board_Comment SET Memo = vMemo WHERE No = vCommNo AND MbIdx = vMbIdx;
+    ELSEIF vProMethod = &apos;DELETE&apos; THEN
+        IF NOT EXISTS(SELECT 1 FROM tblb_Board_Comment WHERE No = vCommNo AND MbIdx = vMbIdx) THEN
+            SET vRetVal = 1;
+            ROLLBACK;
+
+            LEAVE MAIN_ROUTINE;
+        END IF;
+
+        DELETE FROM tblb_Board_Comment WHERE No = vCommNo;
+    ELSE
+        SET vRetVal = 99;
+        LEAVE MAIN_ROUTINE;
+    END IF;
+
+    COMMIT;
+
+    SET vRetVal = 0;
+END</body>
+	</Procedure>
+	<Procedure tszName="BoardGet" desc="게시물 정보 보기">
+		<Param tszName="vNo" type="INT UNSIGNED" desc=""/>
+		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BoardGet`(
+    vNo INT UNSIGNED	# 게시물 일련번호
+)
+    COMMENT &apos;게시물 정보 보기&apos;
+BEGIN
+    SELECT No, SegNo, Content, MbIdx, Name, IP, HtmlFlag, Hit, Recom, UnRecom, CommentCnt, RegDate
+    FROM tblb_Board WHERE No = vNo; 
+END</body>
+	</Procedure>
+	<Procedure tszName="BoardInfoProcess" desc="게시판 정보 처리">
+		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BoardInfoProcess`()
+    COMMENT &apos;게시판 정보 처리&apos;
+BEGIN
+    DECLARE vDone INT DEFAULT FALSE;
+    DECLARE vTbName VARCHAR(50);
+        
+    DECLARE cur1 CURSOR FOR SELECT TbName FROM tblbm_BbsConfig ORDER BY No ASC;
+
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET vDone = TRUE;
+
+    SET @v_SQL = &apos;&apos;;
+    SET @v_SQL = CONCAT(@v_SQL, &apos;USE common;&apos;, CHAR(10));
+    SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+
+    OPEN cur1; 
+
+    REPEAT
+     
+    FETCH cur1 INTO vTbName;
+     
+    IF NOT vDone THEN
+        SET @v_SQL = CONCAT(@v_SQL, &apos;DROP TABLE IF EXISTS tblb_&apos;, vTbName, &apos;_Comment;&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+
+        SET @v_SQL = CONCAT(@v_SQL, &apos;DROP TABLE IF EXISTS tblb_&apos;, vTbName, &apos;;&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+
+        SET @v_SQL = CONCAT(@v_SQL, &apos;CREATE TABLE `tblb_&apos;, vTbName, &apos;` (&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`No` int unsigned NOT NULL AUTO_INCREMENT COMMENT &apos;&apos;글 일련번호&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`Subject` varchar(100) NOT NULL COMMENT &apos;&apos;제목&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`Content` longtext NOT NULL COMMENT &apos;&apos;내용&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`MbIdx` bigint unsigned NOT NULL COMMENT &apos;&apos;글쓴이 고유번호&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`Name` varchar(20) NOT NULL COMMENT &apos;&apos;글쓴이 명&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`IP` varchar(20) NOT NULL COMMENT &apos;&apos;글쓴이 IP&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`HtmlFlag` bit(1) NOT NULL COMMENT &apos;&apos;HTML 여부(0/1 : 무/유)&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`Hit` int NOT NULL DEFAULT &apos;&apos;0&apos;&apos; COMMENT &apos;&apos;조회수&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`Recom` int NOT NULL DEFAULT &apos;&apos;0&apos;&apos; COMMENT &apos;&apos;추천수&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`UnRecom` int NOT NULL DEFAULT &apos;&apos;0&apos;&apos; COMMENT &apos;&apos;비추수&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`CommentCnt` int NOT NULL DEFAULT &apos;&apos;0&apos;&apos; COMMENT &apos;&apos;댓글수&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`RegDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT &apos;&apos;등록일시&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;PRIMARY KEY (`No`),&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;KEY `ix_NC_tblb_&apos;, vTbName, &apos;_Name` (`Name`),&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;KEY `ix_NC_tblb_&apos;, vTbName, &apos;_Subject` (`Subject`)&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, &apos;) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=&apos;&apos;일반형 게시판&apos;&apos;;&apos;, CHAR(10));           
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+        
+        SET @v_SQL = CONCAT(@v_SQL, &apos;TRUNCATE TABLE tblb_&apos;, vTbName, &apos;;&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+
+        SET @v_SQL = CONCAT(@v_SQL, &apos;CREATE TABLE `tblb_&apos;, vTbName, &apos;_Comment` (&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`No` int unsigned NOT NULL AUTO_INCREMENT COMMENT &apos;&apos;일련번호&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`BbsNo` int unsigned NOT NULL COMMENT &apos;&apos;게시물 일련번호&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`Memo` varchar(1000) NOT NULL COMMENT &apos;&apos;내용&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`MbIdx` bigint unsigned NOT NULL COMMENT &apos;&apos;글쓴이 일련번호&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`Name` varchar(20) NOT NULL COMMENT &apos;&apos;글쓴이 명&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`IP` varchar(20) NOT NULL COMMENT &apos;&apos;글쓴이 IP&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`RegDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT &apos;&apos;등록일시&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;PRIMARY KEY (`No`),&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;KEY `ix_NC_&apos;, vTbName, &apos;_Comment_BbsNo` (`BbsNo`),&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;FOREIGN KEY (`BbsNo`) REFERENCES `tblb_&apos;, vTbName, &apos;`(`No`) ON DELETE CASCADE&apos;, CHAR(10));   
+        SET @v_SQL = CONCAT(@v_SQL, &apos;) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=&apos;&apos;게시판 댓글&apos;&apos;;&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+
+        SET @v_SQL = CONCAT(@v_SQL, &apos;TRUNCATE TABLE tblb_&apos;, vTbName, &apos;_Comment;&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+
+        SET @v_SQL = CONCAT(@v_SQL, &apos;DROP TRIGGER IF EXISTS trg_&apos;, vTbName, &apos;_BbsCount_Ins;&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+
+        SET @v_SQL = CONCAT(@v_SQL, &apos;DELIMITER ;;&apos;, CHAR(10), CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, &apos;CREATE TRIGGER trg_&apos;, vTbName, &apos;_BbsCount_Ins&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, &apos;AFTER INSERT ON `tblb_&apos;, vTbName, &quot;`&quot;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, &apos;FOR EACH ROW&apos;, CHAR(10)); 
+        SET @v_SQL = CONCAT(@v_SQL, &apos;BEGIN&apos;, CHAR(10)); 
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;UPDATE tblbm_bbsconfig SET BbsCount = BbsCount + 1 WHERE TbName = &apos;&apos;&apos;, vTbName, &apos;&apos;&apos;;&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, &apos;END ;;&apos;, CHAR(10), CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, &apos;DELIMITER ;&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+ 
+        SET @v_SQL = CONCAT(@v_SQL, &apos;DROP TRIGGER IF EXISTS trg_&apos;, vTbName, &apos;_BbsCount_Del;&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+
+        SET @v_SQL = CONCAT(@v_SQL, &apos;DELIMITER ;;&apos;, CHAR(10), CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, &apos;CREATE TRIGGER trg_&apos;, vTbName, &apos;_BbsCount_Del&apos;, CHAR(10)); 
+        SET @v_SQL = CONCAT(@v_SQL, &apos;AFTER DELETE ON tblb_&apos;, vTbName, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, &apos;FOR EACH ROW&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, &apos;BEGIN&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;UPDATE tblbm_bbsconfig SET BbsCount = BbsCount - 1 WHERE TbName = &apos;&apos;&apos;, vTbName, &apos;&apos;&apos;;&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, &apos;END ;;&apos;, CHAR(10), CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, &apos;DELIMITER ;&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+
+        SET vDone = False;     
+    END IF;        
+            
+    UNTIL vDone END REPEAT;
+
+    CLOSE cur1;
+
+    SELECT @v_SQL;
+END</body>
+	</Procedure>
+	<Procedure tszName="BoardInfoTableCreate" desc="게시판별 테이블 생성">
+		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BoardInfoTableCreate`()
+    COMMENT &apos;게시판별 테이블 생성&apos;
+BEGIN
+    DECLARE vDone INT DEFAULT FALSE;
+    DECLARE vTbName VARCHAR(50);
+        
+    DECLARE cur1 CURSOR FOR SELECT TbName FROM tblbm_bbsconfig ORDER BY No ASC;
+
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET vDone = TRUE;
+
+    SET @v_SQL = &apos;&apos;;
+    SET @v_SQL = CONCAT(@v_SQL, &apos;USE common;&apos;, CHAR(10));
+    SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+
+    OPEN cur1; 
+
+    REPEAT
+     
+    FETCH cur1 INTO vTbName;
+     
+    IF NOT vDone THEN
+        SET @v_SQL = CONCAT(@v_SQL, &apos;DROP TABLE IF EXISTS tblb_&apos;, vTbName, &apos;_attgenfile;&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+
+        SET @v_SQL = CONCAT(@v_SQL, &apos;DROP TABLE IF EXISTS tblb_&apos;, vTbName, &apos;_attimgfile;&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+
+        SET @v_SQL = CONCAT(@v_SQL, &apos;DROP TABLE IF EXISTS tblb_&apos;, vTbName, &apos;_comment;&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+
+        SET @v_SQL = CONCAT(@v_SQL, &apos;DROP TABLE IF EXISTS tblb_&apos;, vTbName, &apos;;&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+
+        SET @v_SQL = CONCAT(@v_SQL, &apos;DROP TABLE IF EXISTS tblbm_&apos;, vTbName, &apos;_segment;&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+
+        SET @v_SQL = CONCAT(@v_SQL, &apos;CREATE TABLE `tblbm_&apos;, vTbName, &apos;_segment` (&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`No` int unsigned NOT NULL AUTO_INCREMENT COMMENT &apos;&apos;일련번호&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`BbsCount` int NOT NULL DEFAULT &apos;&apos;0&apos;&apos; COMMENT &apos;&apos;해당 그룹에 게시물 수&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;PRIMARY KEY (`No`),&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, &apos;) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=&apos;&apos;게시물 그룹 정보&apos;&apos;;&apos;, CHAR(10));
+
+        SET @v_SQL = CONCAT(@v_SQL, &apos;TRUNCATE TABLE tblbm_&apos;, vTbName, &apos;_segment;&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+
+        SET @v_SQL = CONCAT(@v_SQL, &apos;CREATE TABLE `tblb_&apos;, vTbName, &apos;` (&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`No` int unsigned NOT NULL AUTO_INCREMENT COMMENT &apos;&apos;글 일련번호&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`SegNo` int unsigned NOT NULL COMMENT &apos;&apos;게시물 그룹 일련번호&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`Subject` varchar(100) NOT NULL COMMENT &apos;&apos;제목&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`Content` longtext NOT NULL COMMENT &apos;&apos;내용&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`MbIdx` bigint unsigned NOT NULL COMMENT &apos;&apos;글쓴이 고유번호&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`Name` varchar(20) NOT NULL COMMENT &apos;&apos;글쓴이 명&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`IP` varchar(20) NOT NULL COMMENT &apos;&apos;글쓴이 IP&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`HtmlFlag` bit(1) NOT NULL COMMENT &apos;&apos;HTML 여부(0/1 : 무/유)&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`Hit` int NOT NULL DEFAULT &apos;&apos;0&apos;&apos; COMMENT &apos;&apos;조회수&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`Recom` int NOT NULL DEFAULT &apos;&apos;0&apos;&apos; COMMENT &apos;&apos;추천수&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`UnRecom` int NOT NULL DEFAULT &apos;&apos;0&apos;&apos; COMMENT &apos;&apos;비추수&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`commentCnt` int NOT NULL DEFAULT &apos;&apos;0&apos;&apos; COMMENT &apos;&apos;댓글수&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`RegDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT &apos;&apos;등록일시&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;PRIMARY KEY (`No`),&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;KEY `ix_NC_tblb_&apos;, vTbName, &apos;_SegNo` (`SegNo`),&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;KEY `ix_NC_tblb_&apos;, vTbName, &apos;_Name` (`Name`),&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;KEY `ix_NC_tblb_&apos;, vTbName, &apos;_Subject` (`Subject`)&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;FOREIGN KEY (`SegNo`) REFERENCES `tblbm_Board_segment`(`No`) ON DELETE RESTRICT ON UPDATE CASCADE&apos;, CHAR(10));   
+        SET @v_SQL = CONCAT(@v_SQL, &apos;) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=&apos;&apos;일반형 게시판&apos;&apos;;&apos;, CHAR(10));           
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+        
+        SET @v_SQL = CONCAT(@v_SQL, &apos;TRUNCATE TABLE tblb_&apos;, vTbName, &apos;;&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+
+        SET @v_SQL = CONCAT(@v_SQL, &apos;CREATE TABLE `tblb_&apos;, vTbName, &apos;_comment` (&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`No` int unsigned NOT NULL AUTO_INCREMENT COMMENT &apos;&apos;일련번호&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`BbsNo` int unsigned NOT NULL COMMENT &apos;&apos;게시물 일련번호&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`Memo` varchar(1000) NOT NULL COMMENT &apos;&apos;내용&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`MbIdx` bigint unsigned NOT NULL COMMENT &apos;&apos;글쓴이 일련번호&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`Name` varchar(20) NOT NULL COMMENT &apos;&apos;글쓴이 명&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`IP` varchar(20) NOT NULL COMMENT &apos;&apos;글쓴이 IP&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`RegDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT &apos;&apos;등록일시&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;PRIMARY KEY (`No`),&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;KEY `ix_NC_&apos;, vTbName, &apos;_comment_BbsNo` (`BbsNo`),&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;FOREIGN KEY (`fk_tblb_&apos;, vTbName, &apos;_comment_tblb_&apos;, vTbName, &apos;_BbsNo`) REFERENCES `tblb_&apos;, vTbName, &apos;`(`No`) ON DELETE RESTRICT ON UPDATE CASCADE&apos;, CHAR(10));   
+        SET @v_SQL = CONCAT(@v_SQL, &apos;) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=&apos;&apos;게시판 댓글&apos;&apos;;&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+
+        SET @v_SQL = CONCAT(@v_SQL, &apos;TRUNCATE TABLE tblb_&apos;, vTbName, &apos;_comment;&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+
+        SET @v_SQL = CONCAT(@v_SQL, &apos;CREATE TABLE `tblb_&apos;, vTbName, &apos;_attgenfile` (&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`No` int unsigned NOT NULL AUTO_INCREMENT COMMENT &apos;&apos;일련번호&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`BbsNo` int unsigned NOT NULL COMMENT &apos;&apos;게시물 일련번호&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`FilePath` varchar(260) NOT NULL COMMENT &apos;&apos;첨부 파일 서브 경로&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`FileName` varchar(260) NOT NULL COMMENT &apos;&apos;첨부 파일 명&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`FileSize` int NOT NULL COMMENT &apos;&apos;첨부 파일 크기&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`FileExt` varchar(10) NOT NULL COMMENT &apos;&apos;첨부 파일 확장자&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`RegDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT &apos;&apos;등록일시&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;PRIMARY KEY (`No`),&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;KEY `ix_NC_&apos;, vTbName, &apos;_attgenfile_BbsNo` (`BbsNo`),&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;FOREIGN KEY (`fk_tblb_&apos;, vTbName, &apos;_attgenfile_tblb_&apos;, vTbName, &apos;_BbsNo`) REFERENCES `tblb_&apos;, vTbName, &apos;`(`No`) ON DELETE RESTRICT ON UPDATE CASCADE&apos;, CHAR(10));   
+        SET @v_SQL = CONCAT(@v_SQL, &apos;) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=&apos;&apos;일반형 게시판 첨부 일반 파일 정보&apos;&apos;;&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+
+        SET @v_SQL = CONCAT(@v_SQL, &apos;TRUNCATE TABLE tblb_&apos;, vTbName, &apos;_attgenfile;&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+
+        SET @v_SQL = CONCAT(@v_SQL, &apos;CREATE TABLE `tblb_&apos;, vTbName, &apos;_attimgfile` (&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`No` int unsigned NOT NULL AUTO_INCREMENT COMMENT &apos;&apos;일련번호&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`BbsNo` int unsigned NOT NULL COMMENT &apos;&apos;게시물 일련번호&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`FilePath` varchar(260) NOT NULL COMMENT &apos;&apos;첨부 파일 서브 경로&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`FileName` varchar(260) NOT NULL COMMENT &apos;&apos;첨부 파일 명&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`FileSize` int NOT NULL COMMENT &apos;&apos;첨부 파일 크기&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`FileExt` varchar(10) NOT NULL COMMENT &apos;&apos;첨부 파일 확장자&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`RegDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT &apos;&apos;등록일시&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;PRIMARY KEY (`No`),&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;KEY `ix_NC_&apos;, vTbName, &apos;_attimgfile_BbsNo` (`BbsNo`),&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;FOREIGN KEY (`fk_tblb_&apos;, vTbName, &apos;_attimgfile_tblb_&apos;, vTbName, &apos;_BbsNo`) REFERENCES `tblb_&apos;, vTbName, &apos;`(`No`) ON DELETE RESTRICT ON UPDATE CASCADE&apos;, CHAR(10));   
+        SET @v_SQL = CONCAT(@v_SQL, &apos;) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=&apos;&apos;일반형 게시판 첨부 이미지 파일 정보&apos;&apos;;&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+
+        SET @v_SQL = CONCAT(@v_SQL, &apos;TRUNCATE TABLE tblb_&apos;, vTbName, &apos;_attimgfile;&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+
+        SET @v_SQL = CONCAT(@v_SQL, &apos;DROP TRIGGER IF EXISTS trg_&apos;, vTbName, &apos;_BbsCount_Ins;&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+
+        SET @v_SQL = CONCAT(@v_SQL, &apos;DELIMITER ;;&apos;, CHAR(10), CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, &apos;CREATE TRIGGER trg_&apos;, vTbName, &apos;_BbsCount_Ins&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, &apos;AFTER INSERT ON `tblb_&apos;, vTbName, &quot;`&quot;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, &apos;FOR EACH ROW&apos;, CHAR(10)); 
+        SET @v_SQL = CONCAT(@v_SQL, &apos;BEGIN&apos;, CHAR(10)); 
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;UPDATE tblbm_bbsconfig SET BbsCount = BbsCount + 1 WHERE TbName = &apos;&apos;&apos;, vTbName, &apos;&apos;&apos;;&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, &apos;END ;;&apos;, CHAR(10), CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, &apos;DELIMITER ;&apos;, CHAR(10));
+        SET</body>
+	</Procedure>
+	<Procedure tszName="BoardPagingTest" desc="게시판 페이징 구현">
+		<Param tszName="vCurPage" type="INT" desc=""/>
+		<Param tszName="vSearchTerm" type="INT" desc=""/>
+		<Param tszName="vSearchType" type="VARCHAR(15)" desc=""/>
+		<Param tszName="vSearchString" type="VARCHAR(30)" desc=""/>
+		<Param tszName="vPageSize" type="INT" desc=""/>
+		<Param tszName="vOutTotBbsCount" type="BIGINT" desc=""/>
+		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BoardPagingTest`(
+    vCurPage INT,                   # 현재 페이지
+    vSearchTerm INT,      			# 검색 날짜 제한(성능 저하를 막기위해 해당 기간사이에 쓰여진 글만 검색할 수 있게 제한)
+    vSearchType VARCHAR(15),        # 검색 타입(글쓴이/제목/내용 : Name/Subject/Content)
+    vSearchString VARCHAR(30),      # 검색 어
+    vPageSize INT,        			# 페이지당 게시물 수
+    OUT vOutTotBbsCount BIGINT    	# 전체 게시물 수
+)
+    COMMENT &apos;게시판 페이징 구현&apos;
+BEGIN
+    DECLARE vSearchTotReadCnt INT; 
+    DECLARE vViewScope INT;
+    DECLARE vSegNo INT;
+    DECLARE vCurSegSumBbsCount INT UNSIGNED DEFAULT 0;
+    DECLARE vLimitSize INT;
+    
+    # 검색 타입이 있고 검색 날짜 제한이 설정되지 않았을 때 전체 게시물 범위로 설정
+	IF (vSearchType = &apos;Name&apos; OR vSearchType = &apos;Subject&apos; OR vSearchType = &apos;Content&apos;) AND LENGTH(vSearchString) &gt; 0 AND vSearchTerm &lt; 1 THEN
+        SET vSearchTerm = (SELECT DATEDIFF(CURDATE(), RegDate) FROM tblb_board ORDER BY No ASC LIMIT 1);    
+    END IF;
+    
+    # 전체 게시물 수 구하기
+    IF vSearchType = &apos;Name&apos; AND LENGTH(vSearchString) &gt; 0 THEN
+        SET vOutTotBbsCount = (SELECT COUNT(*) FROM tblb_board WHERE RegDate &gt; ADDDATE(CURDATE(), INTERVAL -vSearchTerm DAY) AND Name LIKE CONCAT(vSearchString, &apos;%&apos;)); 
+    ELSEIF vSearchType = &apos;Subject&apos; AND LENGTH(vSearchString) &gt; 0 THEN
+        SET vOutTotBbsCount = (SELECT COUNT(*) FROM tblb_board WHERE RegDate &gt; ADDDATE(CURDATE(), INTERVAL -vSearchTerm DAY) AND Subject LIKE CONCAT(&apos;%&apos;, vSearchString, &apos;%&apos;)); 
+    ELSEIF vSearchType = &apos;Content&apos; AND LENGTH(vSearchString) &gt; 0 THEN
+        SET vOutTotBbsCount = (SELECT COUNT(*) FROM tblb_board WHERE RegDate &gt; ADDDATE(CURDATE(), INTERVAL -vSearchTerm DAY) AND Content LIKE CONCAT(&apos;%&apos;, vSearchString, &apos;%&apos;)); 
+    ELSE
+        SET vOutTotBbsCount = (SELECT SUM(BbsCount) FROM tblbm_board_segment);
+    END IF;
+    
+    SET vOutTotBbsCount = IFNULL(vOutTotBbsCount, 0);
+    
+	IF vOutTotBbsCount - (vCurPage * vPageSize) + vPageSize &lt;= 0 THEN
+        IF vOutTotBbsCount % vPageSize = 0 THEN
+            SET vCurPage = vOutTotBbsCount / vPageSize;
+        ELSE
+            SET vCurPage = (vOutTotBbsCount / vPageSize) + 1;
+        END IF;
+    END IF;
+
+    IF vCurPage &lt; 1 THEN  
+        SET vCurPage = 1;
+    END IF;   
+    
+    SET vSearchTotReadCnt = (vCurPage - 1) * vPageSize;        # 검색 타입이 있을 경우 현재 페이지에 보여질 게시물 목록을 얻기 위해서 읽어올 게시물 수
+    
+    IF vSearchType = &apos;Name&apos; AND LENGTH(vSearchString) &gt; 0 THEN
+        SELECT No, Subject, MbIdx, Name, Hit, Recom, UnRecom, CommentCnt, DATE_FORMAT(RegDate, &apos;%Y-%m-%d %h:%k&apos;) AS RegDate 
+        FROM tblb_board 
+        WHERE RegDate &gt; ADDDATE(CURDATE(), INTERVAL -vSearchTerm DAY) AND Name LIKE CONCAT(vSearchString, &apos;%&apos;)
+		ORDER BY No DESC LIMIT vSearchTotReadCnt, vPageSize;
+    ELSEIF vSearchType = &apos;Subject&apos; AND LENGTH(vSearchString) &gt; 0 THEN
+        SELECT No, Subject, MbIdx, Name, Hit, Recom, UnRecom, CommentCnt, DATE_FORMAT(RegDate, &apos;%Y-%m-%d %h:%k&apos;) AS RegDate
+        FROM tblb_board 
+        WHERE RegDate &gt; ADDDATE(CURDATE(), INTERVAL -vSearchTerm DAY) AND Subject LIKE CONCAT(&apos;%&apos;, vSearchString, &apos;%&apos;)
+		ORDER BY No DESC LIMIT vSearchTotReadCnt, vPageSize;
+    ELSEIF vSearchType = &apos;Content&apos; AND LENGTH(vSearchString) &gt; 0 THEN
+        SELECT No, Subject, MbIdx, Name, Hit, Recom, UnRecom, CommentCnt, DATE_FORMAT(RegDate, &apos;%Y-%m-%d %h:%k&apos;) AS RegDate
+        FROM tblb_board 
+        WHERE RegDate &gt; ADDDATE(CURDATE(), INTERVAL -vSearchTerm DAY) AND Content LIKE CONCAT(&apos;%&apos;, vSearchString, &apos;%&apos;) 
+		ORDER BY No DESC LIMIT vSearchTotReadCnt, vPageSize;
+    ELSE
+		# 조회 범위 구하기(전체 게시물 수 - ((현재페이지 - 1) * 페이지당 게시물수))
+		SET vViewScope = vOutTotBbsCount - ((vCurPage - 1) * vPageSize);
+
+		# 조회 범위에 해당하는 그룹 번호 얻기
+		SET vSegNo = (SELECT MIN(No) FROM tblbm_board_segment WHERE SumBbsCount &gt;= vViewScope ORDER BY No DESC);
+
+		# 얻어온 그룹 번호까지의 누적 게시물 수 얻기
+		SET vCurSegSumBbsCount = (SELECT SumBbsCount FROM tblbm_board_segment WHERE No = vSegNo);
+
+		# LIMIT 범위 : [해당 그룹 번호까지의 누적 게시물 수 - (전체 게시물 수 - ((현재페이지 - 1) * 페이지당 게시물수)), 페이지당 게시물수]
+		SET vLimitSize = vCurSegSumBbsCount - (vOutTotBbsCount - ((vCurPage - 1) * vPageSize));
+
+		SELECT No, Subject, MbIdx, Name, Hit, Recom, UnRecom, CommentCnt, DATE_FORMAT(RegDate, &apos;%Y-%m-%d %h:%k&apos;) AS RegDate
+		FROM tblb_board
+		WHERE SegNo IN(vSegNo, vSegNo - 1)
+		ORDER BY No DESC
+		LIMIT vLimitSize, vPageSize;
+	END IF;
+END</body>
+	</Procedure>
+	<Procedure tszName="BoardProcess" desc="게시물 등록/수정/삭제">
+		<Param tszName="vProMethod" type="VARCHAR(15)" desc=""/>
+		<Param tszName="vNo" type="INT UNSIGNED" desc=""/>
+		<Param tszName="vSubject" type="VARCHAR(100)" desc=""/>
+		<Param tszName="vContent" type="LONGTEXT" desc=""/>
+		<Param tszName="vMbIdx" type="BIGINT UNSIGNED" desc=""/>
+		<Param tszName="vName" type="VARCHAR(20)" desc=""/>
+		<Param tszName="vIP" type="VARCHAR(20)" desc=""/>
+		<Param tszName="vHtmlFlag" type="BIT(1)" desc=""/>
+		<Param tszName="vOutNo" type="INT UNSIGNED" desc=""/>
+		<Param tszName="vRetVal" type="INT" desc=""/>
+		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BoardProcess`(
+    vProMethod VARCHAR(15), 	# ADD/EDIT/DELETE : 등록/수정/삭제 
+    vNo INT UNSIGNED,           # 게시물 일련번호
+    vSubject VARCHAR(100),  	# 제목
+    vContent LONGTEXT,      	# 내용 
+    vMbIdx BIGINT UNSIGNED,     # 글쓴이 일련번호
+    vName VARCHAR(20),      	# 글쓴이 명
+    vIP VARCHAR(20),        	# 글쓴이 IP
+    vHtmlFlag BIT(1),      		# HTML 여부(0/1 : 무/유)
+    OUT vOutNo INT UNSIGNED,   # 글 등록후 일련번호
+    OUT vRetVal INT    			# 처리코드(0/1/99 : 정상/타인 글 수정, 삭제 금지/DB 오류)
+)
+    COMMENT &apos;게시물 등록/수정/삭제&apos;
+MAIN_ROUTINE:BEGIN
+    DECLARE vSegNo INT UNSIGNED;
+
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        ROLLBACK;
+        SET vRetVal = 99;
+    END;
+
+    # SET SQL_SAFE_UPDATES = 0; # Safe Update 모드 상태 해제(Safe Update 모드는 업데이트시 Key 컬럼 검색만 허용)
+    SET AUTOCOMMIT = 0;         # AUTOCOMMIT 해제
+
+    START TRANSACTION;
+
+    IF vProMethod = &apos;ADD&apos; THEN
+        SET vSegNo = (SELECT MAX(No) FROM tblbm_board_segment);
+
+        IF vSegNo IS NULL THEN
+            INSERT INTO tblbm_board_segment(BbsCount) VALUES(1);
+
+            SET vSegNo = LAST_INSERT_ID();
+        ELSE 
+            IF NOT EXISTS(SELECT 1 FROM tblbm_board_segment WHERE No = vSegNo AND BbsCount &lt; 10000) THEN
+                INSERT INTO tblbm_board_segment(BbsCount) VALUES(1);
+
+                SET vSegNo = LAST_INSERT_ID();
+            ELSE
+                UPDATE tblbm_board_segment SET BbsCount = BbsCount + 1 WHERE No = vSegNo;
+            END IF; 
+        END IF;        
+
+        INSERT INTO tblb_board(SegNo, Subject, Content, MbIdx, Name, IP, HtmlFlag, Hit, Recom, UnRecom, CommentCnt, RegDate) 
+        VALUES(vSegNo, vSubject, vContent, vMbIdx, vName, vIP, vHtmlFlag, 0, 0, 0, 0, NOW());
+
+        SET vOutNo = LAST_INSERT_ID();
+    ELSEIF vProMethod = &apos;EDIT&apos; THEN
+        IF NOT EXISTS(SELECT 1 FROM tblb_board WHERE No = vNo AND MbIdx = vMbIdx) THEN
+            SET vRetVal = 1;
+            ROLLBACK;
+
+            LEAVE MAIN_ROUTINE;
+        END IF;
+
+        UPDATE tblb_board SET Subject = vSubject, Content = vContent, MbIdx = vMbIdx, Name = vName, IP = vIP, HtmlFlag = vHtmlFlag
+        WHERE No = vNo AND MbIdx = vMbIdx;
+
+        SET vOutNo = vNo;
+    ELSEIF vProMethod = &apos;DELETE&apos; THEN
+        SET vSegNo = (SELECT SegNo FROM tblb_board WHERE No = vNo AND MbIdx = vMbIdx);
+
+        IF vSegNo IS NULL THEN
+            SET vRetVal = 1;
+            ROLLBACK;
+
+            LEAVE MAIN_ROUTINE;
+        END IF;
+
+        UPDATE tblbm_board_segment SET BbsCount = BbsCount - 1 WHERE No = vSegNo;
+
+        DELETE FROM tblb_board_Comment WHERE BbsNo = vNo;
+        DELETE FROM tblb_board WHERE No = vNo AND MbIdx = vMbIdx;
+
+        SET vOutNo = vNo;
+    ELSE
+        SET vRetVal = 99;
+        LEAVE MAIN_ROUTINE;
+    END IF;
+
+    COMMIT;
+
+    SET vRetVal = 0;
+END</body>
+	</Procedure>
+	<Procedure tszName="BoardTableCreate" desc="게시판 테이블 만들기">
+		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BoardTableCreate`()
+    COMMENT &apos;게시판 테이블 만들기&apos;
+BEGIN
+    DECLARE vDone INT DEFAULT FALSE;
+    DECLARE vTbName VARCHAR(50);
+        
+    DECLARE cur1 CURSOR FOR SELECT TbName FROM tblbm_BbsConfig ORDER BY No ASC;
+
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET vDone = TRUE;
+
+    OPEN cur1; 
+
+    REPEAT
+     
+    FETCH cur1 INTO vTbName;
+     
+    IF NOT vDone THEN      
+        SET @v_SQL = &apos;&apos;;
+        SET @v_SQL = CONCAT(@v_SQL, &apos;DROP TABLE IF EXISTS tblb_&apos;, vTbName, &apos;_Comment;&apos;, CHAR(10));
+        
+        PREPARE stmt FROM @v_SQL;
+        EXECUTE stmt;
+        DEALLOCATE PREPARE stmt;
+
+        SET @v_SQL = &apos;&apos;;
+        SET @v_SQL = CONCAT(@v_SQL, &apos;DROP TABLE IF EXISTS tblb_&apos;, vTbName, &apos;;&apos;, CHAR(10));
+        
+        PREPARE stmt FROM @v_SQL;
+        EXECUTE stmt;
+        DEALLOCATE PREPARE stmt;
+        
+        SET @v_SQL = &apos;&apos;;
+        SET @v_SQL = CONCAT(@v_SQL, &apos;CREATE TABLE `tblb_&apos;, vTbName, &apos;` (&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`No` int unsigned NOT NULL AUTO_INCREMENT COMMENT &apos;&apos;글 일련번호&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`RevNo` int unsigned NOT NULL AUTO_INCREMENT COMMENT &apos;&apos;글 역순 일련번호&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`Subject` varchar(100) NOT NULL COMMENT &apos;&apos;제목&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`Content` longtext NOT NULL COMMENT &apos;&apos;내용&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`MbIdx` bigint unsigned NOT NULL COMMENT &apos;&apos;글쓴이 고유번호&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`Name` varchar(20) NOT NULL COMMENT &apos;&apos;글쓴이 명&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`IP` varchar(20) NOT NULL COMMENT &apos;&apos;글쓴이 IP&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`HtmlFlag` char(1) NOT NULL COMMENT &apos;&apos;HTML 여부(0/1 : 무/유)&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`Hit` int NOT NULL DEFAULT &apos;&apos;0&apos;&apos; COMMENT &apos;&apos;조회수&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`Recom` int NOT NULL DEFAULT &apos;&apos;0&apos;&apos; COMMENT &apos;&apos;추천수&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`UnRecom` int NOT NULL DEFAULT &apos;&apos;0&apos;&apos; COMMENT &apos;&apos;비추수&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`CommentCnt` int NOT NULL DEFAULT &apos;&apos;0&apos;&apos; COMMENT &apos;&apos;댓글수&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`RegDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT &apos;&apos;등록일시&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;PRIMARY KEY (`No`),&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;UNIQUE KEY `ix_UNC_tblb_&apos;, vTbName, &apos;_RevNo` (`RevNo`),&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;KEY `ix_NC_tblb_&apos;, vTbName, &apos;_Name` (`Name`),&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;KEY `ix_NC_tblb_&apos;, vTbName, &apos;_Subject` (`Subject`)&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, &apos;) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=&apos;&apos;일반형 게시판&apos;&apos;;&apos;, CHAR(10));           
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+        
+        PREPARE stmt FROM @v_SQL;
+        EXECUTE stmt;
+        DEALLOCATE PREPARE stmt;
+
+        SET @v_SQL = &apos;&apos;;
+        SET @v_SQL = CONCAT(@v_SQL, &apos;TRUNCATE TABLE tblb_&apos;, vTbName, &apos;;&apos;, CHAR(10));
+        
+        PREPARE stmt FROM @v_SQL;
+        EXECUTE stmt;
+        DEALLOCATE PREPARE stmt;
+        
+        SET @v_SQL = &apos;&apos;;
+        SET @v_SQL = CONCAT(@v_SQL, &apos;CREATE TABLE `tblb_&apos;, vTbName, &apos;_Comment` (&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`No` int unsigned NOT NULL AUTO_INCREMENT COMMENT &apos;&apos;일련번호&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`BbsNo` int unsigned NOT NULL COMMENT &apos;&apos;게시물 일련번호&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`Memo` varchar(1000) NOT NULL COMMENT &apos;&apos;내용&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`MbIdx` bigint unsigned NOT NULL COMMENT &apos;&apos;글쓴이 일련번호&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`Name` varchar(20) NOT NULL COMMENT &apos;&apos;글쓴이 명&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`IP` varchar(20) NOT NULL COMMENT &apos;&apos;글쓴이 IP&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;`RegDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT &apos;&apos;등록일시&apos;&apos;,&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;PRIMARY KEY (`No`),&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;KEY `ix_NC_&apos;, vTbName, &apos;_Comment_BbsNo` (`BbsNo`),&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(9), &apos;FOREIGN KEY (`BbsNo`) REFERENCES `tblb_&apos;, vTbName, &apos;`(`No`) ON DELETE CASCADE&apos;, CHAR(10));   
+        SET @v_SQL = CONCAT(@v_SQL, &apos;) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=&apos;&apos;게시판 댓글&apos;&apos;;&apos;, CHAR(10));
+        SET @v_SQL = CONCAT(@v_SQL, CHAR(10));
+        
+        PREPARE stmt FROM @v_SQL;
+        EXECUTE stmt;
+        DEALLOCATE PREPARE stmt;
+
+        SET @v_SQL = &apos;&apos;;
+        SET @v_SQL = CONCAT(@v_SQL, &apos;TRUNCATE TABLE tblb_&apos;, vTbName, &apos;_Comment;&apos;, CHAR(10));
+        
+        PREPARE stmt FROM @v_SQL;
+        EXECUTE stmt;
+        DEALLOCATE PREPARE stmt;
+
+        SET vDone = False;     
+    END IF;        
+            
+    UNTIL vDone END REPEAT;
+
+    CLOSE cur1;
+END</body>
+	</Procedure>
+	<Procedure tszName="BoardTestDataProcess" desc="테스트를 위한 데이터 등록">
+		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BoardTestDataProcess`()
+    COMMENT &apos;테스트를 위한 데이터 등록&apos;
+BEGIN
+    DECLARE vProMethod VARCHAR(15);
+    DECLARE vNo INT UNSIGNED;
+    DECLARE vSubject VARCHAR(100);
+    DECLARE vContent LONGTEXT;
+    DECLARE vMbIdx BIGINT UNSIGNED;
+    DECLARE vName VARCHAR(20);
+    DECLARE vIP VARCHAR(20);
+    DECLARE vHtmlFlag BIT(1);
+    DECLARE vIndex INT DEFAULT 1;
+    DECLARE vBbsGroupCnt INT DEFAULT 10000;
+    DECLARE vCount INT UNSIGNED DEFAULT 2000000;
+
+    SET vIndex = 151;
+    WHILE (vIndex &lt;= (vCount / vBbsGroupCnt)) DO
+        INSERT INTO tblbm_Board_Segment(BbsCount) VALUES(vBbsGroupCnt);
+
+        SET vIndex = vIndex + 1;
+    END WHILE;
+
+    SET vIndex = 1500001;
+    SET vProMethod = &apos;ADD&apos;;
+    SET vNo = 0;
+    WHILE (vIndex &lt;= vCount) DO
+        /*
+        SET vSubject = CONCAT(&apos;제목 &apos;, vIndex);
+        SET vContent = CONCAT(&apos;내용 &apos;, vIndex);
+        SET vMbIdx = vIndex % 35000;
+        SET vName = CONCAT(&apos;글쓴이 &apos;, vMbIdx);
+        SET vIP = &apos;127.0.0.1&apos;;
+        SET vHtmlFlag = 1;
+
+        # CALL BoardProcess(vProMethod, vNo, vSubject, vContent, vMbIdx, vName, vIP, vHtmlFlag, @vOutIdx, @vRetVal);
+
+        INSERT INTO tblb_Board(SegNo, Subject, Content, MbIdx, Name, IP, HtmlFlag, Hit, Recom, UnRecom, CommentCnt, RegDate) 
+        VALUES(1, vSubject, vContent, vMbIdx, vName, vIP, vHtmlFlag, 0, 0, 0, 0, NOW());
+        */
+        
+        INSERT INTO tblb_Board(SegNo, Subject, Content, MbIdx, Name, IP, HtmlFlag, Hit, Recom, UnRecom, CommentCnt, RegDate) 
+        VALUES(1, CONCAT(&apos;제목 &apos;, vIndex), CONCAT(&apos;내용 &apos;, vIndex), vIndex % 35000, CONCAT(&apos;글쓴이 &apos;, vIndex % 35000), &apos;127.0.0.1&apos;, 1, 0, 0, 0, 0, NOW());
+        
+        SET vIndex = vIndex + 1;
+    END WHILE;
+END</body>
+	</Procedure>
+	<Procedure tszName="DataSplit" desc="문자열 Split 테스트">
+		<Param tszName="vData" type="VARCHAR(8000)" desc=""/>
+		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `DataSplit`(
+    vData VARCHAR(8000)
+)
+    COMMENT &apos;문자열 Split 테스트&apos;
+BEGIN
+    DECLARE vFieldID VARCHAR(10);
+    DECLARE vFieldName VARCHAR(20);
+    DECLARE vFieldType VARCHAR(10);
+    DECLARE vFieldLen INT;
+    
+    DECLARE vTemp VARCHAR(256);
+    DECLARE vSubStr1 VARCHAR(256);
+    DECLARE vEnd1 VARCHAR(256);
+    DECLARE vPosition1 INT;
+    DECLARE vSubStr2 VARCHAR(256);
+    DECLARE vEnd2 VARCHAR(256);
+    DECLARE vPosition2 INT;
+    
+    SET vPosition1 = 1;
+    SET vSubStr1 = (SELECT CharSplitFnc(vData, &apos;;&apos;, vPosition1));
+    SET vEnd1 = IFNULL(vSubStr1, &apos;&apos;);
+    WHILE vEnd1 &lt;&gt; &apos;&apos; DO
+        SET vSubStr1 = (SELECT CharSplitFnc(vData, &apos;;&apos;, vPosition1));
+        SET vEnd1 = IFNULL(vSubStr1, &apos;&apos;);
+        IF vEnd1 &lt;&gt; &apos;&apos; THEN
+            SET vTemp = vSubStr1;
+            
+            SET vPosition2 = 1;        
+            SET vSubStr2 = (SELECT CharSplitFnc(vTemp, &apos;,&apos;, vPosition2));
+            SET vEnd2 = IFNULL(vSubStr2, &apos;&apos;);
+            IF vEnd2 &lt;&gt; &apos;&apos; THEN
+                SET vSubStr2 = (SELECT CharSplitFnc(vTemp, &apos;,&apos;, vPosition2));
+                SET vEnd2 = IFNULL(vSubStr2, &apos;&apos;);
+                
+                SET vFieldID = vSubStr2;
+                SET vFieldName = (SELECT CharSplitFnc(vTemp, &apos;,&apos;, vPosition2 + 1));
+                SET vFieldType = (SELECT CharSplitFnc(vTemp, &apos;,&apos;, vPosition2 + 2));
+                SET vFieldLen = (SELECT CharSplitFnc(vTemp, &apos;,&apos;, vPosition2 + 3));
+                
+                SELECT vFieldID, vFieldName, vFieldType, vFieldLen;
+            END IF;
+        END IF;
+
+        SET vPosition1 = vPosition1 + 1;        
+    END WHILE;
+END</body>
+	</Procedure>
+	<Procedure tszName="FnCommentInfo" desc="사용자함수 명세 보기 5">
+		<Param tszName="vDbName" type="VARCHAR(100)" desc=""/>
+		<Param tszName="vSPName" type="VARCHAR(100)" desc=""/>
+		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `FnCommentInfo`(
+IN vDbName VARCHAR(100),
+IN vSPName VARCHAR(100)
+)
+    COMMENT &apos;사용자함수 명세 보기 5&apos;
+BEGIN
+    DECLARE vDone INT DEFAULT FALSE;
+    DECLARE vRoutineSchema VARCHAR(50);
+    DECLARE vRoutineType VARCHAR(50); 
+    DECLARE vRoutineName VARCHAR(50); 
+    DECLARE vCreateTime DATETIME;
+    DECLARE vUpdateTime DATETIME;
+    DECLARE vRoutineComment VARCHAR(2000);
+        
+    DECLARE cur1 CURSOR FOR 
+
+    /* 사용자함수 정보 보기 */
+    SELECT ROUTINE_SCHEMA, ROUTINE_TYPE, ROUTINE_NAME, CREATED, LAST_ALTERED, ROUTINE_COMMENT
+    FROM INFORMATION_SCHEMA.ROUTINES
+    WHERE (CASE WHEN LENGTH(vDbName) &gt; 0 THEN ROUTINE_SCHEMA  ELSE vDbName END) = vDbName 
+    AND ROUTINE_TYPE = &apos;FUNCTION&apos;
+    AND (CASE WHEN LENGTH(vSPName) &gt; 0 THEN ROUTINE_NAME  ELSE vSPName END) = vSPName 
+    ORDER BY ROUTINE_SCHEMA ASC, ROUTINE_TYPE ASC, ROUTINE_NAME ASC;
+
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET vDone = TRUE;
+
+    OPEN cur1; 
+    REPEAT
+     
+    FETCH cur1 INTO vRoutineSchema, vRoutineType, vRoutineName, vCreateTime, vUpdateTime, vRoutineComment;
+     
+    IF NOT vDone THEN 
+        /* 사용자함수 정보 보기 */
+        SELECT vRoutineSchema, vRoutineType, vRoutineName, vCreateTime, vUpdateTime, vRoutineComment;
+        
+        /* 사용자함수 파라미터 정보 보기 */
+        SELECT SPECIFIC_SCHEMA, ROUTINE_TYPE, SPECIFIC_NAME, ORDINAL_POSITION, PARAMETER_NAME, UPPER(DTD_IDENTIFIER) AS TYPE, PARAMETER_MODE 
+        FROM INFORMATION_SCHEMA.PARAMETERS
+        WHERE SPECIFIC_SCHEMA = vRoutineSchema AND ROUTINE_TYPE = &apos;FUNCTION&apos; AND SPECIFIC_NAME = vRoutineName
+        ORDER BY SPECIFIC_SCHEMA ASC, SPECIFIC_NAME ASC, ORDINAL_POSITION ASC;
+
+        SET vDone = FALSE;           
+    END IF;
+
+    UNTIL vDone END REPEAT;
+
+    CLOSE cur1;
+END</body>
+	</Procedure>
+	<Procedure tszName="MemberTestDataProcess" desc="유저 데이터 등록">
+		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `MemberTestDataProcess`()
+    COMMENT &apos;유저 데이터 등록&apos;
+BEGIN
+    DECLARE vIndex INT;
+    DECLARE vCount INT;
+    DECLARE vName VARCHAR(32);
+    
+    SET vIndex = 1;
+    SET vCount = 35000;
+
+    WHILE (vIndex &lt;= vCount) DO
+	    SET vName = CONCAT(&apos;글쓴이 &apos;, vIndex);
+    
+        INSERT INTO tblm_Member(Name) VALUES(vName);
+    
+	    SET vIndex = vIndex + 1;
+    END WHILE;
+END</body>
+	</Procedure>
+	<Procedure tszName="ReBoardProcess" desc="게시물 등록/답변/수정/삭제">
+		<Param tszName="vProMethod" type="VARCHAR(15)" desc=""/>
+		<Param tszName="vNo" type="INT UNSIGNED" desc=""/>
+		<Param tszName="vSubject" type="VARCHAR(100)" desc=""/>
+		<Param tszName="vContent" type="LONGTEXT" desc=""/>
+		<Param tszName="vMbIdx" type="BIGINT UNSIGNED" desc=""/>
+		<Param tszName="vName" type="VARCHAR(20)" desc=""/>
+		<Param tszName="vIP" type="VARCHAR(20)" desc=""/>
+		<Param tszName="vHtmlFlag" type="BIT(1)" desc=""/>
+		<Param tszName="vOutIdx" type="INT UNSIGNED" desc=""/>
+		<Param tszName="vRetVal" type="INT" desc=""/>
+		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `ReBoardProcess`(
+    vProMethod VARCHAR(15), 	# ADD/REPLY/EDIT/DELETE : 등록/답변/수정/삭제 
+    vNo INT UNSIGNED,           # 게시물 일련번호
+    vSubject VARCHAR(100),  	# 제목
+    vContent LONGTEXT,      	# 내용 
+    vMbIdx BIGINT UNSIGNED,     # 글쓴이 일련번호
+    vName VARCHAR(20),      	# 글쓴이 명
+    vIP VARCHAR(20),        	# 글쓴이 IP
+    vHtmlFlag BIT(1),      		# HTML 여부(0/1 : 무/유)
+    OUT vOutIdx INT UNSIGNED,   # 글 등록후 일련번호
+    OUT vRetVal INT     		# 처리코드(0/1/99 : 정상/타인글 수정, 삭제 금지/DB 오류)
+)
+    COMMENT &apos;게시물 등록/답변/수정/삭제&apos;
+MAIN_ROUTINE:BEGIN
+    DECLARE vPreReply INT DEFAULT 0;
+    DECLARE vBbsNo INT DEFAULT 0;
+    DECLARE vMinStep INT DEFAULT 0;
+
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        ROLLBACK;
+        SET vRetVal = 99;
+    END;
+
+    # SET SQL_SAFE_UPDATES = 0; # Safe Update 모드 상태 해제(Safe Update 모드는 업데이트시 Key 컬럼 검색만 허용)
+    SET AUTOCOMMIT = 0;         # AUTOCOMMIT 해제
+
+    START TRANSACTION;
+
+    IF vProMethod = &apos;ADD&apos; THEN
+        SET vPreReply = (SELECT MAX(Reply) FROM tblb_ReBoard);
+        SET vPreReply = IFNULL(vPreReply, 0) + 1;
+
+        INSERT INTO tblb_ReBoard(Reply, Depth, Step, Parent, Subject, Content, MbIdx, Name, IP, HtmlFlag, Hit, Recom, UnRecom, CommentCnt, RegDate) 
+        VALUES(vPreReply, 1, 0, 0, vSubject, vContent, vMbIdx, vName, vIP, vHtmlFlag, 0, 0, 0, 0, NOW());
+
+        SET vOutIdx = LAST_INSERT_ID();
+    ELSEIF vProMethod = &apos;REPLY&apos; THEN
+        SELECT @v_Reply := Reply, @v_Depth := Depth, @v_Step := Step FROM tblb_ReBoard WHERE No = vNo;
+        SET vMinStep = (SELECT MIN(Step) FROM tblb_ReBoard WHERE Reply = @v_Reply AND Depth &lt;= @v_Depth AND Step = @v_Step);
+
+        IF(vMinStep &gt; 0) THEN
+            UPDATE tblb_ReBoard SET Step = Step + 1 WHERE Reply = @v_Reply AND Step &gt; vMinStep; 
+            SET @v_Step = vMinStep; 
+        ELSE
+            SET @v_Step = (SELECT MAX(Step) + 1 FROM tblb_ReBoard WHERE Reply = @v_Reply); 
+        END IF;
+        
+        INSERT INTO tblb_ReBoard(Reply, Depth, Step, Parent, Subject, Content, MbIdx, Name, IP, HtmlFlag, Hit, Recom, UnRecom, CommentCnt, RegDate) 
+        VALUES(@v_Reply, @v_Depth + 1, @v_Step, vNo, vSubject, vContent, vMbIdx, vName, vIP, vHtmlFlag, 0, 0, 0, 0, NOW());
+
+        SET vOutIdx = LAST_INSERT_ID();
+    ELSEIF vProMethod = &apos;EDIT&apos; THEN
+        IF NOT EXISTS(SELECT 1 FROM tblb_ReBoard WHERE No = vNo AND MbIdx = vMbIdx) THEN
+            SET vRetVal = 1;
+            ROLLBACK;
+
+            LEAVE MAIN_ROUTINE;
+        END IF;
+
+        UPDATE tblb_ReBoard SET Subject = vSubject, Content = vContent, MbIdx = vMbIdx, Name = vName, IP = vIP, HtmlFlag = vHtmlFlag
+        WHERE No = vNo AND MbIdx = vMbIdx;
+
+        SET vOutIdx = vNo;
+    ELSEIF vProMethod = &apos;DELETE&apos; THEN
+        IF NOT EXISTS(SELECT 1 FROM tblb_ReBoard WHERE No = vNo AND MbIdx = vMbIdx) THEN
+            SET vRetVal = 1;
+            ROLLBACK;
+
+            LEAVE MAIN_ROUTINE;
+        END IF;
+
+        SELECT @v_Reply := Reply, @v_Step := Step FROM tblb_ReBoard WHERE No = vNo;
+
+        IF @v_Step = 0 THEN
+            DELETE FROM tblb_ReBoard WHERE No = vNo AND MbIdx = vMbIdx;
+        ELSEIF @v_Step &gt; 0 THEN
+            UPDATE tblb_ReBoard SET Step = Step - 1 WHERE Reply = @v_Reply AND Step &gt; @v_Step;
+            DELETE FROM tblb_ReBoard WHERE No = vNo AND MbIdx = vMbIdx;
+        END IF;
+
+        DELETE FROM tblb_ReBoard_Comment WHERE BbsNo = vNo;
+
+        SET vOutIdx = vNo;
+    ELSE
+        SET vRetVal = 99;
+        ROLLBACK;
+
+        LEAVE MAIN_ROUTINE;
+    END IF;
+
+    COMMIT;
+
+    SET vRetVal = 0;
+END</body>
+	</Procedure>
+	<Procedure tszName="ReBoardTestDataProcess" desc="테스트를 위한 데이터 등록">
+		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `ReBoardTestDataProcess`()
+    COMMENT &apos;테스트를 위한 데이터 등록&apos;
+BEGIN
+    DECLARE vBbsCnt INT DEFAULT 0;
+    DECLARE vProMethod VARCHAR(15);
+    DECLARE vNo INT UNSIGNED;
+    DECLARE vSubject VARCHAR(100);
+    DECLARE vContent LONGTEXT;
+    DECLARE vMbIdx BIGINT UNSIGNED;
+    DECLARE vName VARCHAR(20);
+    DECLARE vIP VARCHAR(20);
+    DECLARE vHtmlFlag BIT(1);
+    DECLARE vIndex INT DEFAULT 1;
+
+    SET vProMethod = &apos;ADD&apos;;
+    SET vNo = 0;
+    WHILE (vIndex &lt;= 5) DO
+        SET vBbsCnt = (SELECT COUNT(*) FROM tblb_ReBoard);
+        SET vBbsCnt = IFNULL(vBbsCnt, 0) + 1;
+        
+        SET vSubject = CONCAT(&apos;제목 &apos;, vIndex);
+        SET vContent = CONCAT(&apos;내용 &apos;, vBbsCnt);
+        SET vMbIdx = 100 + vBbsCnt;
+        SET vName = CONCAT(&apos;글쓴이 &apos;, vBbsCnt);
+        SET vIP = &apos;127.0.0.1&apos;;
+        SET vHtmlFlag = 1;
+
+        CALL ReBoardProcess(vProMethod, vNo, vSubject, vContent, vMbIdx, vName, vIP, vHtmlFlag, @vOutIdx, @vRetVal);
+
+        SET vIndex = vIndex + 1;
+    END WHILE;
+    
+    SET vIndex = 1;
+    SET vProMethod = &apos;REPLY&apos;;
+    SET vNo = 3;
+    WHILE (vIndex &lt;= 3) DO
+        SET vBbsCnt = (SELECT COUNT(*) FROM tblb_ReBoard);
+        SET vBbsCnt = IFNULL(vBbsCnt, 0) + 1;
+        
+        SELECT @v_Subject := Subject FROM tblb_ReBoard WHERE No = vNo;
+
+        SET vSubject = CONCAT(@v_Subject, &apos;-&apos;, vIndex);
+        SET vContent = CONCAT(&apos;내용 &apos;, vBbsCnt);
+        SET vMbIdx = 100 + vBbsCnt;
+        SET vName = CONCAT(&apos;글쓴이 &apos;, vBbsCnt);
+        SET vIP = &apos;127.0.0.1&apos;;
+        SET vHtmlFlag = 1;
+
+        CALL ReBoardProcess(vProMethod, vNo, vSubject, vContent, vMbIdx, vName, vIP, vHtmlFlag, @vOutIdx, @vRetVal);
+
+        SET vIndex = vIndex + 1;
+    END WHILE;
+
+    SET vIndex = 1;
+    SET vProMethod = &apos;REPLY&apos;;
+    SET vNo = 7;
+    WHILE (vIndex &lt;= 2) DO
+        SET vBbsCnt = (SELECT COUNT(*) FROM tblb_ReBoard);
+        SET vBbsCnt = IFNULL(vBbsCnt, 0) + 1;
+        
+        SELECT @v_Subject := Subject FROM tblb_ReBoard WHERE No = vNo;
+
+        SET vSubject = CONCAT(@v_Subject, &apos;-&apos;, vIndex);
+        SET vContent = CONCAT(&apos;내용 &apos;, vBbsCnt);
+        SET vMbIdx = 100 + vBbsCnt;
+        SET vName = CONCAT(&apos;글쓴이 &apos;, vBbsCnt);
+        SET vIP = &apos;127.0.0.1&apos;;
+        SET vHtmlFlag = 1;
+
+        CALL ReBoardProcess(vProMethod, vNo, vSubject, vContent, vMbIdx, vName, vIP, vHtmlFlag, @vOutIdx, @vRetVal);
+
+        SET vIndex = vIndex + 1;
+    END WHILE;
+END</body>
+	</Procedure>
+	<Procedure tszName="SPCommentInfo" desc="저장프로시저 명세 보기 7">
+		<Param tszName="vDbName" type="VARCHAR(100)" desc=""/>
+		<Param tszName="vSPName" type="VARCHAR(100)" desc=""/>
+		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `SPCommentInfo`(
+IN vDbName VARCHAR(100),
+IN vSPName VARCHAR(100)
+)
+    COMMENT &apos;저장프로시저 명세 보기 7&apos;
+BEGIN
+    DECLARE vDone INT DEFAULT FALSE;
+    DECLARE vRoutineSchema VARCHAR(50);
+    DECLARE vRoutineType VARCHAR(50); 
+    DECLARE vRoutineName VARCHAR(50); 
+    DECLARE vCreateTime DATETIME;
+    DECLARE vUpdateTime DATETIME;
+    DECLARE vRoutineComment VARCHAR(2000);
+        
+    DECLARE cur1 CURSOR FOR 
+
+    /* 저장프로시저 정보 보기 */
+    SELECT ROUTINE_SCHEMA, ROUTINE_TYPE, ROUTINE_NAME, CREATED, LAST_ALTERED, ROUTINE_COMMENT
+    FROM INFORMATION_SCHEMA.ROUTINES
+    WHERE (CASE WHEN LENGTH(vDbName) &gt; 0 THEN ROUTINE_SCHEMA  ELSE vDbName END) = vDbName 
+    AND ROUTINE_TYPE = &apos;PROCEDURE&apos;
+    AND (CASE WHEN LENGTH(vSPName) &gt; 0 THEN ROUTINE_NAME  ELSE vSPName END) = vSPName 
+    ORDER BY ROUTINE_SCHEMA ASC, ROUTINE_TYPE ASC, ROUTINE_NAME ASC;
+
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET vDone = TRUE;
+
+    OPEN cur1; 
+    REPEAT
+     
+    FETCH cur1 INTO vRoutineSchema, vRoutineType, vRoutineName, vCreateTime, vUpdateTime, vRoutineComment;
+     
+    IF NOT vDone THEN 
+        /* 저장프로시저 정보 보기 */
+        SELECT vRoutineSchema, vRoutineType, vRoutineName, vCreateTime, vUpdateTime, vRoutineComment;
+        
+        /* 저장프로시저 파라미터 정보 보기 */
+        SELECT SPECIFIC_SCHEMA, ROUTINE_TYPE, SPECIFIC_NAME, ORDINAL_POSITION, PARAMETER_NAME, UPPER(DTD_IDENTIFIER) AS TYPE, PARAMETER_MODE 
+        FROM INFORMATION_SCHEMA.PARAMETERS
+        WHERE SPECIFIC_SCHEMA = vRoutineSchema AND ROUTINE_TYPE = &apos;PROCEDURE&apos; AND SPECIFIC_NAME = vRoutineName
+        ORDER BY SPECIFIC_SCHEMA ASC, SPECIFIC_NAME ASC, ORDINAL_POSITION ASC;
+
+        SET vDone = FALSE;           
+    END IF;
+
+    UNTIL vDone END REPEAT;
+
+    CLOSE cur1;
+END</body>
+	</Procedure>
+	<Procedure tszName="TableCommentInfo" desc="테이블 명세 보기 8">
+		<Param tszName="vDbName" type="VARCHAR(100)" desc=""/>
+		<Param tszName="vTbName" type="VARCHAR(100)" desc=""/>
+		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `TableCommentInfo`(
+IN vDbName VARCHAR(100),
+IN vTbName VARCHAR(100)
+)
+    COMMENT &apos;테이블 명세 보기 8&apos;
+BEGIN
+    DECLARE vDone INT DEFAULT FALSE;
+    DECLARE vTableSchema VARCHAR(50);
+    DECLARE vTableType VARCHAR(50); 
+    DECLARE vTableName VARCHAR(50); 
+    DECLARE vCreateTime DATETIME;
+    DECLARE vUpdateTime DATETIME;
+    DECLARE vTableComment VARCHAR(2000);
+        
+    DECLARE cur1 CURSOR FOR 
+
+    /* 테이블 정보 보기 */
+    SELECT TABLE_SCHEMA, TABLE_TYPE, TABLE_NAME, CREATE_TIME, UPDATE_TIME, TABLE_COMMENT 
+    FROM INFORMATION_SCHEMA.TABLES
+    WHERE (CASE WHEN LENGTH(vDbName) &gt; 0 THEN TABLE_SCHEMA  ELSE vDbName END) = vDbName 
+    AND (CASE WHEN LENGTH(vTbName) &gt; 0 THEN TABLE_NAME ELSE vTbName END) = vTbName
+    ORDER BY TABLE_SCHEMA ASC, TABLE_TYPE ASC, TABLE_NAME ASC;
+
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET vDone = TRUE;
+
+    OPEN cur1; 
+
+    REPEAT
+     
+    FETCH cur1 INTO vTableSchema, vTableType, vTableName, vCreateTime, vUpdateTime, vTableComment;
+
+    IF NOT vDone THEN
+        /* 테이블 정보 보기 */
+        SELECT vTableSchema, vTableType, vTableName, vCreateTime, vUpdateTime, vTableComment;
+      
+        /* 테이블 컬럼 정보 보기 */
+        SELECT TABLE_SCHEMA, TABLE_NAME, ORDINAL_POSITION, COLUMN_NAME, UPPER(COLUMN_TYPE) AS TYPE, IS_NULLABLE, COLUMN_DEFAULT, EXTRA, COLUMN_COMMENT 
+        FROM INFORMATION_SCHEMA.COLUMNS 
+        WHERE TABLE_SCHEMA = vTableSchema AND TABLE_NAME = vTableName
+        ORDER BY TABLE_NAME ASC, ORDINAL_POSITION ASC;
+
+        /* 테이블 인덱스 정보 보기 */
+        SELECT TABLE_SCHEMA, TABLE_NAME, INDEX_NAME, (CASE NON_UNIQUE WHEN &apos;0&apos; THEN &apos;Unique&apos; WHEN &apos;1&apos; THEN &apos;Not Unique&apos; ELSE &apos;&apos; END) AS NON_UNIQUE, COLUMN_NAME, (CASE COLLATION WHEN &apos;A&apos; THEN &apos;ASC&apos; WHEN &apos;D&apos; THEN &apos;DESC&apos; ELSE &apos;&apos; END) AS COLLATION, CARDINALITY 
+        FROM INFORMATION_SCHEMA.STATISTICS 
+        WHERE TABLE_SCHEMA = vTableSchema AND TABLE_NAME = vTableName
+        ORDER BY TABLE_NAME ASC, INDEX_NAME DESC, SEQ_IN_INDEX ASC;
+
+        /* 테이블 참조키 정보 보기 */
+        SELECT TABLE_SCHEMA, TABLE_NAME, CONSTRAINT_NAME, COLUMN_NAME, REFERENCED_TABLE_NAME, REFERENCED_COLUMN_NAME 
+        FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE 
+        WHERE TABLE_SCHEMA = vTableSchema AND TABLE_NAME = vTableName AND REFERENCED_TABLE_NAME IS NOT NULL
+        ORDER BY TABLE_NAME ASC, ORDINAL_POSITION ASC;
+
+        /* 테이블 트리거 정보 보기 */
+        SELECT TRIGGER_SCHEMA, EVENT_OBJECT_TABLE, TRIGGER_NAME 
+        FROM INFORMATION_SCHEMA.TRIGGERS 
+        WHERE TRIGGER_SCHEMA = vTableSchema AND EVENT_OBJECT_TABLE = vTableName
+        ORDER BY TRIGGER_NAME ASC;
+
+        SET vDone = False;     
+    END IF;        
+            
+    UNTIL vDone END REPEAT;
+
+    CLOSE cur1;
+ END</body>
+	</Procedure>
+	<Procedure tszName="TableSelect" desc="모든 테이블의 SELECT 필드 쿼리 만들기">
+		<Param tszName="vDbName" type="VARCHAR(100)" desc=""/>
+		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `TableSelect`(
+IN vDbName VARCHAR(100)
+)
+    COMMENT &apos;모든 테이블의 SELECT 필드 쿼리 만들기&apos;
+BEGIN
+    DECLARE vDone INT DEFAULT FALSE;
+    DECLARE vTableSchema VARCHAR(100);
+    DECLARE vTableType VARCHAR(100); 
+    DECLARE vTableName VARCHAR(100); 
+ 
+    DECLARE cur1 CURSOR FOR 
+    
+    /* 테이블 정보 보기 */
+    SELECT TABLE_SCHEMA, TABLE_TYPE, TABLE_NAME
+    FROM INFORMATION_SCHEMA.TABLES
+    WHERE (CASE WHEN LENGTH(vDbName) &gt; 0 THEN TABLE_SCHEMA  ELSE vDbName END) = vDbName 
+    ORDER BY TABLE_SCHEMA ASC, TABLE_TYPE ASC, TABLE_NAME ASC;
+ 
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET vDone = TRUE;
+ 
+    OPEN cur1; 
+ 
+    REPEAT
+ 
+    FETCH cur1 INTO vTableSchema, vTableType, vTableName;
+ 
+    IF NOT vDone THEN
+        SET @Columns = NULL;
+
+        SELECT GROUP_CONCAT(COLUMN_NAME SEPARATOR &apos;, &apos;) INTO @Columns
+        FROM INFORMATION_SCHEMA.COLUMNS 
+        WHERE TABLE_SCHEMA = vTableSchema AND TABLE_NAME = vTableName
+        ORDER BY TABLE_NAME ASC, ORDINAL_POSITION ASC;
+
+        SET @v_SQL = CONCAT(@v_SQL, &apos;SELECT &apos;, @Columns, &apos; FROM &apos;, vTableSchema, &apos;.&apos;, vTableName, &apos;;\r\n\r\n&apos;);
+
+        SET vDone = FALSE;     
+    END IF;        
+ 
+    UNTIL vDone END REPEAT;
+ 
+    CLOSE cur1;
+
+	SELECT @v_SQL;
+   	SET @v_SQL = &apos;&apos;;
+END</body>
+	</Procedure>
+	<Function tszName="CharSplitFnc" desc="문자열 자르기 함수">
+		<Param tszName="" type="VARCHAR(8000)" desc=""/>
+		<Param tszName="vSource" type="VARCHAR(8000)" desc=""/>
+		<Param tszName="vDelim" type="CHAR(1)" desc=""/>
+		<Param tszName="vPos" type="INT" desc=""/>
+		<body>CREATE DEFINER=`root`@`localhost` FUNCTION `CharSplitFnc`(
+    vSource VARCHAR(8000),
+    vDelim CHAR(1),
+    vPos INT
+) RETURNS varchar(8000) CHARSET utf8mb3
+    COMMENT &apos;문자열 자르기 함수&apos;
+RETURN REPLACE(SUBSTRING(SUBSTRING_INDEX(vSource, vDelim, vPos),
+       CHAR_LENGTH(SUBSTRING_INDEX(vSource, vDelim, vPos - 1)) + 1),
+       vDelim, &apos;&apos;)</body>
+	</Function>
+</GameDB>
+
