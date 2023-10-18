@@ -1,379 +1,399 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GameDB>
-	<Table tszName="tbl_table1" desc="테스트 테이블" auto_increment_value="-3689348814741910324">
-		<Column seq="1" tszName="No" type="INT" notnull="true" desc=""/>
-		<Column seq="2" tszName="Seq" type="INT" notnull="true" desc=""/>
-		<Column seq="3" tszName="Text" type="VARCHAR(45)" notnull="false" desc=""/>
-		<Column seq="4" tszName="Idx" type="INT" notnull="false" default="0" desc=""/>
-		<Column seq="5" tszName="Text2" type="VARCHAR(45)" notnull="false" desc=""/>
-		<Column seq="6" tszName="Idx2" type="INT" notnull="true" default="1" desc=""/>
-		<Column seq="7" tszName="Idx3" type="INT" notnull="true" default="1" desc=""/>
-		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+	<Table name="super_user" desc="" auto_increment_value="1">
+		<Column seq="1" name="id" type="INT" notnull="true" identity="0,0" desc=""/>
+		<Column seq="2" name="name" type="VARCHAR(150)" notnull="true" desc=""/>
+		<Column seq="3" name="email" type="VARCHAR(150)" notnull="true" desc=""/>
+		<Index name="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
 			<PrimaryKey/>
 			<UniqueKey/>
-			<Column seq="1" tszName="No" order="ASC"/>
-			<Column seq="2" tszName="Seq" order="ASC"/>
+			<Column seq="1" name="id" order="ASC"/>
 		</Index>
 	</Table>
-	<Table tszName="tbl_table2" desc="테스트2" auto_increment_value="-3689348814741910324">
-		<Column seq="1" tszName="No" type="INT UNSIGNED" notnull="true" default="1" identity="0,0" desc="일련번호"/>
-		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+	<Table name="super_user_log" desc="" auto_increment_value="1">
+		<Column seq="1" name="id" type="INT" notnull="true" identity="0,0" desc=""/>
+		<Column seq="2" name="name" type="VARCHAR(150)" notnull="true" desc=""/>
+		<Column seq="3" name="email" type="VARCHAR(150)" notnull="true" desc=""/>
+		<Index name="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
 			<PrimaryKey/>
 			<UniqueKey/>
-			<Column seq="1" tszName="No" order="ASC"/>
+			<Column seq="1" name="id" order="ASC"/>
 		</Index>
 	</Table>
-	<Table tszName="tbl_test2" desc="" auto_increment_value="-3689348814741910324">
-		<Column seq="1" tszName="No" type="INT" notnull="true" default="1" desc=""/>
-		<Column seq="2" tszName="TestNo" type="INT" notnull="true" default="1" desc=""/>
-		<Column seq="3" tszName="TestSeq" type="INT" notnull="true" default="1" desc=""/>
-		<Column seq="4" tszName="Text" type="VARCHAR(45)" notnull="false" default="1" desc=""/>
-		<Column seq="5" tszName="Idx" type="INT" notnull="false" default="1" desc=""/>
-		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+	<Table name="tbl_table1" desc="테스트 테이블" auto_increment_value="1">
+		<Column seq="1" name="No" type="INT" notnull="true" desc=""/>
+		<Column seq="2" name="Seq" type="INT" notnull="true" desc=""/>
+		<Column seq="3" name="Text" type="VARCHAR(45)" notnull="false" desc=""/>
+		<Column seq="4" name="Idx" type="INT" notnull="false" default="0" desc=""/>
+		<Column seq="5" name="Text2" type="VARCHAR(45)" notnull="false" desc=""/>
+		<Column seq="6" name="Idx2" type="INT" notnull="true" default="1" desc=""/>
+		<Column seq="7" name="Idx3" type="INT" notnull="true" default="1" desc=""/>
+		<Index name="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
 			<PrimaryKey/>
 			<UniqueKey/>
-			<Column seq="1" tszName="No" order="ASC"/>
+			<Column seq="1" name="No" order="ASC"/>
+			<Column seq="2" name="Seq" order="ASC"/>
 		</Index>
-		<Index tszName="ix_tbl_Test2_TestNoSeq_idx" kind="NONCLUSTERED">
-			<Column seq="1" tszName="TestNo" order="ASC"/>
-			<Column seq="2" tszName="TestSeq" order="DESC"/>
-		</Index>
-		<Index tszName="ix_tbl_Test2_idx" kind="NONCLUSTERED" type="UNIQUE">
+	</Table>
+	<Table name="tbl_table2" desc="테스트2" auto_increment_value="1">
+		<Column seq="1" name="No" type="INT UNSIGNED" notnull="true" default="1" identity="0,0" desc="일련번호"/>
+		<Index name="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+			<PrimaryKey/>
 			<UniqueKey/>
-			<Column seq="1" tszName="Idx" order="ASC"/>
+			<Column seq="1" name="No" order="ASC"/>
 		</Index>
-		<ForeignKey tszName="ix_tbl_Test2_TestNoSeq" update_rule="NO ACTION" delete_rule="NO ACTION">
-			<ForeignKeyTable tszName="tbl_test2">
-				<Column tszName="TestNo"/>
-				<Column tszName="TestSeq"/>
+	</Table>
+	<Table name="tbl_test2" desc="" auto_increment_value="1">
+		<Column seq="1" name="No" type="INT" notnull="true" default="1" desc=""/>
+		<Column seq="2" name="TestNo" type="INT" notnull="true" default="1" desc=""/>
+		<Column seq="3" name="TestSeq" type="INT" notnull="true" default="1" desc=""/>
+		<Column seq="4" name="Text" type="VARCHAR(45)" notnull="false" default="1" desc=""/>
+		<Column seq="5" name="Idx" type="INT" notnull="false" default="1" desc=""/>
+		<Index name="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" name="No" order="ASC"/>
+		</Index>
+		<Index name="ix_tbl_Test2_TestNoSeq_idx" kind="NONCLUSTERED">
+			<Column seq="1" name="TestNo" order="ASC"/>
+			<Column seq="2" name="TestSeq" order="DESC"/>
+		</Index>
+		<Index name="ix_tbl_Test2_idx" kind="NONCLUSTERED" type="UNIQUE">
+			<UniqueKey/>
+			<Column seq="1" name="Idx" order="ASC"/>
+		</Index>
+		<ForeignKey name="ix_tbl_Test2_TestNoSeq" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable name="tbl_test2">
+				<Column name="TestNo"/>
+				<Column name="TestSeq"/>
 			</ForeignKeyTable>
-			<ReferenceKeyTable tszName="tbl_table1">
-				<Column tszName="No"/>
-				<Column tszName="Seq"/>
+			<ReferenceKeyTable name="tbl_table1">
+				<Column name="No"/>
+				<Column name="Seq"/>
 			</ReferenceKeyTable>
 		</ForeignKey>
 	</Table>
-	<Table tszName="tblb_bbs" desc="일반형 게시판" auto_increment_value="12026856">
-		<Column seq="1" tszName="No" type="INT UNSIGNED" notnull="true" default="1" identity="0,0" desc="일련번호"/>
-		<Column seq="2" tszName="Subject" type="VARCHAR(100)" notnull="true" default="1" desc="제목"/>
-		<Column seq="3" tszName="Content" type="LONGTEXT" notnull="true" default="1" desc="내용"/>
-		<Column seq="4" tszName="MbIdx" type="BIGINT UNSIGNED" notnull="true" default="1" desc="글쓴이 일련번호"/>
-		<Column seq="5" tszName="Name" type="VARCHAR(20)" notnull="true" default="1" desc="글쓴이 명"/>
-		<Column seq="6" tszName="IP" type="VARCHAR(20)" notnull="true" default="1" desc="글쓴이 IP"/>
-		<Column seq="7" tszName="HtmlFlag" type="BIT(1)" notnull="true" default="1" desc="HTML 여부(0/1 : 무/유)"/>
-		<Column seq="8" tszName="Hit" type="INT" notnull="true" default="0" desc="조회수"/>
-		<Column seq="9" tszName="Recom" type="INT" notnull="true" default="0" desc="추천수"/>
-		<Column seq="10" tszName="UnRecom" type="INT" notnull="true" default="0" desc="비추수"/>
-		<Column seq="11" tszName="CommentCnt" type="INT" notnull="true" default="0" desc="댓글수"/>
-		<Column seq="12" tszName="RegDate" type="DATETIME" notnull="true" default="Now()" desc="등록일시"/>
-		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+	<Table name="tblb_bbs" desc="일반형 게시판" auto_increment_value="12026856">
+		<Column seq="1" name="No" type="INT UNSIGNED" notnull="true" default="1" identity="0,0" desc="일련번호"/>
+		<Column seq="2" name="Subject" type="VARCHAR(100)" notnull="true" default="1" desc="제목"/>
+		<Column seq="3" name="Content" type="LONGTEXT" notnull="true" default="1" desc="내용"/>
+		<Column seq="4" name="MbIdx" type="BIGINT UNSIGNED" notnull="true" default="1" desc="글쓴이 일련번호"/>
+		<Column seq="5" name="Name" type="VARCHAR(20)" notnull="true" default="1" desc="글쓴이 명"/>
+		<Column seq="6" name="IP" type="VARCHAR(20)" notnull="true" default="1" desc="글쓴이 IP"/>
+		<Column seq="7" name="HtmlFlag" type="BIT(1)" notnull="true" default="1" desc="HTML 여부(0/1 : 무/유)"/>
+		<Column seq="8" name="Hit" type="INT" notnull="true" default="0" desc="조회수"/>
+		<Column seq="9" name="Recom" type="INT" notnull="true" default="0" desc="추천수"/>
+		<Column seq="10" name="UnRecom" type="INT" notnull="true" default="0" desc="비추수"/>
+		<Column seq="11" name="CommentCnt" type="INT" notnull="true" default="0" desc="댓글수"/>
+		<Column seq="12" name="RegDate" type="DATETIME" notnull="true" default="Now()" desc="등록일시"/>
+		<Index name="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
 			<PrimaryKey/>
 			<UniqueKey/>
-			<Column seq="1" tszName="No" order="ASC"/>
+			<Column seq="1" name="No" order="ASC"/>
 		</Index>
-		<Index tszName="ix_NC_tblb_bbs_Subject" kind="NONCLUSTERED">
-			<Column seq="1" tszName="RegDate" order="ASC"/>
-			<Column seq="2" tszName="Subject" order="ASC"/>
+		<Index name="ix_NC_tblb_bbs_Subject" kind="NONCLUSTERED">
+			<Column seq="1" name="RegDate" order="ASC"/>
+			<Column seq="2" name="Subject" order="ASC"/>
 		</Index>
-		<Index tszName="ix_NC_tblb_bbs_No" kind="NONCLUSTERED">
-			<Column seq="1" tszName="No" order="DESC"/>
+		<Index name="ix_NC_tblb_bbs_No" kind="NONCLUSTERED">
+			<Column seq="1" name="No" order="DESC"/>
 		</Index>
-		<Index tszName="ix_NC_tblb_bbs_Name" kind="NONCLUSTERED">
-			<Column seq="1" tszName="RegDate" order="ASC"/>
-			<Column seq="2" tszName="Name" order="ASC"/>
+		<Index name="ix_NC_tblb_bbs_Name" kind="NONCLUSTERED">
+			<Column seq="1" name="RegDate" order="ASC"/>
+			<Column seq="2" name="Name" order="ASC"/>
 		</Index>
 	</Table>
-	<Table tszName="tblb_bbs_attgenfile" desc="일반형 게시판 첨부 일반 파일 정보" auto_increment_value="12026856">
-		<Column seq="1" tszName="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
-		<Column seq="2" tszName="BbsNo" type="INT UNSIGNED" notnull="false" default="Now()" desc="게시물 일련번호"/>
-		<Column seq="3" tszName="FilePath" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 서브 경로"/>
-		<Column seq="4" tszName="FileName" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 명"/>
-		<Column seq="5" tszName="FileSize" type="INT" notnull="false" default="Now()" desc="첨부 파일 크기"/>
-		<Column seq="6" tszName="FileExt" type="VARCHAR(10)" notnull="false" default="Now()" desc="첨부 파일 확장자"/>
-		<Column seq="7" tszName="RegDate" type="DATETIME" notnull="false" default="Now()" desc="등록일시"/>
-		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+	<Table name="tblb_bbs_attgenfile" desc="일반형 게시판 첨부 일반 파일 정보" auto_increment_value="12026856">
+		<Column seq="1" name="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
+		<Column seq="2" name="BbsNo" type="INT UNSIGNED" notnull="false" default="Now()" desc="게시물 일련번호"/>
+		<Column seq="3" name="FilePath" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 서브 경로"/>
+		<Column seq="4" name="FileName" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 명"/>
+		<Column seq="5" name="FileSize" type="INT" notnull="false" default="Now()" desc="첨부 파일 크기"/>
+		<Column seq="6" name="FileExt" type="VARCHAR(10)" notnull="false" default="Now()" desc="첨부 파일 확장자"/>
+		<Column seq="7" name="RegDate" type="DATETIME" notnull="false" default="Now()" desc="등록일시"/>
+		<Index name="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
 			<PrimaryKey/>
 			<UniqueKey/>
-			<Column seq="1" tszName="No" order="ASC"/>
+			<Column seq="1" name="No" order="ASC"/>
 		</Index>
-		<Index tszName="ix_tblb_bbs_attgenfile_idx" kind="NONCLUSTERED">
-			<Column seq="1" tszName="BbsNo" order="ASC"/>
+		<Index name="ix_tblb_bbs_attgenfile_idx" kind="NONCLUSTERED">
+			<Column seq="1" name="BbsNo" order="ASC"/>
 		</Index>
-		<ForeignKey tszName="fk_tblb_bbs_attgenfile_tblb_bbs_BbsNo" update_rule="NO ACTION" delete_rule="NO ACTION">
-			<ForeignKeyTable tszName="tblb_bbs_attgenfile">
-				<Column tszName="BbsNo"/>
+		<ForeignKey name="fk_tblb_bbs_attgenfile_tblb_bbs_BbsNo" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable name="tblb_bbs_attgenfile">
+				<Column name="BbsNo"/>
 			</ForeignKeyTable>
-			<ReferenceKeyTable tszName="tblb_bbs">
-				<Column tszName="No"/>
+			<ReferenceKeyTable name="tblb_bbs">
+				<Column name="No"/>
 			</ReferenceKeyTable>
 		</ForeignKey>
 	</Table>
-	<Table tszName="tblb_bbs_attimgfile" desc="일반형 게시판 첨부 이미지 파일 정보" auto_increment_value="12026856">
-		<Column seq="1" tszName="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
-		<Column seq="2" tszName="BbsNo" type="INT UNSIGNED" notnull="false" default="Now()" desc="게시물 일련번호"/>
-		<Column seq="3" tszName="FilePath" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 서브 경로"/>
-		<Column seq="4" tszName="FileName" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 명"/>
-		<Column seq="5" tszName="FileSize" type="INT" notnull="false" default="Now()" desc="첨부 파일 크기"/>
-		<Column seq="6" tszName="FileExt" type="VARCHAR(10)" notnull="false" default="Now()" desc="첨부 파일 확장자"/>
-		<Column seq="7" tszName="RegDate" type="DATETIME" notnull="false" default="Now()" desc="등록일시"/>
-		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+	<Table name="tblb_bbs_attimgfile" desc="일반형 게시판 첨부 이미지 파일 정보" auto_increment_value="12026856">
+		<Column seq="1" name="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
+		<Column seq="2" name="BbsNo" type="INT UNSIGNED" notnull="false" default="Now()" desc="게시물 일련번호"/>
+		<Column seq="3" name="FilePath" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 서브 경로"/>
+		<Column seq="4" name="FileName" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 명"/>
+		<Column seq="5" name="FileSize" type="INT" notnull="false" default="Now()" desc="첨부 파일 크기"/>
+		<Column seq="6" name="FileExt" type="VARCHAR(10)" notnull="false" default="Now()" desc="첨부 파일 확장자"/>
+		<Column seq="7" name="RegDate" type="DATETIME" notnull="false" default="Now()" desc="등록일시"/>
+		<Index name="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
 			<PrimaryKey/>
 			<UniqueKey/>
-			<Column seq="1" tszName="No" order="ASC"/>
+			<Column seq="1" name="No" order="ASC"/>
 		</Index>
-		<Index tszName="ix_tblb_bbs_attimgfile_idx" kind="NONCLUSTERED">
-			<Column seq="1" tszName="BbsNo" order="ASC"/>
+		<Index name="ix_tblb_bbs_attimgfile_idx" kind="NONCLUSTERED">
+			<Column seq="1" name="BbsNo" order="ASC"/>
 		</Index>
-		<ForeignKey tszName="fk_tblb_bbs_attimgfile_tblb_bbs_BbsNo" update_rule="NO ACTION" delete_rule="NO ACTION">
-			<ForeignKeyTable tszName="tblb_bbs_attimgfile">
-				<Column tszName="BbsNo"/>
+		<ForeignKey name="fk_tblb_bbs_attimgfile_tblb_bbs_BbsNo" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable name="tblb_bbs_attimgfile">
+				<Column name="BbsNo"/>
 			</ForeignKeyTable>
-			<ReferenceKeyTable tszName="tblb_bbs">
-				<Column tszName="No"/>
+			<ReferenceKeyTable name="tblb_bbs">
+				<Column name="No"/>
 			</ReferenceKeyTable>
 		</ForeignKey>
 	</Table>
-	<Table tszName="tblb_bbs_comment" desc="일반형 게시판 댓글" auto_increment_value="12026856">
-		<Column seq="1" tszName="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
-		<Column seq="2" tszName="BbsNo" type="INT UNSIGNED" notnull="true" default="Now()" desc="게시물 일련번호"/>
-		<Column seq="3" tszName="Memo" type="VARCHAR(1000)" notnull="true" default="Now()" desc="내용"/>
-		<Column seq="4" tszName="MbIdx" type="BIGINT UNSIGNED" notnull="true" default="Now()" desc="글쓴이 일련번호"/>
-		<Column seq="5" tszName="Name" type="VARCHAR(20)" notnull="true" default="Now()" desc="글쓴이 명"/>
-		<Column seq="6" tszName="IP" type="VARCHAR(20)" notnull="true" default="Now()" desc="글쓴이 IP"/>
-		<Column seq="7" tszName="RegDate" type="DATETIME" notnull="true" default="Now()" desc="등록일시"/>
-		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+	<Table name="tblb_bbs_comment" desc="일반형 게시판 댓글" auto_increment_value="12026856">
+		<Column seq="1" name="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
+		<Column seq="2" name="BbsNo" type="INT UNSIGNED" notnull="true" default="Now()" desc="게시물 일련번호"/>
+		<Column seq="3" name="Memo" type="VARCHAR(1000)" notnull="true" default="Now()" desc="내용"/>
+		<Column seq="4" name="MbIdx" type="BIGINT UNSIGNED" notnull="true" default="Now()" desc="글쓴이 일련번호"/>
+		<Column seq="5" name="Name" type="VARCHAR(20)" notnull="true" default="Now()" desc="글쓴이 명"/>
+		<Column seq="6" name="IP" type="VARCHAR(20)" notnull="true" default="Now()" desc="글쓴이 IP"/>
+		<Column seq="7" name="RegDate" type="DATETIME" notnull="true" default="Now()" desc="등록일시"/>
+		<Index name="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
 			<PrimaryKey/>
 			<UniqueKey/>
-			<Column seq="1" tszName="No" order="ASC"/>
+			<Column seq="1" name="No" order="ASC"/>
 		</Index>
-		<Index tszName="ix_tblb_bbs_comment_idx" kind="NONCLUSTERED">
-			<Column seq="1" tszName="BbsNo" order="ASC"/>
+		<Index name="ix_tblb_bbs_comment_idx" kind="NONCLUSTERED">
+			<Column seq="1" name="BbsNo" order="ASC"/>
 		</Index>
-		<ForeignKey tszName="fk_tblb_bbs_comment_comment_tblm_member_MbIdx" update_rule="NO ACTION" delete_rule="NO ACTION">
-			<ForeignKeyTable tszName="tblb_bbs_comment">
-				<Column tszName="MbIdx"/>
+		<ForeignKey name="fk_tblb_bbs_comment_comment_tblm_member_MbIdx" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable name="tblb_bbs_comment">
+				<Column name="MbIdx"/>
 			</ForeignKeyTable>
-			<ReferenceKeyTable tszName="tblm_member">
-				<Column tszName="MbIdx"/>
+			<ReferenceKeyTable name="tblm_member">
+				<Column name="MbIdx"/>
 			</ReferenceKeyTable>
 		</ForeignKey>
-		<ForeignKey tszName="fk_tblb_bbs_comment_tblb_bbs_BbsNo" update_rule="NO ACTION" delete_rule="NO ACTION">
-			<ForeignKeyTable tszName="tblb_bbs_comment">
-				<Column tszName="BbsNo"/>
+		<ForeignKey name="fk_tblb_bbs_comment_tblb_bbs_BbsNo" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable name="tblb_bbs_comment">
+				<Column name="BbsNo"/>
 			</ForeignKeyTable>
-			<ReferenceKeyTable tszName="tblb_bbs">
-				<Column tszName="No"/>
-			</ReferenceKeyTable>
-		</ForeignKey>
-	</Table>
-	<Table tszName="tblb_board" desc="일반형 게시판" auto_increment_value="2000000">
-		<Column seq="1" tszName="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
-		<Column seq="2" tszName="SegNo" type="INT UNSIGNED" notnull="true" default="Now()" desc="게시물 그룹 일련번호"/>
-		<Column seq="3" tszName="Subject" type="VARCHAR(100)" notnull="true" default="Now()" desc="제목"/>
-		<Column seq="4" tszName="Content" type="LONGTEXT" notnull="true" default="Now()" desc="내용"/>
-		<Column seq="5" tszName="MbIdx" type="BIGINT UNSIGNED" notnull="true" default="Now()" desc="글쓴이 일련번호"/>
-		<Column seq="6" tszName="Name" type="VARCHAR(20)" notnull="true" default="Now()" desc="글쓴이 명"/>
-		<Column seq="7" tszName="IP" type="VARCHAR(20)" notnull="true" default="Now()" desc="글쓴이 IP"/>
-		<Column seq="8" tszName="HtmlFlag" type="CHAR(1)" notnull="true" default="Now()" desc="HTML 여부(0/1 : 무/유)"/>
-		<Column seq="9" tszName="Hit" type="INT" notnull="true" default="0" desc="조회수"/>
-		<Column seq="10" tszName="Recom" type="INT" notnull="true" default="0" desc="추천수"/>
-		<Column seq="11" tszName="UnRecom" type="INT" notnull="true" default="0" desc="비추수"/>
-		<Column seq="12" tszName="CommentCnt" type="INT" notnull="true" default="0" desc="댓글수"/>
-		<Column seq="13" tszName="RegDate" type="DATETIME" notnull="true" default="Now()" desc="등록일시"/>
-		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
-			<PrimaryKey/>
-			<UniqueKey/>
-			<Column seq="1" tszName="No" order="ASC"/>
-		</Index>
-		<Index tszName="ix_NC_tblb_board_Subject" kind="NONCLUSTERED">
-			<Column seq="1" tszName="RegDate" order="ASC"/>
-			<Column seq="2" tszName="Subject" order="ASC"/>
-		</Index>
-		<Index tszName="ix_NC_tblb_board_SegNo" kind="NONCLUSTERED">
-			<Column seq="1" tszName="SegNo" order="ASC"/>
-		</Index>
-		<Index tszName="ix_NC_tblb_board_Name" kind="NONCLUSTERED">
-			<Column seq="1" tszName="RegDate" order="ASC"/>
-			<Column seq="2" tszName="Name" order="ASC"/>
-		</Index>
-		<ForeignKey tszName="fk_tblb_board_tblbm_board_segment_SegNo" update_rule="NO ACTION" delete_rule="NO ACTION">
-			<ForeignKeyTable tszName="tblb_board">
-				<Column tszName="SegNo"/>
-			</ForeignKeyTable>
-			<ReferenceKeyTable tszName="tblbm_board_segment">
-				<Column tszName="No"/>
-			</ReferenceKeyTable>
-		</ForeignKey>
-		<ForeignKey tszName="fk_tblb_board_tblm_member_MbIdx" update_rule="NO ACTION" delete_rule="NO ACTION">
-			<ForeignKeyTable tszName="tblb_board">
-				<Column tszName="MbIdx"/>
-			</ForeignKeyTable>
-			<ReferenceKeyTable tszName="tblm_member">
-				<Column tszName="MbIdx"/>
+			<ReferenceKeyTable name="tblb_bbs">
+				<Column name="No"/>
 			</ReferenceKeyTable>
 		</ForeignKey>
 	</Table>
-	<Table tszName="tblb_board_attgenfile" desc="일반형 게시판 첨부 일반 파일 정보" auto_increment_value="2000000">
-		<Column seq="1" tszName="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
-		<Column seq="2" tszName="BbsNo" type="INT UNSIGNED" notnull="false" default="Now()" desc="게시물 일련번호"/>
-		<Column seq="3" tszName="FilePath" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 서브 경로"/>
-		<Column seq="4" tszName="FileName" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 명"/>
-		<Column seq="5" tszName="FileSize" type="INT" notnull="false" default="Now()" desc="첨부 파일 크기"/>
-		<Column seq="6" tszName="FileExt" type="VARCHAR(10)" notnull="false" default="Now()" desc="첨부 파일 확장자"/>
-		<Column seq="7" tszName="RegDate" type="DATETIME" notnull="false" default="Now()" desc="등록일시"/>
-		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+	<Table name="tblb_board" desc="일반형 게시판" auto_increment_value="2000000">
+		<Column seq="1" name="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
+		<Column seq="2" name="SegNo" type="INT UNSIGNED" notnull="true" default="Now()" desc="게시물 그룹 일련번호"/>
+		<Column seq="3" name="Subject" type="VARCHAR(100)" notnull="true" default="Now()" desc="제목"/>
+		<Column seq="4" name="Content" type="LONGTEXT" notnull="true" default="Now()" desc="내용"/>
+		<Column seq="5" name="MbIdx" type="BIGINT UNSIGNED" notnull="true" default="Now()" desc="글쓴이 일련번호"/>
+		<Column seq="6" name="Name" type="VARCHAR(20)" notnull="true" default="Now()" desc="글쓴이 명"/>
+		<Column seq="7" name="IP" type="VARCHAR(20)" notnull="true" default="Now()" desc="글쓴이 IP"/>
+		<Column seq="8" name="HtmlFlag" type="CHAR(1)" notnull="true" default="Now()" desc="HTML 여부(0/1 : 무/유)"/>
+		<Column seq="9" name="Hit" type="INT" notnull="true" default="0" desc="조회수"/>
+		<Column seq="10" name="Recom" type="INT" notnull="true" default="0" desc="추천수"/>
+		<Column seq="11" name="UnRecom" type="INT" notnull="true" default="0" desc="비추수"/>
+		<Column seq="12" name="CommentCnt" type="INT" notnull="true" default="0" desc="댓글수"/>
+		<Column seq="13" name="RegDate" type="DATETIME" notnull="true" default="Now()" desc="등록일시"/>
+		<Index name="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
 			<PrimaryKey/>
 			<UniqueKey/>
-			<Column seq="1" tszName="No" order="ASC"/>
+			<Column seq="1" name="No" order="ASC"/>
 		</Index>
-		<Index tszName="IX_NC_tblb_board_attgenfile_BbsNo" kind="NONCLUSTERED">
-			<Column seq="1" tszName="BbsNo" order="ASC"/>
+		<Index name="ix_NC_tblb_board_Subject" kind="NONCLUSTERED">
+			<Column seq="1" name="RegDate" order="ASC"/>
+			<Column seq="2" name="Subject" order="ASC"/>
 		</Index>
-		<ForeignKey tszName="fk_tblb_board_attgenfile_tblb_board_BbsNo" update_rule="CASCADE" delete_rule="NO ACTION">
-			<ForeignKeyTable tszName="tblb_board_attgenfile">
-				<Column tszName="BbsNo"/>
+		<Index name="ix_NC_tblb_board_SegNo" kind="NONCLUSTERED">
+			<Column seq="1" name="SegNo" order="ASC"/>
+		</Index>
+		<Index name="ix_NC_tblb_board_Name" kind="NONCLUSTERED">
+			<Column seq="1" name="RegDate" order="ASC"/>
+			<Column seq="2" name="Name" order="ASC"/>
+		</Index>
+		<ForeignKey name="fk_tblb_board_tblbm_board_segment_SegNo" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable name="tblb_board">
+				<Column name="SegNo"/>
 			</ForeignKeyTable>
-			<ReferenceKeyTable tszName="tblb_board">
-				<Column tszName="No"/>
+			<ReferenceKeyTable name="tblbm_board_segment">
+				<Column name="No"/>
+			</ReferenceKeyTable>
+		</ForeignKey>
+		<ForeignKey name="fk_tblb_board_tblm_member_MbIdx" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable name="tblb_board">
+				<Column name="MbIdx"/>
+			</ForeignKeyTable>
+			<ReferenceKeyTable name="tblm_member">
+				<Column name="MbIdx"/>
 			</ReferenceKeyTable>
 		</ForeignKey>
 	</Table>
-	<Table tszName="tblb_board_attimgfile" desc="일반형 게시판 첨부 이미지 파일 정보" auto_increment_value="2000000">
-		<Column seq="1" tszName="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
-		<Column seq="2" tszName="BbsNo" type="INT UNSIGNED" notnull="false" default="Now()" desc="게시물 일련번호"/>
-		<Column seq="3" tszName="FilePath" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 서브 경로"/>
-		<Column seq="4" tszName="FileName" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 명"/>
-		<Column seq="5" tszName="FileSize" type="INT" notnull="false" default="Now()" desc="첨부 파일 크기"/>
-		<Column seq="6" tszName="FileExt" type="VARCHAR(10)" notnull="false" default="Now()" desc="첨부 파일 확장자"/>
-		<Column seq="7" tszName="RegDate" type="DATETIME" notnull="false" default="Now()" desc="등록일시"/>
-		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+	<Table name="tblb_board_attgenfile" desc="일반형 게시판 첨부 일반 파일 정보" auto_increment_value="2000000">
+		<Column seq="1" name="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
+		<Column seq="2" name="BbsNo" type="INT UNSIGNED" notnull="false" default="Now()" desc="게시물 일련번호"/>
+		<Column seq="3" name="FilePath" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 서브 경로"/>
+		<Column seq="4" name="FileName" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 명"/>
+		<Column seq="5" name="FileSize" type="INT" notnull="false" default="Now()" desc="첨부 파일 크기"/>
+		<Column seq="6" name="FileExt" type="VARCHAR(10)" notnull="false" default="Now()" desc="첨부 파일 확장자"/>
+		<Column seq="7" name="RegDate" type="DATETIME" notnull="false" default="Now()" desc="등록일시"/>
+		<Index name="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
 			<PrimaryKey/>
 			<UniqueKey/>
-			<Column seq="1" tszName="No" order="ASC"/>
+			<Column seq="1" name="No" order="ASC"/>
 		</Index>
-		<ForeignKey tszName="fk_tblb_board_attimgfile_tblb_board_BbsNo" update_rule="NO ACTION" delete_rule="NO ACTION">
-			<ForeignKeyTable tszName="tblb_board_attimgfile">
-				<Column tszName="BbsNo"/>
+		<Index name="IX_NC_tblb_board_attgenfile_BbsNo" kind="NONCLUSTERED">
+			<Column seq="1" name="BbsNo" order="ASC"/>
+		</Index>
+		<ForeignKey name="fk_tblb_board_attgenfile_tblb_board_BbsNo" update_rule="CASCADE" delete_rule="NO ACTION">
+			<ForeignKeyTable name="tblb_board_attgenfile">
+				<Column name="BbsNo"/>
 			</ForeignKeyTable>
-			<ReferenceKeyTable tszName="tblb_board">
-				<Column tszName="No"/>
+			<ReferenceKeyTable name="tblb_board">
+				<Column name="No"/>
 			</ReferenceKeyTable>
 		</ForeignKey>
 	</Table>
-	<Table tszName="tblb_board_comment" desc="일반형 게시판 댓글" auto_increment_value="2000000">
-		<Column seq="1" tszName="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
-		<Column seq="2" tszName="BbsNo" type="INT UNSIGNED" notnull="true" default="Now()" desc="게시물 일련번호"/>
-		<Column seq="3" tszName="Memo" type="VARCHAR(1000)" notnull="true" default="Now()" desc="내용"/>
-		<Column seq="4" tszName="MbIdx" type="BIGINT UNSIGNED" notnull="true" default="Now()" desc="글쓴이 일련번호"/>
-		<Column seq="5" tszName="Name" type="VARCHAR(20)" notnull="true" default="Now()" desc="글쓴이 명"/>
-		<Column seq="6" tszName="IP" type="VARCHAR(20)" notnull="true" default="Now()" desc="글쓴이 IP"/>
-		<Column seq="7" tszName="RegDate" type="DATETIME" notnull="true" default="Now()" desc="등록일시"/>
-		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+	<Table name="tblb_board_attimgfile" desc="일반형 게시판 첨부 이미지 파일 정보" auto_increment_value="2000000">
+		<Column seq="1" name="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
+		<Column seq="2" name="BbsNo" type="INT UNSIGNED" notnull="false" default="Now()" desc="게시물 일련번호"/>
+		<Column seq="3" name="FilePath" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 서브 경로"/>
+		<Column seq="4" name="FileName" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 명"/>
+		<Column seq="5" name="FileSize" type="INT" notnull="false" default="Now()" desc="첨부 파일 크기"/>
+		<Column seq="6" name="FileExt" type="VARCHAR(10)" notnull="false" default="Now()" desc="첨부 파일 확장자"/>
+		<Column seq="7" name="RegDate" type="DATETIME" notnull="false" default="Now()" desc="등록일시"/>
+		<Index name="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
 			<PrimaryKey/>
 			<UniqueKey/>
-			<Column seq="1" tszName="No" order="ASC"/>
+			<Column seq="1" name="No" order="ASC"/>
 		</Index>
-		<Index tszName="ix_NC_tblb_board_comment_BbsNo" kind="NONCLUSTERED">
-			<Column seq="1" tszName="BbsNo" order="ASC"/>
-		</Index>
-		<ForeignKey tszName="fk_tblb_board_comment_tblb_board_BbsNo" update_rule="NO ACTION" delete_rule="NO ACTION">
-			<ForeignKeyTable tszName="tblb_board_comment">
-				<Column tszName="BbsNo"/>
+		<ForeignKey name="fk_tblb_board_attimgfile_tblb_board_BbsNo" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable name="tblb_board_attimgfile">
+				<Column name="BbsNo"/>
 			</ForeignKeyTable>
-			<ReferenceKeyTable tszName="tblb_board">
-				<Column tszName="No"/>
-			</ReferenceKeyTable>
-		</ForeignKey>
-		<ForeignKey tszName="fk_tblb_board_comment_tblm_member_MbIdx" update_rule="NO ACTION" delete_rule="NO ACTION">
-			<ForeignKeyTable tszName="tblb_board_comment">
-				<Column tszName="MbIdx"/>
-			</ForeignKeyTable>
-			<ReferenceKeyTable tszName="tblm_member">
-				<Column tszName="MbIdx"/>
+			<ReferenceKeyTable name="tblb_board">
+				<Column name="No"/>
 			</ReferenceKeyTable>
 		</ForeignKey>
 	</Table>
-	<Table tszName="tblbm_bbsconfig" desc="게시판 정보" auto_increment_value="3">
-		<Column seq="1" tszName="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
-		<Column seq="2" tszName="TbName" type="VARCHAR(20)" notnull="true" default="Now()" desc="게시판 코드"/>
-		<Column seq="3" tszName="BbsName" type="VARCHAR(20)" notnull="true" default="Now()" desc="게시판 이름"/>
-		<Column seq="4" tszName="BbsInfo" type="VARCHAR(150)" notnull="false" default="Now()" desc="게시판 설명"/>
-		<Column seq="5" tszName="BbsClass" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="게시판 종류(0/1/2/3/4/5 : 공지사항/일반/갤러리/퀴즈/설문/이벤트)"/>
-		<Column seq="6" tszName="BbsCount" type="INT UNSIGNED" notnull="true" default="Now()" desc="게시물 수"/>
-		<Column seq="7" tszName="IsCategory" type="BIT(1)" notnull="true" default="Now()" desc="카테고리 사용여부(0/1 : 무/유)"/>
-		<Column seq="8" tszName="IsHtml" type="BIT(1)" notnull="true" default="Now()" desc="HTML 사용여부(0/1 : 무/유)"/>
-		<Column seq="9" tszName="IsComment" type="BIT(1)" notnull="true" default="Now()" desc="댓글 사용여부(0/1 : 무/유)"/>
-		<Column seq="10" tszName="IsVote" type="BIT(1)" notnull="true" default="Now()" desc="추천 사용여부(0/1 : 무/유)"/>
-		<Column seq="11" tszName="PgSize" type="SMALLINT UNSIGNED" notnull="true" default="Now()" desc="페이지당 게시물 수"/>
-		<Column seq="12" tszName="AttFileCnt" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="첨부 파일 수"/>
-		<Column seq="13" tszName="AllowFileExt" type="VARCHAR(100)" notnull="false" default="Now()" desc="첨부 가능 파일 확장자(Ex. png,jpg,gif)"/>
-		<Column seq="14" tszName="APaper" type="SMALLINT UNSIGNED" notnull="true" default="Now()" desc="도배방지 연속 글쓰기 제한 초"/>
-		<Column seq="15" tszName="CPaper" type="SMALLINT UNSIGNED" notnull="true" default="Now()" desc="도배방지 연속 댓글 제한 초"/>
-		<Column seq="16" tszName="BbsSearchTerm" type="SMALLINT UNSIGNED" notnull="true" default="Now()" desc="검색날짜제한(해당 기간사이에 쓰여진 글만 검색할 수 있게 제한)"/>
-		<Column seq="17" tszName="DenyWord" type="VARCHAR(300)" notnull="false" default="Now()" desc="불량 단어 제한"/>
-		<Column seq="18" tszName="Grant_Html" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="HTML 사용 권한(1~10)"/>
-		<Column seq="19" tszName="Grant_List" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="목록 보기 사용 권한(1~10)"/>
-		<Column seq="20" tszName="Grant_View" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="내용 보기 사용 권한(1~10)"/>
-		<Column seq="21" tszName="Grant_Comment" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="댓글 쓰기 사용 권한(1~10)"/>
-		<Column seq="22" tszName="Grant_Write" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="글 쓰기 사용 권한(1~10)"/>
-		<Column seq="23" tszName="Grant_Reply" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="답글 쓰기 사용 권한(1~10)"/>
-		<Column seq="24" tszName="Grant_Delete" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="글 삭제 사용 권한(1~10)"/>
-		<Column seq="25" tszName="Grant_Notice" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="공지사항 작성 권한(1~10)"/>
-		<Column seq="26" tszName="IsStatics" type="BIT(1)" notnull="true" default="Now()" desc="통계페이지 표시 여부(0/1 : 무/유)"/>
-		<Column seq="27" tszName="RegDate" type="DATETIME" notnull="true" default="Now()" desc="등록일시"/>
-		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+	<Table name="tblb_board_comment" desc="일반형 게시판 댓글" auto_increment_value="2000000">
+		<Column seq="1" name="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
+		<Column seq="2" name="BbsNo" type="INT UNSIGNED" notnull="true" default="Now()" desc="게시물 일련번호"/>
+		<Column seq="3" name="Memo" type="VARCHAR(1000)" notnull="true" default="Now()" desc="내용"/>
+		<Column seq="4" name="MbIdx" type="BIGINT UNSIGNED" notnull="true" default="Now()" desc="글쓴이 일련번호"/>
+		<Column seq="5" name="Name" type="VARCHAR(20)" notnull="true" default="Now()" desc="글쓴이 명"/>
+		<Column seq="6" name="IP" type="VARCHAR(20)" notnull="true" default="Now()" desc="글쓴이 IP"/>
+		<Column seq="7" name="RegDate" type="DATETIME" notnull="true" default="Now()" desc="등록일시"/>
+		<Index name="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
 			<PrimaryKey/>
 			<UniqueKey/>
-			<Column seq="1" tszName="No" order="ASC"/>
+			<Column seq="1" name="No" order="ASC"/>
 		</Index>
-		<Index tszName="ix_UNC_tblbm_bbsconfig_TbName" kind="NONCLUSTERED" type="UNIQUE">
-			<UniqueKey/>
-			<Column seq="1" tszName="TbName" order="ASC"/>
+		<Index name="ix_NC_tblb_board_comment_BbsNo" kind="NONCLUSTERED">
+			<Column seq="1" name="BbsNo" order="ASC"/>
 		</Index>
+		<ForeignKey name="fk_tblb_board_comment_tblb_board_BbsNo" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable name="tblb_board_comment">
+				<Column name="BbsNo"/>
+			</ForeignKeyTable>
+			<ReferenceKeyTable name="tblb_board">
+				<Column name="No"/>
+			</ReferenceKeyTable>
+		</ForeignKey>
+		<ForeignKey name="fk_tblb_board_comment_tblm_member_MbIdx" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable name="tblb_board_comment">
+				<Column name="MbIdx"/>
+			</ForeignKeyTable>
+			<ReferenceKeyTable name="tblm_member">
+				<Column name="MbIdx"/>
+			</ReferenceKeyTable>
+		</ForeignKey>
 	</Table>
-	<Table tszName="tblbm_board_segment" desc="게시물 그룹 정보" auto_increment_value="200">
-		<Column seq="1" tszName="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
-		<Column seq="2" tszName="BbsCount" type="INT UNSIGNED" notnull="true" default="0" desc="해당 그룹에 게시물 수"/>
-		<Column seq="3" tszName="SumBbsCount" type="INT UNSIGNED" notnull="true" default="0" desc="해당 그룹까지 누적 게시물 수"/>
-		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+	<Table name="tblbm_bbsconfig" desc="게시판 정보" auto_increment_value="3">
+		<Column seq="1" name="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
+		<Column seq="2" name="TbName" type="VARCHAR(20)" notnull="true" default="Now()" desc="게시판 코드"/>
+		<Column seq="3" name="BbsName" type="VARCHAR(20)" notnull="true" default="Now()" desc="게시판 이름"/>
+		<Column seq="4" name="BbsInfo" type="VARCHAR(150)" notnull="false" default="Now()" desc="게시판 설명"/>
+		<Column seq="5" name="BbsClass" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="게시판 종류(0/1/2/3/4/5 : 공지사항/일반/갤러리/퀴즈/설문/이벤트)"/>
+		<Column seq="6" name="BbsCount" type="INT UNSIGNED" notnull="true" default="Now()" desc="게시물 수"/>
+		<Column seq="7" name="IsCategory" type="BIT(1)" notnull="true" default="Now()" desc="카테고리 사용여부(0/1 : 무/유)"/>
+		<Column seq="8" name="IsHtml" type="BIT(1)" notnull="true" default="Now()" desc="HTML 사용여부(0/1 : 무/유)"/>
+		<Column seq="9" name="IsComment" type="BIT(1)" notnull="true" default="Now()" desc="댓글 사용여부(0/1 : 무/유)"/>
+		<Column seq="10" name="IsVote" type="BIT(1)" notnull="true" default="Now()" desc="추천 사용여부(0/1 : 무/유)"/>
+		<Column seq="11" name="PgSize" type="SMALLINT UNSIGNED" notnull="true" default="Now()" desc="페이지당 게시물 수"/>
+		<Column seq="12" name="AttFileCnt" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="첨부 파일 수"/>
+		<Column seq="13" name="AllowFileExt" type="VARCHAR(100)" notnull="false" default="Now()" desc="첨부 가능 파일 확장자(Ex. png,jpg,gif)"/>
+		<Column seq="14" name="APaper" type="SMALLINT UNSIGNED" notnull="true" default="Now()" desc="도배방지 연속 글쓰기 제한 초"/>
+		<Column seq="15" name="CPaper" type="SMALLINT UNSIGNED" notnull="true" default="Now()" desc="도배방지 연속 댓글 제한 초"/>
+		<Column seq="16" name="BbsSearchTerm" type="SMALLINT UNSIGNED" notnull="true" default="Now()" desc="검색날짜제한(해당 기간사이에 쓰여진 글만 검색할 수 있게 제한)"/>
+		<Column seq="17" name="DenyWord" type="VARCHAR(300)" notnull="false" default="Now()" desc="불량 단어 제한"/>
+		<Column seq="18" name="Grant_Html" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="HTML 사용 권한(1~10)"/>
+		<Column seq="19" name="Grant_List" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="목록 보기 사용 권한(1~10)"/>
+		<Column seq="20" name="Grant_View" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="내용 보기 사용 권한(1~10)"/>
+		<Column seq="21" name="Grant_Comment" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="댓글 쓰기 사용 권한(1~10)"/>
+		<Column seq="22" name="Grant_Write" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="글 쓰기 사용 권한(1~10)"/>
+		<Column seq="23" name="Grant_Reply" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="답글 쓰기 사용 권한(1~10)"/>
+		<Column seq="24" name="Grant_Delete" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="글 삭제 사용 권한(1~10)"/>
+		<Column seq="25" name="Grant_Notice" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="공지사항 작성 권한(1~10)"/>
+		<Column seq="26" name="IsStatics" type="BIT(1)" notnull="true" default="Now()" desc="통계페이지 표시 여부(0/1 : 무/유)"/>
+		<Column seq="27" name="RegDate" type="DATETIME" notnull="true" default="Now()" desc="등록일시"/>
+		<Index name="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
 			<PrimaryKey/>
 			<UniqueKey/>
-			<Column seq="1" tszName="No" order="ASC"/>
+			<Column seq="1" name="No" order="ASC"/>
+		</Index>
+		<Index name="ix_UNC_tblbm_bbsconfig_TbName" kind="NONCLUSTERED" type="UNIQUE">
+			<UniqueKey/>
+			<Column seq="1" name="TbName" order="ASC"/>
 		</Index>
 	</Table>
-	<Table tszName="tblm_member" desc="유저 정보" auto_increment_value="35005">
-		<Column seq="1" tszName="MbIdx" type="BIGINT UNSIGNED" notnull="true" default="0" identity="0,0" desc="일련번호"/>
-		<Column seq="2" tszName="Name" type="VARCHAR(32)" notnull="true" default="0" desc="성명"/>
-		<Column seq="3" tszName="RegDate" type="DATETIME" notnull="true" default="Now()" desc="등록일시"/>
-		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+	<Table name="tblbm_board_segment" desc="게시물 그룹 정보" auto_increment_value="200">
+		<Column seq="1" name="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
+		<Column seq="2" name="BbsCount" type="INT UNSIGNED" notnull="true" default="0" desc="해당 그룹에 게시물 수"/>
+		<Column seq="3" name="SumBbsCount" type="INT UNSIGNED" notnull="true" default="0" desc="해당 그룹까지 누적 게시물 수"/>
+		<Index name="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
 			<PrimaryKey/>
 			<UniqueKey/>
-			<Column seq="1" tszName="MbIdx" order="ASC"/>
+			<Column seq="1" name="No" order="ASC"/>
 		</Index>
 	</Table>
-	<Table tszName="tblm_test" desc="" auto_increment_value="73">
-		<Column seq="1" tszName="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc=""/>
-		<Column seq="2" tszName="Name1" type="VARCHAR(45)" notnull="false" default="Now()" desc=""/>
-		<Column seq="3" tszName="Name2" type="VARCHAR(45)" notnull="false" default="Now()" desc=""/>
-		<Column seq="4" tszName="Flag" type="BIT(1)" notnull="false" default="Now()" desc=""/>
-		<Column seq="5" tszName="Age" type="INT" notnull="false" default="Now()" desc=""/>
-		<Index tszName="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+	<Table name="tblm_member" desc="유저 정보" auto_increment_value="35005">
+		<Column seq="1" name="MbIdx" type="BIGINT UNSIGNED" notnull="true" default="0" identity="0,0" desc="일련번호"/>
+		<Column seq="2" name="Name" type="VARCHAR(32)" notnull="true" default="0" desc="성명"/>
+		<Column seq="3" name="RegDate" type="DATETIME" notnull="true" default="Now()" desc="등록일시"/>
+		<Index name="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
 			<PrimaryKey/>
 			<UniqueKey/>
-			<Column seq="1" tszName="No" order="ASC"/>
+			<Column seq="1" name="MbIdx" order="ASC"/>
 		</Index>
 	</Table>
-	<Procedure tszName="BbsConfigGrantEdit" desc="게시판 정보 수정">
-		<Param tszName="vTbName" type="VARCHAR(20)" desc=""/>
-		<Param tszName="vGrant_Html" type="TINYINT UNSIGNED" desc=""/>
-		<Param tszName="vGrant_List" type="TINYINT UNSIGNED" desc=""/>
-		<Param tszName="vGrant_View" type="TINYINT UNSIGNED" desc=""/>
-		<Param tszName="vGrant_Comment" type="TINYINT UNSIGNED" desc=""/>
-		<Param tszName="vGrant_Write" type="TINYINT UNSIGNED" desc=""/>
-		<Param tszName="vGrant_Reply" type="TINYINT UNSIGNED" desc=""/>
-		<Param tszName="vGrant_Delete" type="TINYINT UNSIGNED" desc=""/>
-		<Param tszName="vGrant_Notice" type="TINYINT UNSIGNED" desc=""/>
-		<Param tszName="vRetVal" type="INT" desc=""/>
+	<Table name="tblm_test" desc="" auto_increment_value="73">
+		<Column seq="1" name="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc=""/>
+		<Column seq="2" name="Name1" type="VARCHAR(45)" notnull="false" default="Now()" desc=""/>
+		<Column seq="3" name="Name2" type="VARCHAR(45)" notnull="false" default="Now()" desc=""/>
+		<Column seq="4" name="Flag" type="BIT(1)" notnull="false" default="Now()" desc=""/>
+		<Column seq="5" name="Age" type="INT" notnull="false" default="Now()" desc=""/>
+		<Index name="PRIMARY" kind="CLUSTERED" type="PRIMARYKEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" name="No" order="ASC"/>
+		</Index>
+	</Table>
+	<Procedure name="BbsConfigGrantEdit" desc="게시판 정보 수정">
+		<Param seq="1" mode="IN" name="vTbName" type="VARCHAR(20)" desc=""/>
+		<Param seq="2" mode="IN" name="vGrant_Html" type="TINYINT UNSIGNED" desc=""/>
+		<Param seq="3" mode="IN" name="vGrant_List" type="TINYINT UNSIGNED" desc=""/>
+		<Param seq="4" mode="IN" name="vGrant_View" type="TINYINT UNSIGNED" desc=""/>
+		<Param seq="5" mode="IN" name="vGrant_Comment" type="TINYINT UNSIGNED" desc=""/>
+		<Param seq="6" mode="IN" name="vGrant_Write" type="TINYINT UNSIGNED" desc=""/>
+		<Param seq="7" mode="IN" name="vGrant_Reply" type="TINYINT UNSIGNED" desc=""/>
+		<Param seq="8" mode="IN" name="vGrant_Delete" type="TINYINT UNSIGNED" desc=""/>
+		<Param seq="9" mode="IN" name="vGrant_Notice" type="TINYINT UNSIGNED" desc=""/>
+		<Param seq="10" mode="OUT" name="vRetVal" type="INT" desc=""/>
 		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BbsConfigGrantEdit`(
     vTbName VARCHAR(20),          		# 게시판 코드
     vGrant_Html TINYINT UNSIGNED,      	# HTML 사용 권한(1~10)
@@ -399,29 +419,29 @@ BEGIN
     SET vRetVal = 0;
 END</body>
 	</Procedure>
-	<Procedure tszName="BbsConfigProcess" desc="게시판 정보 등록/수정/삭제">
-		<Param tszName="vProMethod" type="VARCHAR(15)" desc=""/>
-		<Param tszName="vNo" type="INT UNSIGNED" desc=""/>
-		<Param tszName="vTbName" type="VARCHAR(20)" desc=""/>
-		<Param tszName="vBbsName" type="VARCHAR(20)" desc=""/>
-		<Param tszName="vBbsInfo" type="VARCHAR(150)" desc=""/>
-		<Param tszName="vBbsClass" type="TINYINT UNSIGNED" desc=""/>
-		<Param tszName="vBbsCount" type="INT UNSIGNED" desc=""/>
-		<Param tszName="vIsCategory" type="BIT(1)" desc=""/>
-		<Param tszName="vIsHtml" type="BIT(1)" desc=""/>
-		<Param tszName="vIsComment" type="BIT(1)" desc=""/>
-		<Param tszName="vIsVote" type="BIT(1)" desc=""/>
-		<Param tszName="vPgSize" type="SMALLINT UNSIGNED" desc=""/>
-		<Param tszName="vAttFileCnt" type="TINYINT UNSIGNED" desc=""/>
-		<Param tszName="vAllowFileExt" type="VARCHAR(100)" desc=""/>
-		<Param tszName="vAPaper" type="SMALLINT UNSIGNED" desc=""/>
-		<Param tszName="vCPaper" type="SMALLINT UNSIGNED" desc=""/>
-		<Param tszName="vBbsSearchTerm" type="SMALLINT UNSIGNED" desc=""/>
-		<Param tszName="vDenyWord" type="VARCHAR(300)" desc=""/>
-		<Param tszName="vIsStatics" type="BIT(1)" desc=""/>
-		<Param tszName="vBbsAfInfo" type="VARCHAR(8000)" desc=""/>
-		<Param tszName="vOutIdx" type="INT UNSIGNED" desc=""/>
-		<Param tszName="vRetVal" type="INT" desc=""/>
+	<Procedure name="BbsConfigProcess" desc="게시판 정보 등록/수정/삭제">
+		<Param seq="1" mode="IN" name="vProMethod" type="VARCHAR(15)" desc=""/>
+		<Param seq="2" mode="IN" name="vNo" type="INT UNSIGNED" desc=""/>
+		<Param seq="3" mode="IN" name="vTbName" type="VARCHAR(20)" desc=""/>
+		<Param seq="4" mode="IN" name="vBbsName" type="VARCHAR(20)" desc=""/>
+		<Param seq="5" mode="IN" name="vBbsInfo" type="VARCHAR(150)" desc=""/>
+		<Param seq="6" mode="IN" name="vBbsClass" type="TINYINT UNSIGNED" desc=""/>
+		<Param seq="7" mode="IN" name="vBbsCount" type="INT UNSIGNED" desc=""/>
+		<Param seq="8" mode="IN" name="vIsCategory" type="BIT(1)" desc=""/>
+		<Param seq="9" mode="IN" name="vIsHtml" type="BIT(1)" desc=""/>
+		<Param seq="10" mode="IN" name="vIsComment" type="BIT(1)" desc=""/>
+		<Param seq="11" mode="IN" name="vIsVote" type="BIT(1)" desc=""/>
+		<Param seq="12" mode="IN" name="vPgSize" type="SMALLINT UNSIGNED" desc=""/>
+		<Param seq="13" mode="IN" name="vAttFileCnt" type="TINYINT UNSIGNED" desc=""/>
+		<Param seq="14" mode="IN" name="vAllowFileExt" type="VARCHAR(100)" desc=""/>
+		<Param seq="15" mode="IN" name="vAPaper" type="SMALLINT UNSIGNED" desc=""/>
+		<Param seq="16" mode="IN" name="vCPaper" type="SMALLINT UNSIGNED" desc=""/>
+		<Param seq="17" mode="IN" name="vBbsSearchTerm" type="SMALLINT UNSIGNED" desc=""/>
+		<Param seq="18" mode="IN" name="vDenyWord" type="VARCHAR(300)" desc=""/>
+		<Param seq="19" mode="IN" name="vIsStatics" type="BIT(1)" desc=""/>
+		<Param seq="20" mode="IN" name="vBbsAfInfo" type="VARCHAR(8000)" desc=""/>
+		<Param seq="21" mode="OUT" name="vOutIdx" type="INT UNSIGNED" desc=""/>
+		<Param seq="22" mode="OUT" name="vRetVal" type="INT" desc=""/>
 		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BbsConfigProcess`(
     vProMethod VARCHAR(15),     		# ADD/EDIT/DELETE : 등록/수정/삭제 
     vNo INT UNSIGNED,           		# 일련번호
@@ -481,8 +501,8 @@ MAIN_ROUTINE:BEGIN
     SET vRetVal = 0;
 END</body>
 	</Procedure>
-	<Procedure tszName="BbsGet" desc="게시물 정보 보기">
-		<Param tszName="vNo" type="INT UNSIGNED" desc=""/>
+	<Procedure name="BbsGet" desc="게시물 정보 보기">
+		<Param seq="1" mode="IN" name="vNo" type="INT UNSIGNED" desc=""/>
 		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BbsGet`(
     vNo INT UNSIGNED    # 게시물 일련번호
 )
@@ -492,16 +512,16 @@ BEGIN
     FROM tblb_Bbs WHERE No = vNo; 
 END</body>
 	</Procedure>
-	<Procedure tszName="BbsPagingTest" desc="게시판 페이징 구현">
-		<Param tszName="vCurPage" type="INT" desc=""/>
-		<Param tszName="vNextStepNo" type="BIGINT" desc=""/>
-		<Param tszName="vSearchTerm" type="INT" desc=""/>
-		<Param tszName="vSearchType" type="VARCHAR(15)" desc=""/>
-		<Param tszName="vSearchString" type="VARCHAR(30)" desc=""/>
-		<Param tszName="vPageSize" type="INT" desc=""/>
-		<Param tszName="vOutPrevStepNo" type="BIGINT" desc=""/>
-		<Param tszName="vOutNextStepNo" type="BIGINT" desc=""/>
-		<Param tszName="vOutTotBbsCount" type="BIGINT" desc=""/>
+	<Procedure name="BbsPagingTest" desc="게시판 페이징 구현">
+		<Param seq="1" mode="IN" name="vCurPage" type="INT" desc=""/>
+		<Param seq="2" mode="IN" name="vNextStepNo" type="BIGINT" desc=""/>
+		<Param seq="3" mode="IN" name="vSearchTerm" type="INT" desc=""/>
+		<Param seq="4" mode="IN" name="vSearchType" type="VARCHAR(15)" desc=""/>
+		<Param seq="5" mode="IN" name="vSearchString" type="VARCHAR(30)" desc=""/>
+		<Param seq="6" mode="IN" name="vPageSize" type="INT" desc=""/>
+		<Param seq="7" mode="OUT" name="vOutPrevStepNo" type="BIGINT" desc=""/>
+		<Param seq="8" mode="OUT" name="vOutNextStepNo" type="BIGINT" desc=""/>
+		<Param seq="9" mode="OUT" name="vOutTotBbsCount" type="BIGINT" desc=""/>
 		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BbsPagingTest`(
     vCurPage INT,              		# 현재 페이지
     vNextStepNo BIGINT,           	# 각1페이지(11, 21, 31, 41, 51, ~)의 최상위글 일련번호  
@@ -660,17 +680,17 @@ BEGIN
     SET vOutPrevStepNo = IFNULL(vOutPrevStepNo, 0);
 END</body>
 	</Procedure>
-	<Procedure tszName="BbsProcess" desc="게시물 등록/수정/삭제">
-		<Param tszName="vProMethod" type="VARCHAR(15)" desc=""/>
-		<Param tszName="vNo" type="INT UNSIGNED" desc=""/>
-		<Param tszName="vSubject" type="VARCHAR(100)" desc=""/>
-		<Param tszName="vContent" type="LONGTEXT" desc=""/>
-		<Param tszName="vMbIdx" type="BIGINT UNSIGNED" desc=""/>
-		<Param tszName="vName" type="VARCHAR(20)" desc=""/>
-		<Param tszName="vIP" type="VARCHAR(20)" desc=""/>
-		<Param tszName="vHtmlFlag" type="BIT(1)" desc=""/>
-		<Param tszName="vOutNo" type="INT UNSIGNED" desc=""/>
-		<Param tszName="vRetVal" type="INT" desc=""/>
+	<Procedure name="BbsProcess" desc="게시물 등록/수정/삭제">
+		<Param seq="1" mode="IN" name="vProMethod" type="VARCHAR(15)" desc=""/>
+		<Param seq="2" mode="IN" name="vNo" type="INT UNSIGNED" desc=""/>
+		<Param seq="3" mode="IN" name="vSubject" type="VARCHAR(100)" desc=""/>
+		<Param seq="4" mode="IN" name="vContent" type="LONGTEXT" desc=""/>
+		<Param seq="5" mode="IN" name="vMbIdx" type="BIGINT UNSIGNED" desc=""/>
+		<Param seq="6" mode="IN" name="vName" type="VARCHAR(20)" desc=""/>
+		<Param seq="7" mode="IN" name="vIP" type="VARCHAR(20)" desc=""/>
+		<Param seq="8" mode="IN" name="vHtmlFlag" type="BIT(1)" desc=""/>
+		<Param seq="9" mode="OUT" name="vOutNo" type="INT UNSIGNED" desc=""/>
+		<Param seq="10" mode="OUT" name="vRetVal" type="INT" desc=""/>
 		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BbsProcess`(
     vProMethod VARCHAR(15),     # ADD/EDIT/DELETE : 등록/수정/삭제 
     vNo INT UNSIGNED,           # 게시물 일련번호
@@ -728,8 +748,8 @@ MAIN_ROUTINE:BEGIN
     SET vRetVal = 0;
 END</body>
 	</Procedure>
-	<Procedure tszName="BoardAttGenFileGet" desc="일반형 게시판 첨부 일반 파일 정보">
-		<Param tszName="vBbsNo" type="INT UNSIGNED" desc=""/>
+	<Procedure name="BoardAttGenFileGet" desc="일반형 게시판 첨부 일반 파일 정보">
+		<Param seq="1" mode="IN" name="vBbsNo" type="INT UNSIGNED" desc=""/>
 		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BoardAttGenFileGet`(
     vBbsNo INT UNSIGNED		# 게시물 일련번호
 )
@@ -739,11 +759,11 @@ BEGIN
     FROM tblb_board_attgenfile WHERE BbsNo = vBbsNo;
 END</body>
 	</Procedure>
-	<Procedure tszName="BoardAttGenFileMultiProcess" desc="일반형 게시판 첨부 일반 파일 멀티 등록/삭제">
-		<Param tszName="vProMethod" type="VARCHAR(15)" desc=""/>
-		<Param tszName="vBbsNo" type="INT UNSIGNED" desc=""/>
-		<Param tszName="vFileInfo" type="VARCHAR(8000)" desc=""/>
-		<Param tszName="vRetVal" type="INT" desc=""/>
+	<Procedure name="BoardAttGenFileMultiProcess" desc="일반형 게시판 첨부 일반 파일 멀티 등록/삭제">
+		<Param seq="1" mode="IN" name="vProMethod" type="VARCHAR(15)" desc=""/>
+		<Param seq="2" mode="IN" name="vBbsNo" type="INT UNSIGNED" desc=""/>
+		<Param seq="3" mode="IN" name="vFileInfo" type="VARCHAR(8000)" desc=""/>
+		<Param seq="4" mode="OUT" name="vRetVal" type="INT" desc=""/>
 		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BoardAttGenFileMultiProcess`(
     vProMethod VARCHAR(15),     # ADD/EDIT/DELETE : 등록/수정/삭제 
     vBbsNo INT UNSIGNED,		# 게시물 일련번호
@@ -809,8 +829,8 @@ MAIN_ROUTINE:BEGIN
     SET vRetVal = 0;
 END</body>
 	</Procedure>
-	<Procedure tszName="BoardAttImgFileGet" desc="일반형 게시판 첨부 이미지 파일 정보">
-		<Param tszName="vBbsNo" type="INT UNSIGNED" desc=""/>
+	<Procedure name="BoardAttImgFileGet" desc="일반형 게시판 첨부 이미지 파일 정보">
+		<Param seq="1" mode="IN" name="vBbsNo" type="INT UNSIGNED" desc=""/>
 		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BoardAttImgFileGet`(
     vBbsNo INT UNSIGNED		# 게시물 일련번호
 )
@@ -820,11 +840,11 @@ BEGIN
     FROM tblb_board_attimgfile WHERE BbsNo = vBbsNo;
 END</body>
 	</Procedure>
-	<Procedure tszName="BoardAttImgFileMultiProcess" desc="일반형 게시판 첨부 이미지 파일 멀티 등록/삭제">
-		<Param tszName="vProMethod" type="VARCHAR(15)" desc=""/>
-		<Param tszName="vBbsNo" type="INT UNSIGNED" desc=""/>
-		<Param tszName="vFileInfo" type="VARCHAR(8000)" desc=""/>
-		<Param tszName="vRetVal" type="INT" desc=""/>
+	<Procedure name="BoardAttImgFileMultiProcess" desc="일반형 게시판 첨부 이미지 파일 멀티 등록/삭제">
+		<Param seq="1" mode="IN" name="vProMethod" type="VARCHAR(15)" desc=""/>
+		<Param seq="2" mode="IN" name="vBbsNo" type="INT UNSIGNED" desc=""/>
+		<Param seq="3" mode="IN" name="vFileInfo" type="VARCHAR(8000)" desc=""/>
+		<Param seq="4" mode="OUT" name="vRetVal" type="INT" desc=""/>
 		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BoardAttImgFileMultiProcess`(
     vProMethod VARCHAR(15),     # ADD/EDIT/DELETE : 등록/수정/삭제 
     vBbsNo INT UNSIGNED,        # 게시물 일련번호
@@ -890,10 +910,10 @@ MAIN_ROUTINE:BEGIN
     SET vRetVal = 0;
 END</body>
 	</Procedure>
-	<Procedure tszName="BoardCnt" desc="게시판 전체 게시물 수 얻기">
-		<Param tszName="vSearchTerm" type="SMALLINT UNSIGNED" desc=""/>
-		<Param tszName="vSearchType" type="VARCHAR(15)" desc=""/>
-		<Param tszName="vSearchString" type="VARCHAR(30)" desc=""/>
+	<Procedure name="BoardCnt" desc="게시판 전체 게시물 수 얻기">
+		<Param seq="1" mode="IN" name="vSearchTerm" type="SMALLINT UNSIGNED" desc=""/>
+		<Param seq="2" mode="IN" name="vSearchType" type="VARCHAR(15)" desc=""/>
+		<Param seq="3" mode="IN" name="vSearchString" type="VARCHAR(30)" desc=""/>
 		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BoardCnt`(
     vSearchTerm SMALLINT UNSIGNED,  # 검색 날짜 제한(성능 저하를 막기위해 해당 기간사이에 쓰여진 글만 검색할 수 있게 제한)
     vSearchType VARCHAR(15),        # 검색 타입(글쓴이/제목/내용 : Name/Subject/Content)
@@ -924,8 +944,8 @@ BEGIN
     SELECT vOutTotBbsCount AS TotBbsCount;
 END</body>
 	</Procedure>
-	<Procedure tszName="BoardCommentGet" desc="댓글 정보 보기">
-		<Param tszName="vCommNo" type="INT UNSIGNED" desc=""/>
+	<Procedure name="BoardCommentGet" desc="댓글 정보 보기">
+		<Param seq="1" mode="IN" name="vCommNo" type="INT UNSIGNED" desc=""/>
 		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BoardCommentGet`(
     vCommNo INT UNSIGNED	# 댓글 일련번호
 )
@@ -935,14 +955,14 @@ BEGIN
     FROM tblb_Board_Comment WHERE No = vCommNo;
 END</body>
 	</Procedure>
-	<Procedure tszName="BoardCommentProcess" desc="댓글 정보 등록/수정/삭제">
-		<Param tszName="vCommNo" type="INT UNSIGNED" desc=""/>
-		<Param tszName="vBbsNo" type="INT UNSIGNED" desc=""/>
-		<Param tszName="vMemo" type="VARCHAR(1000)" desc=""/>
-		<Param tszName="vMbIdx" type="BIGINT UNSIGNED" desc=""/>
-		<Param tszName="vName" type="VARCHAR(20)" desc=""/>
-		<Param tszName="vIP" type="VARCHAR(20)" desc=""/>
-		<Param tszName="vRetVal" type="INT" desc=""/>
+	<Procedure name="BoardCommentProcess" desc="댓글 정보 등록/수정/삭제">
+		<Param seq="1" mode="IN" name="vCommNo" type="INT UNSIGNED" desc=""/>
+		<Param seq="2" mode="IN" name="vBbsNo" type="INT UNSIGNED" desc=""/>
+		<Param seq="3" mode="IN" name="vMemo" type="VARCHAR(1000)" desc=""/>
+		<Param seq="4" mode="IN" name="vMbIdx" type="BIGINT UNSIGNED" desc=""/>
+		<Param seq="5" mode="IN" name="vName" type="VARCHAR(20)" desc=""/>
+		<Param seq="6" mode="IN" name="vIP" type="VARCHAR(20)" desc=""/>
+		<Param seq="7" mode="OUT" name="vRetVal" type="INT" desc=""/>
 		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BoardCommentProcess`(
     vCommNo INT UNSIGNED,       # 댓글 일련번호
     vBbsNo INT UNSIGNED,        # 게시물 일련번호
@@ -998,8 +1018,8 @@ MAIN_ROUTINE:BEGIN
     SET vRetVal = 0;
 END</body>
 	</Procedure>
-	<Procedure tszName="BoardGet" desc="게시물 정보 보기">
-		<Param tszName="vNo" type="INT UNSIGNED" desc=""/>
+	<Procedure name="BoardGet" desc="게시물 정보 보기">
+		<Param seq="1" mode="IN" name="vNo" type="INT UNSIGNED" desc=""/>
 		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BoardGet`(
     vNo INT UNSIGNED	# 게시물 일련번호
 )
@@ -1009,7 +1029,7 @@ BEGIN
     FROM tblb_Board WHERE No = vNo; 
 END</body>
 	</Procedure>
-	<Procedure tszName="BoardInfoProcess" desc="게시판 정보 처리">
+	<Procedure name="BoardInfoProcess" desc="게시판 정보 처리">
 		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BoardInfoProcess`()
     COMMENT &apos;게시판 정보 처리&apos;
 BEGIN
@@ -1114,7 +1134,7 @@ BEGIN
     SELECT @v_SQL;
 END</body>
 	</Procedure>
-	<Procedure tszName="BoardInfoTableCreate" desc="게시판별 테이블 생성">
+	<Procedure name="BoardInfoTableCreate" desc="게시판별 테이블 생성">
 		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BoardInfoTableCreate`()
     COMMENT &apos;게시판별 테이블 생성&apos;
 BEGIN
@@ -1249,13 +1269,13 @@ BEGIN
         SET @v_SQL = CONCAT(@v_SQL, &apos;DELIMITER ;&apos;, CHAR(10));
         SET</body>
 	</Procedure>
-	<Procedure tszName="BoardPagingTest" desc="게시판 페이징 구현">
-		<Param tszName="vCurPage" type="INT" desc=""/>
-		<Param tszName="vSearchTerm" type="INT" desc=""/>
-		<Param tszName="vSearchType" type="VARCHAR(15)" desc=""/>
-		<Param tszName="vSearchString" type="VARCHAR(30)" desc=""/>
-		<Param tszName="vPageSize" type="INT" desc=""/>
-		<Param tszName="vOutTotBbsCount" type="BIGINT" desc=""/>
+	<Procedure name="BoardPagingTest" desc="게시판 페이징 구현">
+		<Param seq="1" mode="IN" name="vCurPage" type="INT" desc=""/>
+		<Param seq="2" mode="IN" name="vSearchTerm" type="INT" desc=""/>
+		<Param seq="3" mode="IN" name="vSearchType" type="VARCHAR(15)" desc=""/>
+		<Param seq="4" mode="IN" name="vSearchString" type="VARCHAR(30)" desc=""/>
+		<Param seq="5" mode="IN" name="vPageSize" type="INT" desc=""/>
+		<Param seq="6" mode="OUT" name="vOutTotBbsCount" type="BIGINT" desc=""/>
 		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BoardPagingTest`(
     vCurPage INT,                   # 현재 페이지
     vSearchTerm INT,      			# 검색 날짜 제한(성능 저하를 막기위해 해당 기간사이에 쓰여진 글만 검색할 수 있게 제한)
@@ -1340,17 +1360,17 @@ BEGIN
 	END IF;
 END</body>
 	</Procedure>
-	<Procedure tszName="BoardProcess" desc="게시물 등록/수정/삭제">
-		<Param tszName="vProMethod" type="VARCHAR(15)" desc=""/>
-		<Param tszName="vNo" type="INT UNSIGNED" desc=""/>
-		<Param tszName="vSubject" type="VARCHAR(100)" desc=""/>
-		<Param tszName="vContent" type="LONGTEXT" desc=""/>
-		<Param tszName="vMbIdx" type="BIGINT UNSIGNED" desc=""/>
-		<Param tszName="vName" type="VARCHAR(20)" desc=""/>
-		<Param tszName="vIP" type="VARCHAR(20)" desc=""/>
-		<Param tszName="vHtmlFlag" type="BIT(1)" desc=""/>
-		<Param tszName="vOutNo" type="INT UNSIGNED" desc=""/>
-		<Param tszName="vRetVal" type="INT" desc=""/>
+	<Procedure name="BoardProcess" desc="게시물 등록/수정/삭제">
+		<Param seq="1" mode="IN" name="vProMethod" type="VARCHAR(15)" desc=""/>
+		<Param seq="2" mode="IN" name="vNo" type="INT UNSIGNED" desc=""/>
+		<Param seq="3" mode="IN" name="vSubject" type="VARCHAR(100)" desc=""/>
+		<Param seq="4" mode="IN" name="vContent" type="LONGTEXT" desc=""/>
+		<Param seq="5" mode="IN" name="vMbIdx" type="BIGINT UNSIGNED" desc=""/>
+		<Param seq="6" mode="IN" name="vName" type="VARCHAR(20)" desc=""/>
+		<Param seq="7" mode="IN" name="vIP" type="VARCHAR(20)" desc=""/>
+		<Param seq="8" mode="IN" name="vHtmlFlag" type="BIT(1)" desc=""/>
+		<Param seq="9" mode="OUT" name="vOutNo" type="INT UNSIGNED" desc=""/>
+		<Param seq="10" mode="OUT" name="vRetVal" type="INT" desc=""/>
 		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BoardProcess`(
     vProMethod VARCHAR(15), 	# ADD/EDIT/DELETE : 등록/수정/삭제 
     vNo INT UNSIGNED,           # 게시물 일련번호
@@ -1437,7 +1457,7 @@ MAIN_ROUTINE:BEGIN
     SET vRetVal = 0;
 END</body>
 	</Procedure>
-	<Procedure tszName="BoardTableCreate" desc="게시판 테이블 만들기">
+	<Procedure name="BoardTableCreate" desc="게시판 테이블 만들기">
 		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BoardTableCreate`()
     COMMENT &apos;게시판 테이블 만들기&apos;
 BEGIN
@@ -1536,7 +1556,7 @@ BEGIN
     CLOSE cur1;
 END</body>
 	</Procedure>
-	<Procedure tszName="BoardTestDataProcess" desc="테스트를 위한 데이터 등록">
+	<Procedure name="BoardTestDataProcess" desc="테스트를 위한 데이터 등록">
 		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `BoardTestDataProcess`()
     COMMENT &apos;테스트를 위한 데이터 등록&apos;
 BEGIN
@@ -1584,8 +1604,8 @@ BEGIN
     END WHILE;
 END</body>
 	</Procedure>
-	<Procedure tszName="DataSplit" desc="문자열 Split 테스트">
-		<Param tszName="vData" type="VARCHAR(8000)" desc=""/>
+	<Procedure name="DataSplit" desc="문자열 Split 테스트">
+		<Param seq="1" mode="IN" name="vData" type="VARCHAR(8000)" desc=""/>
 		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `DataSplit`(
     vData VARCHAR(8000)
 )
@@ -1633,14 +1653,14 @@ BEGIN
     END WHILE;
 END</body>
 	</Procedure>
-	<Procedure tszName="FnCommentInfo" desc="사용자함수 명세 보기 5">
-		<Param tszName="vDbName" type="VARCHAR(100)" desc=""/>
-		<Param tszName="vSPName" type="VARCHAR(100)" desc=""/>
+	<Procedure name="FnCommentInfo" desc="사용자함수 명세 보기">
+		<Param seq="1" mode="IN" name="vDbName" type="VARCHAR(100)" desc=""/>
+		<Param seq="2" mode="IN" name="vSPName" type="VARCHAR(100)" desc=""/>
 		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `FnCommentInfo`(
 IN vDbName VARCHAR(100),
 IN vSPName VARCHAR(100)
 )
-    COMMENT &apos;사용자함수 명세 보기 5&apos;
+    COMMENT &apos;사용자함수 명세 보기&apos;
 BEGIN
     DECLARE vDone INT DEFAULT FALSE;
     DECLARE vRoutineSchema VARCHAR(50);
@@ -1652,7 +1672,7 @@ BEGIN
         
     DECLARE cur1 CURSOR FOR 
 
-    /* 사용자함수 정보 보기 */
+    # 사용자함수 정보 보기
     SELECT ROUTINE_SCHEMA, ROUTINE_TYPE, ROUTINE_NAME, CREATED, LAST_ALTERED, ROUTINE_COMMENT
     FROM INFORMATION_SCHEMA.ROUTINES
     WHERE (CASE WHEN LENGTH(vDbName) &gt; 0 THEN ROUTINE_SCHEMA  ELSE vDbName END) = vDbName 
@@ -1668,11 +1688,11 @@ BEGIN
     FETCH cur1 INTO vRoutineSchema, vRoutineType, vRoutineName, vCreateTime, vUpdateTime, vRoutineComment;
      
     IF NOT vDone THEN 
-        /* 사용자함수 정보 보기 */
+        # 사용자함수 정보 보기
         SELECT vRoutineSchema, vRoutineType, vRoutineName, vCreateTime, vUpdateTime, vRoutineComment;
         
-        /* 사용자함수 파라미터 정보 보기 */
-        SELECT SPECIFIC_SCHEMA, ROUTINE_TYPE, SPECIFIC_NAME, ORDINAL_POSITION, PARAMETER_NAME, UPPER(DTD_IDENTIFIER) AS TYPE, PARAMETER_MODE 
+        # 사용자함수 파라미터 정보 보기
+        SELECT SPECIFIC_SCHEMA, ROUTINE_TYPE, SPECIFIC_NAME, ORDINAL_POSITION, (CASE `PARAMETER_MODE` WHEN &apos;IN&apos; THEN 1 WHEN &apos;OUT&apos; THEN 2 ELSE 0 END) AS PARAMETER_MODE, PARAMETER_NAME, UPPER(DTD_IDENTIFIER) AS TYPE
         FROM INFORMATION_SCHEMA.PARAMETERS
         WHERE SPECIFIC_SCHEMA = vRoutineSchema AND ROUTINE_TYPE = &apos;FUNCTION&apos; AND SPECIFIC_NAME = vRoutineName
         ORDER BY SPECIFIC_SCHEMA ASC, SPECIFIC_NAME ASC, ORDINAL_POSITION ASC;
@@ -1685,7 +1705,7 @@ BEGIN
     CLOSE cur1;
 END</body>
 	</Procedure>
-	<Procedure tszName="MemberTestDataProcess" desc="유저 데이터 등록">
+	<Procedure name="MemberTestDataProcess" desc="유저 데이터 등록">
 		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `MemberTestDataProcess`()
     COMMENT &apos;유저 데이터 등록&apos;
 BEGIN
@@ -1705,17 +1725,17 @@ BEGIN
     END WHILE;
 END</body>
 	</Procedure>
-	<Procedure tszName="ReBoardProcess" desc="게시물 등록/답변/수정/삭제">
-		<Param tszName="vProMethod" type="VARCHAR(15)" desc=""/>
-		<Param tszName="vNo" type="INT UNSIGNED" desc=""/>
-		<Param tszName="vSubject" type="VARCHAR(100)" desc=""/>
-		<Param tszName="vContent" type="LONGTEXT" desc=""/>
-		<Param tszName="vMbIdx" type="BIGINT UNSIGNED" desc=""/>
-		<Param tszName="vName" type="VARCHAR(20)" desc=""/>
-		<Param tszName="vIP" type="VARCHAR(20)" desc=""/>
-		<Param tszName="vHtmlFlag" type="BIT(1)" desc=""/>
-		<Param tszName="vOutIdx" type="INT UNSIGNED" desc=""/>
-		<Param tszName="vRetVal" type="INT" desc=""/>
+	<Procedure name="ReBoardProcess" desc="게시물 등록/답변/수정/삭제">
+		<Param seq="1" mode="IN" name="vProMethod" type="VARCHAR(15)" desc=""/>
+		<Param seq="2" mode="IN" name="vNo" type="INT UNSIGNED" desc=""/>
+		<Param seq="3" mode="IN" name="vSubject" type="VARCHAR(100)" desc=""/>
+		<Param seq="4" mode="IN" name="vContent" type="LONGTEXT" desc=""/>
+		<Param seq="5" mode="IN" name="vMbIdx" type="BIGINT UNSIGNED" desc=""/>
+		<Param seq="6" mode="IN" name="vName" type="VARCHAR(20)" desc=""/>
+		<Param seq="7" mode="IN" name="vIP" type="VARCHAR(20)" desc=""/>
+		<Param seq="8" mode="IN" name="vHtmlFlag" type="BIT(1)" desc=""/>
+		<Param seq="9" mode="OUT" name="vOutIdx" type="INT UNSIGNED" desc=""/>
+		<Param seq="10" mode="OUT" name="vRetVal" type="INT" desc=""/>
 		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `ReBoardProcess`(
     vProMethod VARCHAR(15), 	# ADD/REPLY/EDIT/DELETE : 등록/답변/수정/삭제 
     vNo INT UNSIGNED,           # 게시물 일련번호
@@ -1812,7 +1832,7 @@ MAIN_ROUTINE:BEGIN
     SET vRetVal = 0;
 END</body>
 	</Procedure>
-	<Procedure tszName="ReBoardTestDataProcess" desc="테스트를 위한 데이터 등록">
+	<Procedure name="ReBoardTestDataProcess" desc="테스트를 위한 데이터 등록">
 		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `ReBoardTestDataProcess`()
     COMMENT &apos;테스트를 위한 데이터 등록&apos;
 BEGIN
@@ -1888,14 +1908,14 @@ BEGIN
     END WHILE;
 END</body>
 	</Procedure>
-	<Procedure tszName="SPCommentInfo" desc="저장프로시저 명세 보기 7">
-		<Param tszName="vDbName" type="VARCHAR(100)" desc=""/>
-		<Param tszName="vSPName" type="VARCHAR(100)" desc=""/>
+	<Procedure name="SPCommentInfo" desc="저장프로시저 명세 보기">
+		<Param seq="1" mode="IN" name="vDbName" type="VARCHAR(100)" desc=""/>
+		<Param seq="2" mode="IN" name="vSPName" type="VARCHAR(100)" desc=""/>
 		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `SPCommentInfo`(
 IN vDbName VARCHAR(100),
 IN vSPName VARCHAR(100)
 )
-    COMMENT &apos;저장프로시저 명세 보기 7&apos;
+    COMMENT &apos;저장프로시저 명세 보기&apos;
 BEGIN
     DECLARE vDone INT DEFAULT FALSE;
     DECLARE vRoutineSchema VARCHAR(50);
@@ -1907,7 +1927,7 @@ BEGIN
         
     DECLARE cur1 CURSOR FOR 
 
-    /* 저장프로시저 정보 보기 */
+    # 저장프로시저 정보 보기
     SELECT ROUTINE_SCHEMA, ROUTINE_TYPE, ROUTINE_NAME, CREATED, LAST_ALTERED, ROUTINE_COMMENT
     FROM INFORMATION_SCHEMA.ROUTINES
     WHERE (CASE WHEN LENGTH(vDbName) &gt; 0 THEN ROUTINE_SCHEMA  ELSE vDbName END) = vDbName 
@@ -1923,11 +1943,11 @@ BEGIN
     FETCH cur1 INTO vRoutineSchema, vRoutineType, vRoutineName, vCreateTime, vUpdateTime, vRoutineComment;
      
     IF NOT vDone THEN 
-        /* 저장프로시저 정보 보기 */
+        # 저장프로시저 정보 보기
         SELECT vRoutineSchema, vRoutineType, vRoutineName, vCreateTime, vUpdateTime, vRoutineComment;
         
-        /* 저장프로시저 파라미터 정보 보기 */
-        SELECT SPECIFIC_SCHEMA, ROUTINE_TYPE, SPECIFIC_NAME, ORDINAL_POSITION, PARAMETER_NAME, UPPER(DTD_IDENTIFIER) AS TYPE, PARAMETER_MODE 
+        # 저장프로시저 파라미터 정보 보기
+        SELECT SPECIFIC_SCHEMA, ROUTINE_TYPE, SPECIFIC_NAME, ORDINAL_POSITION, (CASE `PARAMETER_MODE` WHEN &apos;IN&apos; THEN 1 WHEN &apos;OUT&apos; THEN 2 ELSE 0 END) AS PARAMETER_MODE, PARAMETER_NAME, UPPER(DTD_IDENTIFIER) AS TYPE
         FROM INFORMATION_SCHEMA.PARAMETERS
         WHERE SPECIFIC_SCHEMA = vRoutineSchema AND ROUTINE_TYPE = &apos;PROCEDURE&apos; AND SPECIFIC_NAME = vRoutineName
         ORDER BY SPECIFIC_SCHEMA ASC, SPECIFIC_NAME ASC, ORDINAL_POSITION ASC;
@@ -1940,14 +1960,14 @@ BEGIN
     CLOSE cur1;
 END</body>
 	</Procedure>
-	<Procedure tszName="TableCommentInfo" desc="테이블 명세 보기 8">
-		<Param tszName="vDbName" type="VARCHAR(100)" desc=""/>
-		<Param tszName="vTbName" type="VARCHAR(100)" desc=""/>
+	<Procedure name="TableCommentInfo" desc="테이블 명세 보기">
+		<Param seq="1" mode="IN" name="vDbName" type="VARCHAR(100)" desc=""/>
+		<Param seq="2" mode="IN" name="vTbName" type="VARCHAR(100)" desc=""/>
 		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `TableCommentInfo`(
 IN vDbName VARCHAR(100),
 IN vTbName VARCHAR(100)
 )
-    COMMENT &apos;테이블 명세 보기 8&apos;
+    COMMENT &apos;테이블 명세 보기&apos;
 BEGIN
     DECLARE vDone INT DEFAULT FALSE;
     DECLARE vTableSchema VARCHAR(50);
@@ -1959,7 +1979,7 @@ BEGIN
         
     DECLARE cur1 CURSOR FOR 
 
-    /* 테이블 정보 보기 */
+    # 테이블 정보 보기
     SELECT TABLE_SCHEMA, TABLE_TYPE, TABLE_NAME, CREATE_TIME, UPDATE_TIME, TABLE_COMMENT 
     FROM INFORMATION_SCHEMA.TABLES
     WHERE (CASE WHEN LENGTH(vDbName) &gt; 0 THEN TABLE_SCHEMA  ELSE vDbName END) = vDbName 
@@ -1975,28 +1995,39 @@ BEGIN
     FETCH cur1 INTO vTableSchema, vTableType, vTableName, vCreateTime, vUpdateTime, vTableComment;
 
     IF NOT vDone THEN
-        /* 테이블 정보 보기 */
+        # 테이블 정보 보기
         SELECT vTableSchema, vTableType, vTableName, vCreateTime, vUpdateTime, vTableComment;
       
-        /* 테이블 컬럼 정보 보기 */
+        # 테이블 컬럼 정보 보기
         SELECT TABLE_SCHEMA, TABLE_NAME, ORDINAL_POSITION, COLUMN_NAME, UPPER(COLUMN_TYPE) AS TYPE, IS_NULLABLE, COLUMN_DEFAULT, EXTRA, COLUMN_COMMENT 
         FROM INFORMATION_SCHEMA.COLUMNS 
         WHERE TABLE_SCHEMA = vTableSchema AND TABLE_NAME = vTableName
         ORDER BY TABLE_NAME ASC, ORDINAL_POSITION ASC;
 
-        /* 테이블 인덱스 정보 보기 */
-        SELECT TABLE_SCHEMA, TABLE_NAME, INDEX_NAME, (CASE NON_UNIQUE WHEN &apos;0&apos; THEN &apos;Unique&apos; WHEN &apos;1&apos; THEN &apos;Not Unique&apos; ELSE &apos;&apos; END) AS NON_UNIQUE, COLUMN_NAME, (CASE COLLATION WHEN &apos;A&apos; THEN &apos;ASC&apos; WHEN &apos;D&apos; THEN &apos;DESC&apos; ELSE &apos;&apos; END) AS COLLATION, CARDINALITY 
-        FROM INFORMATION_SCHEMA.STATISTICS 
-        WHERE TABLE_SCHEMA = vTableSchema AND TABLE_NAME = vTableName
-        ORDER BY TABLE_NAME ASC, INDEX_NAME DESC, SEQ_IN_INDEX ASC;
+        # 테이블 인덱스 정보 보기
+        SELECT stat.TABLE_SCHEMA, stat.TABLE_NAME, stat.INDEX_NAME, IFNULL(const.CONSTRAINT_TYPE, &apos;INDEX&apos;) AS INDEX_TYPE, 
+        (CASE stat.NON_UNIQUE WHEN &apos;0&apos; THEN &apos;Unique&apos; WHEN &apos;1&apos; THEN &apos;Not Unique&apos; ELSE &apos;&apos; END) AS NON_UNIQUE, 
+        stat.SEQ_IN_INDEX AS INDEX_SEQ, stat.COLUMN_NAME, (CASE stat.COLLATION WHEN &apos;A&apos; THEN &apos;ASC&apos; WHEN &apos;D&apos; THEN &apos;DESC&apos; ELSE &apos;&apos; END) AS COLLATION, stat.CARDINALITY 
+        FROM INFORMATION_SCHEMA.STATISTICS AS stat
+        LEFT OUTER JOIN INFORMATION_SCHEMA.TABLE_CONSTRAINTS AS const
+        ON stat.TABLE_SCHEMA = const.TABLE_SCHEMA AND stat.TABLE_NAME = const.TABLE_NAME AND stat.INDEX_NAME = const.CONSTRAINT_NAME
+        WHERE (const.CONSTRAINT_TYPE IN(&apos;PRIMARY KEY&apos;, &apos;UNIQUE&apos;) OR const.CONSTRAINT_TYPE IS NULL) AND stat.TABLE_SCHEMA = vTableSchema AND stat.TABLE_NAME = vTableName
+        ORDER BY stat.TABLE_SCHEMA ASC, stat.TABLE_NAME ASC, stat.INDEX_NAME DESC, stat.SEQ_IN_INDEX ASC;
 
-        /* 테이블 참조키 정보 보기 */
-        SELECT TABLE_SCHEMA, TABLE_NAME, CONSTRAINT_NAME, COLUMN_NAME, REFERENCED_TABLE_NAME, REFERENCED_COLUMN_NAME 
-        FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE 
-        WHERE TABLE_SCHEMA = vTableSchema AND TABLE_NAME = vTableName AND REFERENCED_TABLE_NAME IS NOT NULL
-        ORDER BY TABLE_NAME ASC, ORDINAL_POSITION ASC;
+        # 테이블 외래키 정보 보기
+        SELECT const.TABLE_SCHEMA, colusage.CONSTRAINT_NAME AS FOREIGNKEY_NAME, 
+        colusage.TABLE_NAME AS FOREIGNKEY_TABLE_NAME, colusage.COLUMN_NAME AS FOREIGNKEY_COLUMN_NAME, 
+        colusage.REFERENCED_TABLE_NAME AS REFERENCEKEY_TABLE_NAME, colusage.REFERENCED_COLUMN_NAME AS REFERENCEKEY_COLUMN_NAME,
+        refconst.UPDATE_RULE, refconst.DELETE_RULE
+        FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS AS const
+        INNER JOIN INFORMATION_SCHEMA.KEY_COLUMN_USAGE AS colusage
+        ON const.TABLE_SCHEMA = colusage.TABLE_SCHEMA AND const.TABLE_NAME = colusage.TABLE_NAME AND const.CONSTRAINT_NAME = colusage.CONSTRAINT_NAME
+        INNER JOIN INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS AS refconst
+        ON const.TABLE_SCHEMA = refconst.CONSTRAINT_SCHEMA AND const.TABLE_NAME = refconst.TABLE_NAME AND const.CONSTRAINT_NAME = refconst.CONSTRAINT_NAME
+        WHERE const.CONSTRAINT_TYPE IN(&apos;FOREIGN KEY&apos;) AND const.TABLE_SCHEMA = vTableSchema AND const.TABLE_NAME = vTableName
+        ORDER BY const.TABLE_SCHEMA ASC, const.TABLE_NAME ASC, const.CONSTRAINT_NAME ASC, colusage.ORDINAL_POSITION ASC;
 
-        /* 테이블 트리거 정보 보기 */
+        # 테이블 트리거 정보 보기
         SELECT TRIGGER_SCHEMA, EVENT_OBJECT_TABLE, TRIGGER_NAME 
         FROM INFORMATION_SCHEMA.TRIGGERS 
         WHERE TRIGGER_SCHEMA = vTableSchema AND EVENT_OBJECT_TABLE = vTableName
@@ -2010,8 +2041,8 @@ BEGIN
     CLOSE cur1;
  END</body>
 	</Procedure>
-	<Procedure tszName="TableSelect" desc="모든 테이블의 SELECT 필드 쿼리 만들기">
-		<Param tszName="vDbName" type="VARCHAR(100)" desc=""/>
+	<Procedure name="TableSelect" desc="모든 테이블의 SELECT 필드 쿼리 만들기">
+		<Param seq="1" mode="IN" name="vDbName" type="VARCHAR(100)" desc=""/>
 		<body>CREATE DEFINER=`root`@`localhost` PROCEDURE `TableSelect`(
 IN vDbName VARCHAR(100)
 )
@@ -2059,11 +2090,11 @@ BEGIN
    	SET @v_SQL = &apos;&apos;;
 END</body>
 	</Procedure>
-	<Function tszName="CharSplitFnc" desc="문자열 자르기 함수">
-		<Param tszName="" type="VARCHAR(8000)" desc=""/>
-		<Param tszName="vSource" type="VARCHAR(8000)" desc=""/>
-		<Param tszName="vDelim" type="CHAR(1)" desc=""/>
-		<Param tszName="vPos" type="INT" desc=""/>
+	<Function name="CharSplitFnc" desc="문자열 자르기 함수">
+		<Param seq="0" mode="RET" name="" type="VARCHAR(8000)" desc=""/>
+		<Param seq="1" mode="IN" name="vSource" type="VARCHAR(8000)" desc=""/>
+		<Param seq="2" mode="IN" name="vDelim" type="CHAR(1)" desc=""/>
+		<Param seq="3" mode="IN" name="vPos" type="INT" desc=""/>
 		<body>CREATE DEFINER=`root`@`localhost` FUNCTION `CharSplitFnc`(
     vSource VARCHAR(8000),
     vDelim CHAR(1),

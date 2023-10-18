@@ -25,8 +25,8 @@ int main()
 
 	CVector<CDBNode> dbNodes = ServerConfig.GetDBNodeVec();
 
-	DB_CLASS dbClass = DB_CLASS::DB_MSSQL;
-	//DB_CLASS dbClass = DB_CLASS::DB_MYSQL;
+	//DB_CLASS dbClass = DB_CLASS::DB_MSSQL;
+	DB_CLASS dbClass = DB_CLASS::DB_MYSQL;
 	auto findDBNode = std::find_if(dbNodes.begin(), dbNodes.end(), [=](const CDBNode& dbNode) { return dbNode.m_dbClass == dbClass; });
 	
 	GetDBDSNString(tszDSN, findDBNode->m_dbClass, findDBNode->m_tszDBHost, findDBNode->m_nPort, findDBNode->m_tszDBUserId, findDBNode->m_tszDBPasswd, findDBNode->m_tszDBName);
