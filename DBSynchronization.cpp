@@ -4,47 +4,33 @@
 #include "pch.h"
 #include <iostream>
 
-int main()
+void TestRenameObject(CDBSynchronizer dbSync)
 {
-#ifdef	_MSC_VER
-	_CrtSetDbgFlag(_CrtSetDbgFlag(_CRTDBG_REPORT_FLAG) | _CRTDBG_LEAK_CHECK_DF);
-#endif
+	if( dbSync.GetDBClass() == EDBClass::MSSQL )
+	{
+		//_tstring sql = GetTableColumnOption(dbSync.GetDBClass(), _T("INT"), false, _T("0"), true, 10, 1, _T(""), _T(""), _T("안녕하세요"));
+		//bool isFlag = dbSync.MSSQLRenameObject(_T("Table_2"), _T("Table_3"));
+		//isFlag = dbSync.MSSQLRenameObject(_T("Table_1.Text"), _T("Text3"), EMSSQLRenameObjectType::COLUMN);
+		//dbSync.MSSQLDBHelpText(EDBObjectType::PROCEDURE, _T("spa_LoginProcess"));
+		int32 system_count = 0;
+		int32 datatype_count = 0;
 
-#ifdef _UNICODE
-	setlocale(LC_ALL, "korean");
-#endif
+		std::unique_ptr<DBModel::DB_SYSTEMINFO[]> pDBSystemInfo;
+		std::unique_ptr<DBModel::DB_SYSTEM_DATATYPE[]> pDBSystemDataType;
 
-	CServerConfig	ServerConfig;
-
-	ServerConfig.Init(_T("server_config.json"));
-
-	TCHAR tszDSN[DATABASE_DSN_STRLEN];
-	TCHAR tszServerName[DATABASE_BUFFER_SIZE];
-	TCHAR tszDBMSName[DATABASE_BUFFER_SIZE];
-	TCHAR tszDBMSVersion[DATABASE_BUFFER_SIZE];
-
-	CVector<CDBNode> dbNodes = ServerConfig.GetDBNodeVec();
-
-	DB_CLASS dbClass = DB_CLASS::DB_MSSQL;
-	//DB_CLASS dbClass = DB_CLASS::DB_MYSQL;
-	auto findDBNode = std::find_if(dbNodes.begin(), dbNodes.end(), [=](const CDBNode& dbNode) { return dbNode.m_dbClass == dbClass; });
-	
-	GetDBDSNString(tszDSN, findDBNode->m_dbClass, findDBNode->m_tszDBHost, findDBNode->m_nPort, findDBNode->m_tszDBUserId, findDBNode->m_tszDBPasswd, findDBNode->m_tszDBName);
-
-	CBaseODBC BaseODBC(findDBNode->m_dbClass, tszDSN);
-	BaseODBC.Connect();
-	BaseODBC.DBMSInfo(tszServerName, tszDBMSName, tszDBMSVersion);
-
-	CDBSynchronizer dbSync(BaseODBC);
-	dbSync.Synchronize(_T("E:\\GitHub\\CPP\\DBSynchronization\\GameDB.xml"));
-	dbSync.PrintDBSchema();
-
-//	dbSync.DBToCreateXml(_T("E:\\GitHub\\CPP\\DBSynchronization\\GameDB2.xml"));
+		dbSync.GetDBSystemInfo(system_count, pDBSystemInfo);
+		dbSync.GetDBSystemDataTypeInfo(datatype_count, pDBSystemDataType);
+	}
+	else
+	{
+		//dbSync.MYSQLDBShowTable(_T("tblb_bbs"));
+		//dbSync.MYSQLDBShowObject(EDBObjectType::PROCEDURE, _T("BbsConfigProcess"));
+	}
 }
 
 void TestComment(CDBSynchronizer dbSync)
 {
-	if( dbSync.GetDBClass() == DB_CLASS::DB_MSSQL )
+	if( dbSync.GetDBClass() == EDBClass::MSSQL )
 	{
 		_tstring ret = dbSync.MSSQLGetTableColumnComment(_T("tbla_Account"), _T(""));
 		ret = dbSync.MSSQLGetTableColumnComment(_T("tbla_Account"), _T("Idx"));
@@ -72,6 +58,46 @@ void TestComment(CDBSynchronizer dbSync)
 		dbSync.MSSQLProcessFunctionParamComment(_T("udf_Char_SplitFnc"), _T(""), _T("Split 함수 구현(공백문자 제거)"));
 		dbSync.MSSQLProcessFunctionParamComment(_T("udf_Char_SplitFnc"), _T("@v_Delimiter"), _T("구분자"));
 	}
+}
+
+int main()
+{
+#ifdef	_MSC_VER
+	_CrtSetDbgFlag(_CrtSetDbgFlag(_CRTDBG_REPORT_FLAG) | _CRTDBG_LEAK_CHECK_DF);
+#endif
+	 
+#ifdef _UNICODE
+	setlocale(LC_ALL, "korean");
+#endif
+
+	CServerConfig	ServerConfig;
+
+	ServerConfig.Init(_T("server_config.json"));
+
+	TCHAR tszDSN[DATABASE_DSN_STRLEN];
+	TCHAR tszServerName[DATABASE_BUFFER_SIZE];
+	TCHAR tszDBMSName[DATABASE_BUFFER_SIZE];
+	TCHAR tszDBMSVersion[DATABASE_BUFFER_SIZE];
+
+	CVector<CDBNode> dbNodes = ServerConfig.GetDBNodeVec();
+
+	EDBClass dbClass = EDBClass::MSSQL;
+	//EDBClass dbClass = EDBClass::MYSQL;
+	auto findDBNode = std::find_if(dbNodes.begin(), dbNodes.end(), [=](const CDBNode& dbNode) { return dbNode.m_dbClass == dbClass; });
+	
+	GetDBDSNString(tszDSN, findDBNode->m_dbClass, findDBNode->m_tszDBHost, findDBNode->m_nPort, findDBNode->m_tszDBUserId, findDBNode->m_tszDBPasswd, findDBNode->m_tszDBName);
+
+	CBaseODBC BaseODBC(findDBNode->m_dbClass, tszDSN);
+	BaseODBC.Connect();
+	BaseODBC.DBMSInfo(tszServerName, tszDBMSName, tszDBMSVersion);
+
+	CDBSynchronizer dbSync(BaseODBC);
+ 	TestRenameObject(dbSync);
+	
+	//dbSync.Synchronize(_T("E:\\GitHub\\CPP\\DBSynchronization\\GameDB.xml"));
+	//dbSync.PrintDBSchema();
+
+	//dbSync.DBToCreateXml(_T("E:\\GitHub\\CPP\\DBSynchronization\\GameDB2.xml"));
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴

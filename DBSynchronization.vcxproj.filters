@@ -137,6 +137,9 @@
     <ClInclude Include="..\Library\UtilCore\BaseSQL.h">
       <Filter>UtilCore</Filter>
     </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\DBSyncBind.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Library\UtilCore\BaseODBC.inl">

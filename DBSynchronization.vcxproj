@@ -213,6 +213,7 @@
     <ClInclude Include="..\Library\UtilCore\CustomAllocator.h" />
     <ClInclude Include="..\Library\UtilCore\DBBind.h" />
     <ClInclude Include="..\Library\UtilCore\DBModel.h" />
+    <ClInclude Include="..\Library\UtilCore\DBSyncBind.h" />
     <ClInclude Include="..\Library\UtilCore\DBSynchronizer.h" />
     <ClInclude Include="..\Library\UtilCore\JSONBase.h" />
     <ClInclude Include="..\Library\UtilCore\JSONParser.h" />
