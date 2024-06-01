@@ -4,59 +4,166 @@
 #include "pch.h"
 #include <iostream>
 
-void TestRenameObject(CDBSynchronizer dbSync)
+void TestDBInfo(CDBQueryProcess dbProcess)
 {
-	if( dbSync.GetDBClass() == EDBClass::MSSQL )
+	int32 iDBCount = 0;
+	int32 iSystemCount = 0;
+	int32 iDatatypeCount = 0;
+
+	std::unique_ptr<DB_INFO[]> pDBList;
+	std::unique_ptr<DB_SYSTEM_INFO[]> pDBSystemInfo;
+	std::unique_ptr<DB_SYSTEM_DATATYPE[]> pDBSystemDataType;
+
+	dbProcess.GetDatabaseList(iDBCount, pDBList);
+	for( int i = 0; i < iDBCount; i++ )
+	{
+		_tprintf(_T("%s\r\n"), pDBList[i].tszDBName);
+	}
+
+	dbProcess.GetDBSystemInfo(iSystemCount, pDBSystemInfo);
+	for( int i = 0; i < iSystemCount; i++ )
+	{
+		_tprintf(_T("%s, %s, %s\r\n"), pDBSystemInfo[i].tszVersion, pDBSystemInfo[i].tszCharacterSet, pDBSystemInfo[i].tszCollation);
+	}
+
+	dbProcess.GetDBSystemDataTypeInfo(iDatatypeCount, pDBSystemDataType);
+}
+
+void TestMSSQLTableIndexFragmentationCheck(CDBQueryProcess dbProcess)
+{
+	int32 iIndexCount = 0;
+	std::unique_ptr<MSSQL_INDEX_FRAGMENTATION[]> pRowStoreIndexFragmentation;
+
+	dbProcess.MSSQLGetRowStoreIndexFragmentationCheck(_T(""), iIndexCount, pRowStoreIndexFragmentation);
+	for( int i = 0; i < iIndexCount; i++ )
+	{
+		_tprintf(_T("%d, %s, %s, %d, %s, %s, %d, %f, %f, %d, %s\r\n")
+			, pRowStoreIndexFragmentation[i].ObjectId, pRowStoreIndexFragmentation[i].tszSchemaName, pRowStoreIndexFragmentation[i].tszTableName, pRowStoreIndexFragmentation[i].IndexId
+			, pRowStoreIndexFragmentation[i].tszIndexName, pRowStoreIndexFragmentation[i].tszIndexType, pRowStoreIndexFragmentation[i].PartitionNum, pRowStoreIndexFragmentation[i].AvgFragmentationInPercent
+			, pRowStoreIndexFragmentation[i].AvgPageSpaceUsedInPercent, pRowStoreIndexFragmentation[i].PageCount, pRowStoreIndexFragmentation[i].tszAllocUnitTypeDesc);
+	}
+
+	iIndexCount = 0;
+	std::unique_ptr<MSSQL_INDEX_FRAGMENTATION[]> pColumnStoreIndexFragmentation;
+
+	dbProcess.MSSQLGetColumnStoreIndexFragmentationCheck(_T(""), iIndexCount, pColumnStoreIndexFragmentation);
+	for( int i = 0; i < iIndexCount; i++ )
+	{
+		_tprintf(_T("%d, %s, %s, %d, %s, %s, %f\r\n")
+			, pColumnStoreIndexFragmentation[i].ObjectId, pColumnStoreIndexFragmentation[i].tszSchemaName, pColumnStoreIndexFragmentation[i].tszTableName, pColumnStoreIndexFragmentation[i].IndexId
+			, pColumnStoreIndexFragmentation[i].tszIndexName, pColumnStoreIndexFragmentation[i].tszIndexType, pColumnStoreIndexFragmentation[i].AvgFragmentationInPercent);
+	}
+}
+
+void TestMSSQLIndexOptionProcess(CDBQueryProcess dbProcess)
+{
+	unordered_map<_tstring, _tstring> setIndexOptions;
+	setIndexOptions.insert(make_pair(_T("STATISTICS_NORECOMPUTE"), _T("ON")));
+	setIndexOptions.insert(make_pair(_T("IGNORE_DUP_KEY"), _T("ON")));
+	setIndexOptions.insert(make_pair(_T("ALLOW_PAGE_LOCKS"), _T("ON")));
+
+	dbProcess.MSSQLIndexOptionSet(_T("dbo"), _T("Account"), _T("ix_Account_Name"), setIndexOptions);
+
+	dbProcess.MSSQLAlterIndexFragmentationNonOption(_T("dbo"), _T("Account"), _T("ix_Account_Name"), EMSSQLIndexFragmentation::REBUILD);
+	dbProcess.MSSQLAlterIndexFragmentationNonOption(_T("dbo"), _T("Account"), _T("ix_Account_Name"), EMSSQLIndexFragmentation::REORGANIZE);
+	dbProcess.MSSQLAlterIndexFragmentationNonOption(_T("dbo"), _T("Account"), _T("ix_Account_Name"), EMSSQLIndexFragmentation::DISABLE);
+
+	unordered_map<_tstring, _tstring> rebuildIndexOptions;
+	rebuildIndexOptions.insert(make_pair(_T("FILLFACTOR"), _T("80")));
+	rebuildIndexOptions.insert(make_pair(_T("SORT_IN_TEMPDB"), _T("ON")));
+	rebuildIndexOptions.insert(make_pair(_T("STATISTICS_NORECOMPUTE"), _T("ON")));
+
+	dbProcess.MSSQLAlterIndexFragmentationOption(_T("dbo"), _T("Account"), _T(""), EMSSQLIndexFragmentation::REBUILD, rebuildIndexOptions);
+}
+
+void TestMYSQLCharacterSetCollationEngine(CDBQueryProcess dbProcess)
+{
+	int32 iCharsetCount = 0;
+	int32 iStorageEngineCount = 0;
+
+	std::unique_ptr<MYSQL_CHARACTER_SET[]> pCharacterSet;
+	std::unique_ptr<MYSQL_COLLATION[]> pCollation;
+	std::unique_ptr<MYSQL_CHARACTER_SET_COLLATION[]> pCharacterSetCollation;
+	std::unique_ptr<MYSQL_STORAGE_ENGINE[]> pStorageEngine;
+
+	dbProcess.MYSQLGetCharacterSets(_T(""), iCharsetCount, pCharacterSet);
+	for( int i = 0; i < iCharsetCount; i++ )
+	{
+		_tprintf(_T("%s, %s\r\n"), pCharacterSet[i].tszCharacterSet, pCharacterSet[i].tszDefaultCollation);
+	}
+
+	dbProcess.MYSQLGetCollations(_T(""), iCharsetCount, pCollation);
+	for( int i = 0; i < iCharsetCount; i++ )
+	{
+		_tprintf(_T("%s, %s\r\n"), pCollation[i].tszCharacterSet, pCollation[i].tszCollation);
+	}
+
+	dbProcess.MYSQLGetCharacterSetCollations(_T(""), iCharsetCount, pCharacterSetCollation);
+	for( int i = 0; i < iCharsetCount; i++ )
+	{
+		_tprintf(_T("%s, %s\r\n"), pCharacterSetCollation[i].tszCharacterSet, pCharacterSetCollation[i].tszCollation);
+	}
+
+	dbProcess.MYSQLGetStorageEngines(iStorageEngineCount, pStorageEngine);
+	for( int i = 0; i < iStorageEngineCount; i++ )
+	{
+		_tprintf(_T("%s\r\n"), pStorageEngine[i].tszEngine);
+	}
+}
+
+void TestMYSQLTableFragmentationCheck(CDBQueryProcess dbProcess)
+{
+	int32 iTableCount = 0;
+	std::unique_ptr<MYSQL_TABLE_FRAGMENTATION[]> pTableFragmentation;
+
+	dbProcess.MYSQLGetTableFragmentationCheck(_T(""), iTableCount, pTableFragmentation);
+}
+
+void TestRenameObject(CDBQueryProcess dbProcess)
+{
+	if( dbProcess.GetDBClass() == EDBClass::MSSQL )
 	{
 		//_tstring sql = GetTableColumnOption(dbSync.GetDBClass(), _T("INT"), false, _T("0"), true, 10, 1, _T(""), _T(""), _T("안녕하세요"));
 		//bool isFlag = dbSync.MSSQLRenameObject(_T("Table_2"), _T("Table_3"));
 		//isFlag = dbSync.MSSQLRenameObject(_T("Table_1.Text"), _T("Text3"), EMSSQLRenameObjectType::COLUMN);
-		//dbSync.MSSQLDBHelpText(EDBObjectType::PROCEDURE, _T("spa_LoginProcess"));
-		int32 system_count = 0;
-		int32 datatype_count = 0;
-
-		std::unique_ptr<DBModel::DB_SYSTEMINFO[]> pDBSystemInfo;
-		std::unique_ptr<DBModel::DB_SYSTEM_DATATYPE[]> pDBSystemDataType;
-
-		dbSync.GetDBSystemInfo(system_count, pDBSystemInfo);
-		dbSync.GetDBSystemDataTypeInfo(datatype_count, pDBSystemDataType);
+		//dbSync.MSSQLDBHelpText(EDBObjectType::PROCEDURE, _T("dbo"), _T("spa_LoginProcess"));
 	}
 	else
 	{
-		//dbSync.MYSQLDBShowTable(_T("tblb_bbs"));
-		//dbSync.MYSQLDBShowObject(EDBObjectType::PROCEDURE, _T("BbsConfigProcess"));
+		//dbProcess.MYSQLDBShowTable(_T("tblb_bbs"));
+		//dbProcess.MYSQLDBShowObject(EDBObjectType::PROCEDURE, _T("BbsConfigProcess"));
 	}
 }
 
-void TestComment(CDBSynchronizer dbSync)
+void TestComment(CDBQueryProcess dbProcess)
 {
-	if( dbSync.GetDBClass() == EDBClass::MSSQL )
+	if( dbProcess.GetDBClass() == EDBClass::MSSQL )
 	{
-		_tstring ret = dbSync.MSSQLGetTableColumnComment(_T("tbla_Account"), _T(""));
-		ret = dbSync.MSSQLGetTableColumnComment(_T("tbla_Account"), _T("Idx"));
+		_tstring ret = dbProcess.MSSQLGetTableColumnComment(_T("dbo"), _T("tbla_Account"), _T(""));
+		ret = dbProcess.MSSQLGetTableColumnComment(_T("dbo"), _T("tbla_Account"), _T("Idx"));
 
-		dbSync.MSSQLProcessTableColumnComment(_T("TestB"), _T(""), _T("테스트B"));
-		dbSync.MSSQLProcessTableColumnComment(_T("TestB"), _T("userSerialNo"), _T("테스트B_userSerialNo"));
-		dbSync.MSSQLProcessTableColumnComment(_T("TestB"), _T(""), _T(""));
-		dbSync.MSSQLProcessTableColumnComment(_T("TestB"), _T("userSerialNo"), _T(""));
+		dbProcess.MSSQLProcessTableColumnComment(_T("dbo"), _T("TestB"), _T(""), _T("테스트B"));
+		dbProcess.MSSQLProcessTableColumnComment(_T("dbo"), _T("TestB"), _T("userSerialNo"), _T("테스트B_userSerialNo"));
+		dbProcess.MSSQLProcessTableColumnComment(_T("dbo"), _T("TestB"), _T(""), _T(""));
+		dbProcess.MSSQLProcessTableColumnComment(_T("dbo"), _T("TestB"), _T("userSerialNo"), _T(""));
 
-		ret = dbSync.MSSQLGetProcedureParamComment(_T("spa_LoginProcess"), _T(""));
-		ret = dbSync.MSSQLGetProcedureParamComment(_T("spa_LoginProcess"), _T("@v_UserId"));
-		dbSync.MSSQLProcessProcedureParamComment(_T("spa_LoginProcess"), _T(""), _T("유저 로그인 프로세스__111"));
-		dbSync.MSSQLProcessProcedureParamComment(_T("spa_LoginProcess"), _T("@v_UserId"), _T("로그인 ID__111"));
-		dbSync.MSSQLProcessProcedureParamComment(_T("spa_LoginProcess"), _T(""), _T(""));
-		dbSync.MSSQLProcessProcedureParamComment(_T("spa_LoginProcess"), _T("@v_UserId"), _T(""));
-		dbSync.MSSQLProcessProcedureParamComment(_T("spa_LoginProcess"), _T(""), _T("유저 로그인 프로세스"));
-		dbSync.MSSQLProcessProcedureParamComment(_T("spa_LoginProcess"), _T("@v_UserId"), _T("로그인 ID"));
+		ret = dbProcess.MSSQLGetProcedureParamComment(_T("dbo"), _T("spa_LoginProcess"), _T(""));
+		ret = dbProcess.MSSQLGetProcedureParamComment(_T("dbo"), _T("spa_LoginProcess"), _T("@v_UserId"));
+		dbProcess.MSSQLProcessProcedureParamComment(_T("dbo"), _T("spa_LoginProcess"), _T(""), _T("유저 로그인 프로세스__111"));
+		dbProcess.MSSQLProcessProcedureParamComment(_T("dbo"), _T("spa_LoginProcess"), _T("@v_UserId"), _T("로그인 ID__111"));
+		dbProcess.MSSQLProcessProcedureParamComment(_T("dbo"), _T("spa_LoginProcess"), _T(""), _T(""));
+		dbProcess.MSSQLProcessProcedureParamComment(_T("dbo"), _T("spa_LoginProcess"), _T("@v_UserId"), _T(""));
+		dbProcess.MSSQLProcessProcedureParamComment(_T("dbo"), _T("spa_LoginProcess"), _T(""), _T("유저 로그인 프로세스"));
+		dbProcess.MSSQLProcessProcedureParamComment(_T("dbo"), _T("spa_LoginProcess"), _T("@v_UserId"), _T("로그인 ID"));
 
-		ret = dbSync.MSSQLGetFunctionParamComment(_T("udf_Char_SplitFnc"), _T(""));
-		ret = dbSync.MSSQLGetFunctionParamComment(_T("udf_Char_SplitFnc"), _T("@v_Delimiter"));
-		dbSync.MSSQLProcessFunctionParamComment(_T("udf_Char_SplitFnc"), _T(""), _T("Split 함수 구현(공백문자 제거)__111"));
-		dbSync.MSSQLProcessFunctionParamComment(_T("udf_Char_SplitFnc"), _T("@v_Delimiter"), _T("구분자__111"));
-		dbSync.MSSQLProcessFunctionParamComment(_T("udf_Char_SplitFnc"), _T(""), _T(""));
-		dbSync.MSSQLProcessFunctionParamComment(_T("udf_Char_SplitFnc"), _T("@v_Delimiter"), _T(""));
-		dbSync.MSSQLProcessFunctionParamComment(_T("udf_Char_SplitFnc"), _T(""), _T("Split 함수 구현(공백문자 제거)"));
-		dbSync.MSSQLProcessFunctionParamComment(_T("udf_Char_SplitFnc"), _T("@v_Delimiter"), _T("구분자"));
+		ret = dbProcess.MSSQLGetFunctionParamComment(_T("dbo"), _T("udf_Char_SplitFnc"), _T(""));
+		ret = dbProcess.MSSQLGetFunctionParamComment(_T("dbo"), _T("udf_Char_SplitFnc"), _T("@v_Delimiter"));
+		dbProcess.MSSQLProcessFunctionParamComment(_T("dbo"), _T("udf_Char_SplitFnc"), _T(""), _T("Split 함수 구현(공백문자 제거)__111"));
+		dbProcess.MSSQLProcessFunctionParamComment(_T("dbo"), _T("udf_Char_SplitFnc"), _T("@v_Delimiter"), _T("구분자__111"));
+		dbProcess.MSSQLProcessFunctionParamComment(_T("dbo"), _T("udf_Char_SplitFnc"), _T(""), _T(""));
+		dbProcess.MSSQLProcessFunctionParamComment(_T("dbo"), _T("udf_Char_SplitFnc"), _T("@v_Delimiter"), _T(""));
+		dbProcess.MSSQLProcessFunctionParamComment(_T("dbo"), _T("udf_Char_SplitFnc"), _T(""), _T("Split 함수 구현(공백문자 제거)"));
+		dbProcess.MSSQLProcessFunctionParamComment(_T("dbo"), _T("udf_Char_SplitFnc"), _T("@v_Delimiter"), _T("구분자"));
 	}
 }
 
@@ -91,8 +198,15 @@ int main()
 	BaseODBC.Connect();
 	BaseODBC.DBMSInfo(tszServerName, tszDBMSName, tszDBMSVersion);
 
-	CDBSynchronizer dbSync(BaseODBC);
- 	TestRenameObject(dbSync);
+	CDBQueryProcess dbProcess(BaseODBC);
+	//TestDBInfo(dbProcess);
+	//TestMSSQLTableIndexFragmentationCheck(dbProcess);
+	TestMSSQLIndexOptionProcess(dbProcess);
+
+	//TestMYSQLCharacterSetCollationEngine(dbProcess);
+	//TestMYSQLTableFragmentationCheck(dbProcess);
+
+	//TestRenameObject(dbProcess);
 	
 	//dbSync.Synchronize(_T("E:\\GitHub\\CPP\\DBSynchronization\\GameDB.xml"));
 	//dbSync.PrintDBSchema();

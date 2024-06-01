@@ -183,6 +183,7 @@
     <ClCompile Include="..\Library\UtilCore\CustomAllocator.cpp" />
     <ClCompile Include="..\Library\UtilCore\DBBind.cpp" />
     <ClCompile Include="..\Library\UtilCore\DBModel.cpp" />
+    <ClCompile Include="..\Library\UtilCore\DBQueryProcess.cpp" />
     <ClCompile Include="..\Library\UtilCore\DBSynchronizer.cpp" />
     <ClCompile Include="..\Library\UtilCore\JSONBase.cpp" />
     <ClCompile Include="..\Library\UtilCore\JSONParser.cpp" />
@@ -207,12 +208,16 @@
     <ClInclude Include="..\Library\UtilCore\BaseGlobal.h" />
     <ClInclude Include="..\Library\UtilCore\BaseMacro.h" />
     <ClInclude Include="..\Library\UtilCore\BaseRedefineDataType.h" />
-    <ClInclude Include="..\Library\UtilCore\BaseSQL.h" />
     <ClInclude Include="..\Library\UtilCore\CommonUtil.h" />
     <ClInclude Include="..\Library\UtilCore\Containers.h" />
     <ClInclude Include="..\Library\UtilCore\CustomAllocator.h" />
     <ClInclude Include="..\Library\UtilCore\DBBind.h" />
+    <ClInclude Include="..\Library\UtilCore\DBEnum.h" />
     <ClInclude Include="..\Library\UtilCore\DBModel.h" />
+    <ClInclude Include="..\Library\UtilCore\DBMSSQLQuery.h" />
+    <ClInclude Include="..\Library\UtilCore\DBMYSQLQuery.h" />
+    <ClInclude Include="..\Library\UtilCore\DBQueryProcess.h" />
+    <ClInclude Include="..\Library\UtilCore\DBSQLQuery.h" />
     <ClInclude Include="..\Library\UtilCore\DBSyncBind.h" />
     <ClInclude Include="..\Library\UtilCore\DBSynchronizer.h" />
     <ClInclude Include="..\Library\UtilCore\JSONBase.h" />

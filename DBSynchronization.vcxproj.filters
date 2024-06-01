@@ -59,6 +59,9 @@
     <ClCompile Include="..\Library\UtilCore\JSONParser.cpp">
       <Filter>UtilCore</Filter>
     </ClCompile>
+    <ClCompile Include="..\Library\UtilCore\DBQueryProcess.cpp">
+      <Filter>UtilCore</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Library\UtilCore\BaseODBC.h">
@@ -134,10 +137,22 @@
     <ClInclude Include="..\Library\UtilCore\JSONParser.h">
       <Filter>UtilCore</Filter>
     </ClInclude>
-    <ClInclude Include="..\Library\UtilCore\BaseSQL.h">
+    <ClInclude Include="..\Library\UtilCore\DBSyncBind.h">
       <Filter>UtilCore</Filter>
     </ClInclude>
-    <ClInclude Include="..\Library\UtilCore\DBSyncBind.h">
+    <ClInclude Include="..\Library\UtilCore\DBSQLQuery.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\DBMSSQLQuery.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\DBMYSQLQuery.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\DBQueryProcess.h">
+      <Filter>UtilCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\DBEnum.h">
       <Filter>UtilCore</Filter>
     </ClInclude>
   </ItemGroup>

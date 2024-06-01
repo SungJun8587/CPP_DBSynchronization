@@ -41,9 +41,13 @@
 #include <ServerConnectInfo.h>
 #include <ServerConfig.h>
 #include <Log.h>
-#include <BaseSQL.h>
+#include <DBEnum.h>
+#include <DBSQLQuery.h>
+#include <DBMSSQLQuery.h>
+#include <DBMYSQLQuery.h>
 #include <BaseODBC.h>
 #include <OdbcConnPool.h>
+#include <DBQueryProcess.h>
 #include <DBSynchronizer.h>
 
 #endif //PCH_H
