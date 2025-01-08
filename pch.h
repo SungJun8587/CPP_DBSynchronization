@@ -19,35 +19,56 @@
 // 여기에 미리 컴파일하려는 헤더 추가
 #include <BaseDefine.h>
 #include <BaseRedefineDataType.h>
+#include <BaseTLS.h>
 #include <BaseMacro.h>
-#include <BaseGlobal.h>
 
-#pragma comment(lib, LIB_NAME("libtcmalloc_minimal"))
+#ifdef _WIN64
+#	ifdef _DEBUG
+#pragma comment(lib, LIB_NAME("../Library/ExternalLib/Bin/x64/Debug/libtcmalloc_minimal"))
+#	else
+#pragma comment(lib, LIB_NAME("../Library/ExternalLib/Bin/x64/Release/libtcmalloc_minimal"))
+#	endif
+#else
+#	ifdef _DEBUG
+#pragma comment(lib, LIB_NAME("../Library/ExternalLib/Bin/Win32/Debug/libtcmalloc_minimal"))
+#	else
+#pragma comment(lib, LIB_NAME("../Library/ExternalLib/Bin/Win32/Release/libtcmalloc_minimal"))
+#	endif
+#endif
 
 #include <gperftools/tcmalloc.h>
 
-#include <CommonUtil.h>
-#include <StringUtil.h>
-#include <ShellUtil.h>
-#include <ObjectPool.h>
-#include <CustomAllocator.h>
-#include <Containers.h>
-#include <LockGuard.h>
-#include <CriticalSection.h>
-#include <Singleton.h>
-#include <JSONBase.h>
-#include <JSONParser.h>
-#include <XMLParser.h>
+#include <Memory/MemoryPool.h>
+#include <Memory/Memory.h>
+#include <Memory/CustomAllocator.h>
+#include <Memory/Containers.h>
+#include <Memory/ObjectPool.h>
+#include <Memory/Singleton.h>
+#include <Memory/MemBuffer.h>
+
+#include <Util/StringUtil.h>
+#include <Util/FileUtil.h>
+#include <Util/ShellUtil.h>
+#include <Util/ConvertCharset.h>
+#include <Util/CommonUtil.h>
+#include <Util/Log.h>
+
+#include <BaseGlobal.h>
+
+#include <JSON/JSONBase.h>
+#include <JSON/JSONParser.h>
+
+#include <XML/XMLParser.h>
+
 #include <ServerConnectInfo.h>
 #include <ServerConfig.h>
-#include <Log.h>
-#include <DBEnum.h>
-#include <DBSQLQuery.h>
-#include <DBMSSQLQuery.h>
-#include <DBMYSQLQuery.h>
-#include <BaseODBC.h>
-#include <OdbcConnPool.h>
-#include <DBQueryProcess.h>
-#include <DBSynchronizer.h>
+
+#include <DB/DBCommon.h>
+#include <DB/BaseODBC.h>
+#include <DB/DBBind.h>
+#include <DB/DBModel.h>
+#include <DB/DBSyncBind.h>
+#include <DB/DBQueryProcess.h>
+#include <DB/DBSynchronizer.h>
 
 #endif //PCH_H

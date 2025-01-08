@@ -11,7 +11,7 @@ void TestDBInfo(CDBQueryProcess dbProcess)
 	int32 iDatatypeCount = 0;
 
 	std::unique_ptr<DB_INFO[]> pDBList;
-	std::unique_ptr<DB_SYSTEM_INFO[]> pDBSystemInfo;
+	std::unique_ptr<DB_SYSTEM_INFO> pDBSystemInfo;
 	std::unique_ptr<DB_SYSTEM_DATATYPE[]> pDBSystemDataType;
 
 	dbProcess.GetDatabaseList(iDBCount, pDBList);
@@ -21,10 +21,7 @@ void TestDBInfo(CDBQueryProcess dbProcess)
 	}
 
 	dbProcess.GetDBSystemInfo(iSystemCount, pDBSystemInfo);
-	for( int i = 0; i < iSystemCount; i++ )
-	{
-		_tprintf(_T("%s, %s, %s\r\n"), pDBSystemInfo[i].tszVersion, pDBSystemInfo[i].tszCharacterSet, pDBSystemInfo[i].tszCollation);
-	}
+	_tprintf(_T("%s, %s, %s\r\n"), pDBSystemInfo->tszVersion, pDBSystemInfo->tszCharacterSet, pDBSystemInfo->tszCollation);
 
 	dbProcess.GetDBSystemDataTypeInfo(iDatatypeCount, pDBSystemDataType);
 }
@@ -123,7 +120,7 @@ void TestRenameObject(CDBQueryProcess dbProcess)
 {
 	if( dbProcess.GetDBClass() == EDBClass::MSSQL )
 	{
-		//_tstring sql = GetTableColumnOption(dbSync.GetDBClass(), _T("INT"), false, _T("0"), true, 10, 1, _T(""), _T(""), _T("안녕하세요"));
+		_tstring sql = MSSQLGetTableColumnOption(_T("INT"), false, true, 10, 1, _T(""));
 		//bool isFlag = dbSync.MSSQLRenameObject(_T("Table_2"), _T("Table_3"));
 		//isFlag = dbSync.MSSQLRenameObject(_T("Table_1.Text"), _T("Text3"), EMSSQLRenameObjectType::COLUMN);
 		//dbSync.MSSQLDBHelpText(EDBObjectType::PROCEDURE, _T("dbo"), _T("spa_LoginProcess"));
@@ -167,6 +164,24 @@ void TestComment(CDBQueryProcess dbProcess)
 	}
 }
 
+void TestORACLEIndexFragmentationCheck(CDBQueryProcess dbProcess)
+{
+	int32 iCount = 0;
+	TCHAR tszIndexName[DATABASE_OBJECT_NAME_STRLEN];
+
+	std::unique_ptr<ORACLE_INDEX_FRAGMENTATION[]> pIndexFragmentation;
+	std::unique_ptr<ORACLE_INDEX_STAT_FRAGMENTATION[]> pIndexStatFragmentation;
+
+	dbProcess.ORACLEGetAnalyzeIndexFragmentationCheck(tszIndexName);
+	dbProcess.ORACLEGetIndexFragmentationCheck(tszIndexName, iCount, pIndexFragmentation);
+
+	/*
+	dbProcess.ORACLEGetAnalyzeIndexStatFragmentationCheck(tszIndexName);
+	dbProcess.ORACLEGetIndexStatFragmentationCheck(tszIndexName, iCount, pIndexStatFragmentation);
+	dbProcess.ORACLEGetIndexRebuild(tszIndexName);
+	*/
+}
+
 int main()
 {
 #ifdef	_MSC_VER
@@ -181,7 +196,6 @@ int main()
 
 	ServerConfig.Init(_T("server_config.json"));
 
-	TCHAR tszDSN[DATABASE_DSN_STRLEN];
 	TCHAR tszServerName[DATABASE_BUFFER_SIZE];
 	TCHAR tszDBMSName[DATABASE_BUFFER_SIZE];
 	TCHAR tszDBMSVersion[DATABASE_BUFFER_SIZE];
@@ -190,28 +204,32 @@ int main()
 
 	EDBClass dbClass = EDBClass::MSSQL;
 	//EDBClass dbClass = EDBClass::MYSQL;
+	//EDBClass dbClass = EDBClass::ORACLE;
+	
 	auto findDBNode = std::find_if(dbNodes.begin(), dbNodes.end(), [=](const CDBNode& dbNode) { return dbNode.m_dbClass == dbClass; });
 	
-	GetDBDSNString(tszDSN, findDBNode->m_dbClass, findDBNode->m_tszDBHost, findDBNode->m_nPort, findDBNode->m_tszDBUserId, findDBNode->m_tszDBPasswd, findDBNode->m_tszDBName);
-
-	CBaseODBC BaseODBC(findDBNode->m_dbClass, tszDSN);
+	CBaseODBC BaseODBC(findDBNode->m_dbClass, findDBNode->m_tszDSN);
 	BaseODBC.Connect();
-	BaseODBC.DBMSInfo(tszServerName, tszDBMSName, tszDBMSVersion);
+	//BaseODBC.DBMSInfo(tszServerName, tszDBMSName, tszDBMSVersion);
+
+	//CDBSynchronizer dbSync(BaseODBC);
+	//dbSync.Synchronize(_T("E:\\GitHub\\CPP\\DBSynchronization\\GameDB.xml"));
+	//dbSync.PrintDBSchema();
+	//dbSync.DBToCreateXml(_T("E:\\GitHub\\CPP\\DBSynchronization\\GameDB2.xml"));
 
 	CDBQueryProcess dbProcess(BaseODBC);
-	//TestDBInfo(dbProcess);
+	TestDBInfo(dbProcess);
 	//TestMSSQLTableIndexFragmentationCheck(dbProcess);
-	TestMSSQLIndexOptionProcess(dbProcess);
+	//TestMSSQLIndexOptionProcess(dbProcess);
 
 	//TestMYSQLCharacterSetCollationEngine(dbProcess);
 	//TestMYSQLTableFragmentationCheck(dbProcess);
 
 	//TestRenameObject(dbProcess);
-	
-	//dbSync.Synchronize(_T("E:\\GitHub\\CPP\\DBSynchronization\\GameDB.xml"));
-	//dbSync.PrintDBSchema();
 
-	//dbSync.DBToCreateXml(_T("E:\\GitHub\\CPP\\DBSynchronization\\GameDB2.xml"));
+	//TestORACLEIndexFragmentationCheck(dbProcess);
+
+	return 0;
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
