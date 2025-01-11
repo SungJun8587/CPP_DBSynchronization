@@ -48,8 +48,8 @@
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>bin\$(Platform)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)64D</TargetName>
-    <IncludePath>E:\GitHub\CPP\Library\UtilCore;E:\GitHub\CPP\Library\ExternalLib\gperftools-gperftools-2.12\src\windows;E:\GitHub\CPP\Library\ExternalLib\mysql-8.0.33-winx64\include;E:\GitHub\CPP\Library\ExternalLib\rapidjson-master\include;E:\GitHub\CPP\Library\ExternalLib\JSON-Utilities-master\source;E:\GitHub\CPP\Library\ExternalLib\RapidXML-master\RapidXML;$(ProjectDir);$(IncludePath)</IncludePath>
-    <LibraryPath>E:\GitHub\CPP\Library\ExternalLib\Bin\x64\Debug;E:\GitHub\CPP\Library\ExternalLib\mysql-8.0.33-winx64\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>E:\GitHub\CPP\Library\UtilCore;E:\GitHub\CPP\Library\ExternalLib\rapidjson-master\include;E:\GitHub\CPP\Library\ExternalLib\JSON-Utilities-master\source;E:\GitHub\CPP\Library\ExternalLib\RapidXML-master\RapidXML;E:\GitHub\CPP\Library\ExternalLib\xlnt-master\include;E:\GitHub\CPP\Library\ExternalLib\libiconv-for-Windows-master\include;$(ProjectDir);$(IncludePath)</IncludePath>
+    <LibraryPath>E:\GitHub\CPP\Library\ExternalLib\Bin;$(LibraryPath)</LibraryPath>
     <SourcePath>$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -57,8 +57,8 @@
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>bin\$(Platform)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)64</TargetName>
-    <IncludePath>E:\GitHub\CPP\Library\UtilCore;E:\GitHub\CPP\Library\ExternalLib\gperftools-gperftools-2.12\src\windows;E:\GitHub\CPP\Library\ExternalLib\mysql-8.0.33-winx64\include;E:\GitHub\CPP\Library\ExternalLib\rapidjson-master\include;E:\GitHub\CPP\Library\ExternalLib\JSON-Utilities-master\source;E:\GitHub\CPP\Library\ExternalLib\RapidXML-master\RapidXML;$(ProjectDir);$(IncludePath)</IncludePath>
-    <LibraryPath>E:\GitHub\CPP\Library\ExternalLib\Bin\x64\Release-Patch;E:\GitHub\CPP\Library\ExternalLib\mysql-8.0.33-winx64\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>E:\GitHub\CPP\Library\UtilCore;E:\GitHub\CPP\Library\ExternalLib\rapidjson-master\include;E:\GitHub\CPP\Library\ExternalLib\JSON-Utilities-master\source;E:\GitHub\CPP\Library\ExternalLib\RapidXML-master\RapidXML;E:\GitHub\CPP\Library\ExternalLib\xlnt-master\include;E:\GitHub\CPP\Library\ExternalLib\libiconv-for-Windows-master\include;$(ProjectDir);$(IncludePath)</IncludePath>
+    <LibraryPath>E:\GitHub\CPP\Library\ExternalLib\Bin;$(LibraryPath)</LibraryPath>
     <SourcePath>$(SourcePath)</SourcePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -76,7 +76,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
-      <ForceSymbolReferences>_tcmalloc;%(ForceSymbolReferences)</ForceSymbolReferences>
+      <ForceSymbolReferences>%(ForceSymbolReferences)</ForceSymbolReferences>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -109,6 +109,7 @@
     <ClCompile Include="..\Library\UtilCore\DB\DBModel.cpp" />
     <ClCompile Include="..\Library\UtilCore\DB\DBQueryProcess.cpp" />
     <ClCompile Include="..\Library\UtilCore\DB\DBSynchronizer.cpp" />
+    <ClCompile Include="..\Library\UtilCore\Excel\XlntUtil.cpp" />
     <ClCompile Include="..\Library\UtilCore\JSON\JSONBase.cpp" />
     <ClCompile Include="..\Library\UtilCore\JSON\JSONParser.cpp" />
     <ClCompile Include="..\Library\UtilCore\Memory\CustomAllocator.cpp" />
@@ -119,6 +120,7 @@
     <ClCompile Include="..\Library\UtilCore\Util\CommonUtil.cpp" />
     <ClCompile Include="..\Library\UtilCore\Util\ConvertCharset.cpp" />
     <ClCompile Include="..\Library\UtilCore\Util\FileUtil.cpp" />
+    <ClCompile Include="..\Library\UtilCore\Util\IconvUtil.cpp" />
     <ClCompile Include="..\Library\UtilCore\Util\Log.cpp" />
     <ClCompile Include="..\Library\UtilCore\Util\ShellUtil.cpp" />
     <ClCompile Include="..\Library\UtilCore\Util\StringUtil.cpp" />
@@ -128,6 +130,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="DBSynchronization.cpp" />
+    <ClCompile Include="TestFunction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Library\UtilCore\BaseDefine.h" />
@@ -148,6 +151,7 @@
     <ClInclude Include="..\Library\UtilCore\DB\DBSQLQuery.h" />
     <ClInclude Include="..\Library\UtilCore\DB\DBSyncBind.h" />
     <ClInclude Include="..\Library\UtilCore\DB\DBSynchronizer.h" />
+    <ClInclude Include="..\Library\UtilCore\Excel\XlntUtil.h" />
     <ClInclude Include="..\Library\UtilCore\JSON\JSONBase.h" />
     <ClInclude Include="..\Library\UtilCore\JSON\JSONParser.h" />
     <ClInclude Include="..\Library\UtilCore\Memory\Containers.h" />
@@ -162,11 +166,13 @@
     <ClInclude Include="..\Library\UtilCore\Util\CommonUtil.h" />
     <ClInclude Include="..\Library\UtilCore\Util\ConvertCharset.h" />
     <ClInclude Include="..\Library\UtilCore\Util\FileUtil.h" />
+    <ClInclude Include="..\Library\UtilCore\Util\IconvUtil.h" />
     <ClInclude Include="..\Library\UtilCore\Util\Log.h" />
     <ClInclude Include="..\Library\UtilCore\Util\ShellUtil.h" />
     <ClInclude Include="..\Library\UtilCore\Util\StringUtil.h" />
     <ClInclude Include="..\Library\UtilCore\XML\XMLParser.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="TestFunction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Library\UtilCore\DB\BaseODBC.inl" />

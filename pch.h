@@ -9,7 +9,6 @@
 
 // 여기에 미리 컴파일하려는 헤더 추가
 #include <windows.h>
-
 #include <atlbase.h>
 #include <stdlib.h>
 #include <crtdbg.h>
@@ -22,21 +21,11 @@
 #include <BaseTLS.h>
 #include <BaseMacro.h>
 
-#ifdef _WIN64
-#	ifdef _DEBUG
-#pragma comment(lib, LIB_NAME("../Library/ExternalLib/Bin/x64/Debug/libtcmalloc_minimal"))
-#	else
-#pragma comment(lib, LIB_NAME("../Library/ExternalLib/Bin/x64/Release/libtcmalloc_minimal"))
-#	endif
-#else
-#	ifdef _DEBUG
-#pragma comment(lib, LIB_NAME("../Library/ExternalLib/Bin/Win32/Debug/libtcmalloc_minimal"))
-#	else
-#pragma comment(lib, LIB_NAME("../Library/ExternalLib/Bin/Win32/Release/libtcmalloc_minimal"))
-#	endif
-#endif
+#pragma comment(lib, LIB_NAME("libiconv"))
+#pragma comment(lib, LIB_NAME("xlnt"))
 
-#include <gperftools/tcmalloc.h>
+#include <iconv.h>
+#include <xlnt/xlnt.hpp>
 
 #include <Memory/MemoryPool.h>
 #include <Memory/Memory.h>
@@ -46,11 +35,12 @@
 #include <Memory/Singleton.h>
 #include <Memory/MemBuffer.h>
 
+#include <Util/IconvUtil.h>
+#include <Util/ConvertCharset.h>
+#include <Util/CommonUtil.h>
 #include <Util/StringUtil.h>
 #include <Util/FileUtil.h>
 #include <Util/ShellUtil.h>
-#include <Util/ConvertCharset.h>
-#include <Util/CommonUtil.h>
 #include <Util/Log.h>
 
 #include <BaseGlobal.h>
@@ -59,6 +49,8 @@
 #include <JSON/JSONParser.h>
 
 #include <XML/XMLParser.h>
+
+#include <Excel/XlntUtil.h>
 
 #include <ServerConnectInfo.h>
 #include <ServerConfig.h>
