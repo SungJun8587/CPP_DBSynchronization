@@ -48,7 +48,7 @@
     <OutDir>$(SolutionDir)Bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>Bin\$(Platform)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)64D</TargetName>
-    <IncludePath>E:\GitHub\CPP\Library\UtilCore;E:\GitHub\CPP\Library\ExternalLib\rapidjson-master\include;E:\GitHub\CPP\Library\ExternalLib\JSON-Utilities-master\source;E:\GitHub\CPP\Library\ExternalLib\RapidXML-master\RapidXML;E:\GitHub\CPP\Library\ExternalLib\xlnt-master\include;E:\GitHub\CPP\Library\ExternalLib\libiconv-for-Windows-master\include;$(ProjectDir);$(IncludePath)</IncludePath>
+    <IncludePath>E:\GitHub\CPP\Library\UtilCore;E:\GitHub\CPP\Library\ExternalLib\rapidjson-master\include;E:\GitHub\CPP\Library\ExternalLib\JSON-Utilities-master\source;E:\GitHub\CPP\Library\ExternalLib\RapidXML-master\RapidXML;E:\GitHub\CPP\Library\ExternalLib\xlnt-master\include;E:\GitHub\CPP\Library\ExternalLib\libiconv-1.18\build\include;$(ProjectDir);$(IncludePath)</IncludePath>
     <LibraryPath>E:\GitHub\CPP\Library\ExternalLib\Bin\$(Platform)\$(Configuration);$(LibraryPath)</LibraryPath>
     <SourcePath>$(SourcePath)</SourcePath>
   </PropertyGroup>
@@ -57,7 +57,7 @@
     <OutDir>$(SolutionDir)Bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>Bin\$(Platform)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)64</TargetName>
-    <IncludePath>E:\GitHub\CPP\Library\UtilCore;E:\GitHub\CPP\Library\ExternalLib\rapidjson-master\include;E:\GitHub\CPP\Library\ExternalLib\JSON-Utilities-master\source;E:\GitHub\CPP\Library\ExternalLib\RapidXML-master\RapidXML;E:\GitHub\CPP\Library\ExternalLib\xlnt-master\include;E:\GitHub\CPP\Library\ExternalLib\libiconv-for-Windows-master\include;$(ProjectDir);$(IncludePath)</IncludePath>
+    <IncludePath>E:\GitHub\CPP\Library\UtilCore;E:\GitHub\CPP\Library\ExternalLib\rapidjson-master\include;E:\GitHub\CPP\Library\ExternalLib\JSON-Utilities-master\source;E:\GitHub\CPP\Library\ExternalLib\RapidXML-master\RapidXML;E:\GitHub\CPP\Library\ExternalLib\xlnt-master\include;E:\GitHub\CPP\Library\ExternalLib\libiconv-1.18\build\include;$(ProjectDir);$(IncludePath)</IncludePath>
     <LibraryPath>E:\GitHub\CPP\Library\ExternalLib\Bin\$(Platform)\$(Configuration);$(LibraryPath)</LibraryPath>
     <SourcePath>$(SourcePath)</SourcePath>
   </PropertyGroup>
