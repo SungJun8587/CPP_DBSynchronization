@@ -48,7 +48,7 @@
 #include <JSON/JSONBase.h>
 #include <JSON/JSONParser.h>
 
-#include <XML/XMLParser.h>
+#include <XML/RapidXMLUtil.h>
 
 #include <Excel/XlntUtil.h>
 

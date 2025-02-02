@@ -68,9 +68,6 @@
     <ClCompile Include="..\Library\UtilCore\Memory\CustomAllocator.cpp">
       <Filter>UtilCore\Memory</Filter>
     </ClCompile>
-    <ClCompile Include="..\Library\UtilCore\XML\XMLParser.cpp">
-      <Filter>UtilCore\XML</Filter>
-    </ClCompile>
     <ClCompile Include="..\Library\UtilCore\Util\ShellUtil.cpp">
       <Filter>UtilCore\Util</Filter>
     </ClCompile>
@@ -96,6 +93,9 @@
       <Filter>UtilCore\Excel</Filter>
     </ClCompile>
     <ClCompile Include="TestFunction.cpp" />
+    <ClCompile Include="..\Library\UtilCore\XML\RapidXMLUtil.cpp">
+      <Filter>UtilCore\XML</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Library\UtilCore\BaseDefine.h">
@@ -186,9 +186,6 @@
     <ClInclude Include="..\Library\UtilCore\Memory\Singleton.h">
       <Filter>UtilCore\Memory</Filter>
     </ClInclude>
-    <ClInclude Include="..\Library\UtilCore\XML\XMLParser.h">
-      <Filter>UtilCore\XML</Filter>
-    </ClInclude>
     <ClInclude Include="..\Library\UtilCore\Util\ShellUtil.h">
       <Filter>UtilCore\Util</Filter>
     </ClInclude>
@@ -214,6 +211,9 @@
       <Filter>UtilCore\Excel</Filter>
     </ClInclude>
     <ClInclude Include="TestFunction.h" />
+    <ClInclude Include="..\Library\UtilCore\XML\RapidXMLUtil.h">
+      <Filter>UtilCore\XML</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Library\UtilCore\DB\BaseODBC.inl">
@@ -233,6 +233,9 @@
     </None>
     <None Include="..\Library\UtilCore\Memory\Singleton.inl">
       <Filter>UtilCore\Memory</Filter>
+    </None>
+    <None Include="..\Library\UtilCore\Excel\XlntUtil.inl">
+      <Filter>UtilCore\Excel</Filter>
     </None>
   </ItemGroup>
 </Project>

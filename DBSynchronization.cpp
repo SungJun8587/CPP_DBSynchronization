@@ -5,6 +5,21 @@
 #include <iostream>
 #include "TestFunction.h"
 
+// 금지 문자 필터링 함수 (TCHAR 버전)
+std::basic_string<TCHAR> RemoveInvalidXmlChars(const std::basic_string<TCHAR>& input) {
+	std::basic_string<TCHAR> output;
+	for( TCHAR c : input ) {
+		// 유효한 XML 문자 범위
+		if( (c >= 0x20 && c <= 0xD7FF) ||  // 기본 유니코드 범위
+			(c >= 0xE000 && c <= 0xFFFD) || // 추가 유니코드 범위
+			c == 0x09 || c == 0x0A || c == 0x0D ) { // 공백 및 개행
+			output += c;
+		}
+	}
+	return output;
+}
+
+
 int main()
 {
 #ifdef	_MSC_VER
@@ -25,8 +40,8 @@ int main()
 
 	CVector<CDBNode> dbNodes = ServerConfig.GetDBNodeVec();
 
-	EDBClass dbClass = EDBClass::MSSQL;
-	//EDBClass dbClass = EDBClass::MYSQL;
+	//EDBClass dbClass = EDBClass::MSSQL;
+	EDBClass dbClass = EDBClass::MYSQL;
 	//EDBClass dbClass = EDBClass::ORACLE;
 	
 	auto findDBNode = std::find_if(dbNodes.begin(), dbNodes.end(), [=](const CDBNode& dbNode) { return dbNode.m_dbClass == dbClass; });
@@ -36,13 +51,24 @@ int main()
 	BaseODBC.InitStmtHandle();
 	BaseODBC.DBMSInfo(tszServerName, tszDBMSName, tszDBMSVersion);
 
-	CDBSynchronizer dbSync(BaseODBC);
-	dbSync.Synchronize(_T("E:\\GitHub\\CPP\\DBSynchronization\\GameDB.xml"));
+	const TCHAR* rawXml = _T("<root><node>한글 글</node><node>저</node></root>");
+	std::basic_string<TCHAR> cleanXml = RemoveInvalidXmlChars(rawXml);
 
-	dbSync.DBToSaveExcel(_tstring(findDBNode->m_tszDBName) + _tstring(_T(".xlsx")));
+	// rapidxml에서 사용할 문자열 (char*로 변환)
+	std::vector<TCHAR> xmlData(cleanXml.begin(), cleanXml.end());
+	xmlData.push_back('\0'); // null-terminated
+
+	// XML 파싱
+	rapidxml::xml_document<TCHAR> doc;
+	doc.parse<0>(xmlData.data());
+
+	CDBSynchronizer dbSync(BaseODBC);
+	dbSync.Synchronize(_T("E:\\GitHub\\CPP\\DBSynchronization\\GameDB3.xml"));
+
+	//dbSync.DBToSaveExcel(_tstring(findDBNode->m_tszDBName) + _tstring(_T(".xlsx")));
 
 	//dbSync.PrintDBSchema();
-	//dbSync.DBToCreateXml(_T("E:\\GitHub\\CPP\\DBSynchronization\\GameDB2.xml"));
+	dbSync.DBToCreateXml(_T("E:\\GitHub\\CPP\\DBSynchronization\\GameDB2.xml"));
 
 
 	//CDBQueryProcess dbProcess(BaseODBC);
