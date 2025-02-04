@@ -32,35 +32,24 @@ int main()
 
 	CServerConfig	ServerConfig;
 
-	ServerConfig.Init(_T("server_config.json"));
+	ServerConfig.Init(_T("config/server_config.json"));
 
 	TCHAR tszServerName[DATABASE_BUFFER_SIZE];
 	TCHAR tszDBMSName[DATABASE_BUFFER_SIZE];
 	TCHAR tszDBMSVersion[DATABASE_BUFFER_SIZE];
 
-	CVector<CDBNode> dbNodes = ServerConfig.GetDBNodeVec();
+	std::vector<CDBNode> dbNodes = ServerConfig.GetDBNodeVec();
 
 	//EDBClass dbClass = EDBClass::MSSQL;
 	EDBClass dbClass = EDBClass::MYSQL;
 	//EDBClass dbClass = EDBClass::ORACLE;
 	
-	auto findDBNode = std::find_if(dbNodes.begin(), dbNodes.end(), [=](const CDBNode& dbNode) { return dbNode.m_dbClass == dbClass; });
+	auto findDBNode = std::find_if(dbNodes.begin(), dbNodes.end(), [=](const CDBNode& dbNode) { return dbNode._dbClass == dbClass; });
 	
-	CBaseODBC BaseODBC(findDBNode->m_dbClass, findDBNode->m_tszDSN);
+	CBaseODBC BaseODBC(findDBNode->_dbClass, findDBNode->_tszDSN);
 	BaseODBC.Connect();
 	BaseODBC.InitStmtHandle();
 	BaseODBC.DBMSInfo(tszServerName, tszDBMSName, tszDBMSVersion);
-
-	const TCHAR* rawXml = _T("<root><node>한글 글</node><node>저</node></root>");
-	std::basic_string<TCHAR> cleanXml = RemoveInvalidXmlChars(rawXml);
-
-	// rapidxml에서 사용할 문자열 (char*로 변환)
-	std::vector<TCHAR> xmlData(cleanXml.begin(), cleanXml.end());
-	xmlData.push_back('\0'); // null-terminated
-
-	// XML 파싱
-	rapidxml::xml_document<TCHAR> doc;
-	doc.parse<0>(xmlData.data());
 
 	CDBSynchronizer dbSync(BaseODBC);
 	dbSync.Synchronize(_T("E:\\GitHub\\CPP\\DBSynchronization\\GameDB3.xml"));
@@ -79,6 +68,8 @@ int main()
 	//TestMYSQLTableFragmentationCheck(dbProcess);
 	//TestRenameObject(dbProcess);
 	//TestORACLEIndexFragmentationCheck(dbProcess);
+
+	ServerConfig.ReleaseInstance();
 
 	return 0;
 }

@@ -59,12 +59,6 @@
     <ClCompile Include="..\Library\UtilCore\Util\Log.cpp">
       <Filter>UtilCore\Util</Filter>
     </ClCompile>
-    <ClCompile Include="..\Library\UtilCore\JSON\JSONBase.cpp">
-      <Filter>UtilCore\JSON</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Library\UtilCore\JSON\JSONParser.cpp">
-      <Filter>UtilCore\JSON</Filter>
-    </ClCompile>
     <ClCompile Include="..\Library\UtilCore\Memory\CustomAllocator.cpp">
       <Filter>UtilCore\Memory</Filter>
     </ClCompile>
@@ -95,6 +89,9 @@
     <ClCompile Include="TestFunction.cpp" />
     <ClCompile Include="..\Library\UtilCore\XML\RapidXMLUtil.cpp">
       <Filter>UtilCore\XML</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Library\UtilCore\JSON\RapidJSONUtil.cpp">
+      <Filter>UtilCore\JSON</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -168,12 +165,6 @@
     <ClInclude Include="..\Library\UtilCore\Util\Log.h">
       <Filter>UtilCore\Util</Filter>
     </ClInclude>
-    <ClInclude Include="..\Library\UtilCore\JSON\JSONBase.h">
-      <Filter>UtilCore\JSON</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Library\UtilCore\JSON\JSONParser.h">
-      <Filter>UtilCore\JSON</Filter>
-    </ClInclude>
     <ClInclude Include="..\Library\UtilCore\Memory\Containers.h">
       <Filter>UtilCore\Memory</Filter>
     </ClInclude>
@@ -214,6 +205,9 @@
     <ClInclude Include="..\Library\UtilCore\XML\RapidXMLUtil.h">
       <Filter>UtilCore\XML</Filter>
     </ClInclude>
+    <ClInclude Include="..\Library\UtilCore\JSON\RapidJSONUtil.h">
+      <Filter>UtilCore\JSON</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Library\UtilCore\DB\BaseODBC.inl">
@@ -228,14 +222,17 @@
     <None Include="..\Library\UtilCore\DB\DB_ParamAttr.inl">
       <Filter>UtilCore\DB</Filter>
     </None>
-    <None Include="..\Library\UtilCore\JSON\JSONParser.inl">
-      <Filter>UtilCore\JSON</Filter>
-    </None>
     <None Include="..\Library\UtilCore\Memory\Singleton.inl">
       <Filter>UtilCore\Memory</Filter>
     </None>
     <None Include="..\Library\UtilCore\Excel\XlntUtil.inl">
       <Filter>UtilCore\Excel</Filter>
+    </None>
+    <None Include="..\Library\UtilCore\JSON\RapidJSONUtil.inl">
+      <Filter>UtilCore\JSON</Filter>
+    </None>
+    <None Include="..\Library\UtilCore\XML\RapidXMLUtil.inl">
+      <Filter>UtilCore\XML</Filter>
     </None>
   </ItemGroup>
 </Project>

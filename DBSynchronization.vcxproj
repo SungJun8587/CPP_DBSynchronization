@@ -110,8 +110,7 @@
     <ClCompile Include="..\Library\UtilCore\DB\DBQueryProcess.cpp" />
     <ClCompile Include="..\Library\UtilCore\DB\DBSynchronizer.cpp" />
     <ClCompile Include="..\Library\UtilCore\Excel\XlntUtil.cpp" />
-    <ClCompile Include="..\Library\UtilCore\JSON\JSONBase.cpp" />
-    <ClCompile Include="..\Library\UtilCore\JSON\JSONParser.cpp" />
+    <ClCompile Include="..\Library\UtilCore\JSON\RapidJSONUtil.cpp" />
     <ClCompile Include="..\Library\UtilCore\Memory\CustomAllocator.cpp" />
     <ClCompile Include="..\Library\UtilCore\Memory\MemBuffer.cpp" />
     <ClCompile Include="..\Library\UtilCore\Memory\Memory.cpp" />
@@ -152,8 +151,7 @@
     <ClInclude Include="..\Library\UtilCore\DB\DBSyncBind.h" />
     <ClInclude Include="..\Library\UtilCore\DB\DBSynchronizer.h" />
     <ClInclude Include="..\Library\UtilCore\Excel\XlntUtil.h" />
-    <ClInclude Include="..\Library\UtilCore\JSON\JSONBase.h" />
-    <ClInclude Include="..\Library\UtilCore\JSON\JSONParser.h" />
+    <ClInclude Include="..\Library\UtilCore\JSON\RapidJSONUtil.h" />
     <ClInclude Include="..\Library\UtilCore\Memory\Containers.h" />
     <ClInclude Include="..\Library\UtilCore\Memory\CustomAllocator.h" />
     <ClInclude Include="..\Library\UtilCore\Memory\MemBuffer.h" />
@@ -180,8 +178,9 @@
     <None Include="..\Library\UtilCore\DB\DB_Error.inl" />
     <None Include="..\Library\UtilCore\DB\DB_ParamAttr.inl" />
     <None Include="..\Library\UtilCore\Excel\XlntUtil.inl" />
-    <None Include="..\Library\UtilCore\JSON\JSONParser.inl" />
+    <None Include="..\Library\UtilCore\JSON\RapidJSONUtil.inl" />
     <None Include="..\Library\UtilCore\Memory\Singleton.inl" />
+    <None Include="..\Library\UtilCore\XML\RapidXMLUtil.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GameDB>
+	<Table schemaname="" name="Account" desc="회원 정보" auto_increment_value="15">
+		<Column seq="1" name="Idx" type="INT UNSIGNED" notnull="true" identity="0,0" desc="일련번호"/>
+		<Column seq="2" name="Name" type="VARCHAR(50)" notnull="false" desc="이름"/>
+		<Column seq="3" name="Birthday" type="VARCHAR(10)" notnull="false" desc="생년월일"/>
+		<Column seq="4" name="LunarFlag" type="TINYINT UNSIGNED" notnull="true" desc="양력/음력 구분(1/2 : 양력/음력)"/>
+		<Column seq="5" name="Gender" type="TINYINT UNSIGNED" notnull="true" desc="성별(1/2 : 남/여)"/>
+		<Column seq="6" name="Phone" type="VARCHAR(13)" notnull="false" desc="핸드폰"/>
+		<Column seq="7" name="ZipCode" type="VARCHAR(5)" notnull="false" desc="우편번호"/>
+		<Column seq="8" name="Address1" type="VARCHAR(100)" notnull="false" desc="우편번호가 속한 지역"/>
+		<Column seq="9" name="Address2" type="VARCHAR(50)" notnull="false" desc="상세주소"/>
+		<Column seq="10" name="CreateDate" type="DATETIME" notnull="true" default="Now()" desc="생성 일시"/>
+		<Index name="PRIMARY" type="PRIMARY KEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" name="Idx" order="ASC"/>
+		</Index>
+	</Table>
+	<Table schemaname="" name="Employees" desc="직원 정보" auto_increment_value="0">
+		<Column seq="1" name="EmpNo" type="INT UNSIGNED" notnull="true" default="Now()" desc="사원 번호"/>
+		<Column seq="2" name="EName" type="VARCHAR(50)" notnull="false" default="Now()" desc="사원 이름"/>
+		<Column seq="3" name="Job" type="VARCHAR(10)" notnull="false" default="Now()" desc="직업"/>
+		<Column seq="4" name="Mgr" type="INT UNSIGNED" notnull="true" default="Now()" desc="관리자의 사원 번호"/>
+		<Column seq="5" name="HireDate" type="DATETIME" notnull="true" default="Now()" desc="입사 일시"/>
+		<Column seq="6" name="Salary" type="INT UNSIGNED" notnull="true" default="Now()" desc="급여"/>
+		<Column seq="7" name="Commission" type="INT UNSIGNED" notnull="false" default="Now()" desc="커미션"/>
+		<Column seq="8" name="DeptNo" type="SMALLINT UNSIGNED" notnull="true" default="Now()" desc="부서 번호"/>
+		<Index name="PRIMARY" type="PRIMARY KEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" name="EmpNo" order="ASC"/>
+		</Index>
+	</Table>
+	<Table schemaname="" name="index_type" desc="" auto_increment_value="0">
+		<Column seq="1" name="No" type="INT" notnull="false" default="Now()" desc=""/>
+		<Column seq="2" name="Name" type="VARCHAR(45)" notnull="false" default="Now()" desc=""/>
+	</Table>
+	<Table schemaname="" name="lotto645" desc="로또 당첨 이력" auto_increment_value="0">
+		<Column seq="1" name="Round" type="INT UNSIGNED" notnull="true" default="Now()" desc="회차"/>
+		<Column seq="2" name="DrawingDate" type="VARCHAR(10)" notnull="true" default="Now()" desc="추첨일"/>
+		<Column seq="3" name="N1" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="번호 1"/>
+		<Column seq="4" name="N2" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="번호 2"/>
+		<Column seq="5" name="N3" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="번호 3"/>
+		<Column seq="6" name="N4" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="번호 4"/>
+		<Column seq="7" name="N5" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="번호 5"/>
+		<Column seq="8" name="N6" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="번호 6"/>
+		<Column seq="9" name="Bonus" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="보너스 번호"/>
+		<Index name="PRIMARY" type="PRIMARY KEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" name="Round" order="ASC"/>
+		</Index>
+	</Table>
+	<Table schemaname="" name="ordert" desc="" auto_increment_value="0">
+		<Column seq="1" name="c1" type="INT" notnull="true" default="Now()" desc=""/>
+		<Column seq="2" name="c2" type="INT" notnull="false" default="Now()" desc=""/>
+		<Column seq="3" name="c3" type="GEOMETRY" notnull="true" default="Now()" desc=""/>
+		<Column seq="4" name="c4" type="VARCHAR(200)" notnull="true" default="Now()" desc=""/>
+		<Column seq="5" name="c5" type="VARCHAR(45)" notnull="true" default="Now()" desc=""/>
+		<Index name="PRIMARY" type="PRIMARY KEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" name="c1" order="ASC"/>
+		</Index>
+		<Index name="idx7" type="UNIQUE">
+			<UniqueKey/>
+			<Column seq="1" name="c5" order="DESC"/>
+		</Index>
+		<Index name="idx6" type="FULLTEXT">
+			<Column seq="1" name="c4" order="ASC"/>
+		</Index>
+		<Index name="idx5" type="SPATIAL">
+			<Column seq="1" name="c3" order="ASC"/>
+		</Index>
+		<Index name="idx4" type="INDEX">
+			<Column seq="1" name="c1" order="DESC"/>
+		</Index>
+		<Index name="idx4" type="INDEX">
+			<Column seq="2" name="c2" order="DESC"/>
+		</Index>
+		<Index name="idx3" type="INDEX">
+			<Column seq="1" name="c1" order="DESC"/>
+		</Index>
+		<Index name="idx3" type="INDEX">
+			<Column seq="2" name="c2" order="ASC"/>
+		</Index>
+		<Index name="idx2" type="INDEX">
+			<Column seq="1" name="c1" order="ASC"/>
+		</Index>
+		<Index name="idx2" type="INDEX">
+			<Column seq="2" name="c2" order="DESC"/>
+		</Index>
+		<Index name="idx1" type="INDEX">
+			<Column seq="1" name="c1" order="ASC"/>
+		</Index>
+		<Index name="idx1" type="INDEX">
+			<Column seq="2" name="c2" order="ASC"/>
+		</Index>
+	</Table>
+	<Table schemaname="" name="posts" desc="" auto_increment_value="1000000">
+		<Column seq="1" name="id" type="INT" notnull="true" default="Now()" identity="0,0" desc=""/>
+		<Column seq="2" name="title" type="VARCHAR(255)" notnull="true" default="Now()" desc=""/>
+		<Column seq="3" name="created_at" type="TIMESTAMP" notnull="false" default="Now()" desc=""/>
+		<Column seq="4" name="user_id" type="INT" notnull="false" default="Now()" desc=""/>
+		<Index name="user_id" type="INDEX">
+			<Column seq="1" name="user_id" order="ASC"/>
+		</Index>
+		<Index name="PRIMARY" type="PRIMARY KEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" name="id" order="ASC"/>
+		</Index>
+		<ForeignKey name="posts_ibfk_1" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable name="posts">
+				<Column name="user_id"/>
+			</ForeignKeyTable>
+			<ReferenceKeyTable name="users">
+				<Column name="id"/>
+			</ReferenceKeyTable>
+		</ForeignKey>
+	</Table>
+	<Table schemaname="" name="super_user" desc="" auto_increment_value="1">
+		<Column seq="1" name="id" type="INT" notnull="true" default="Now()" identity="0,0" desc=""/>
+		<Column seq="2" name="name" type="VARCHAR(150)" notnull="true" default="Now()" desc=""/>
+		<Column seq="3" name="email" type="VARCHAR(150)" notnull="true" default="Now()" desc=""/>
+		<Column seq="4" name="Col4" type="DECIMAL(38,0)" notnull="true" default="'0'" desc=""/>
+		<Column seq="5" name="Col5" type="GEOMETRY" notnull="true" default="'0'" desc=""/>
+		<Index name="st_super_user_Col5" type="SPATIAL">
+			<Column seq="1" name="Col5" order="ASC"/>
+		</Index>
+		<Index name="PRIMARY" type="PRIMARY KEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" name="id" order="ASC"/>
+		</Index>
+		<Index name="ft_super_user_email" type="FULLTEXT">
+			<Column seq="1" name="email" order="ASC"/>
+		</Index>
+	</Table>
+	<Table schemaname="" name="super_user_log" desc="" auto_increment_value="0">
+		<Column seq="1" name="id" type="INT" notnull="true" default="'0'" identity="0,0" desc=""/>
+		<Column seq="2" name="name" type="VARCHAR(150)" notnull="true" default="'0'" desc=""/>
+		<Column seq="3" name="email" type="VARCHAR(150)" notnull="true" default="'0'" desc=""/>
+		<Index name="PRIMARY" type="PRIMARY KEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" name="id" order="ASC"/>
+		</Index>
+	</Table>
+	<Table schemaname="" name="tbl_table" desc="" auto_increment_value="1">
+		<Column seq="1" name="No" type="INT UNSIGNED" notnull="true" default="'0'" identity="0,0" desc=""/>
+		<Column seq="2" name="Name" type="VARCHAR(45)" notnull="false" default="'안녕하세요222'" desc=""/>
+		<Index name="PRIMARY" type="PRIMARY KEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" name="No" order="ASC"/>
+		</Index>
+	</Table>
+	<Table schemaname="" name="tbl_table1" desc="테스트 테이블222" auto_increment_value="0">
+		<Column seq="1" name="No" type="INT" notnull="true" default="'안녕하세요222'" desc="일련번호"/>
+		<Column seq="2" name="Seq" type="INT" notnull="true" default="'안녕하세요222'" desc="순서"/>
+		<Column seq="3" name="Text" type="VARCHAR(45)" notnull="false" default="'안녕하세요222'" desc="텍스트"/>
+		<Column seq="4" name="Text2" type="VARCHAR(45)" notnull="false" default="'안녕하세요222'" desc="텍스트"/>
+		<Column seq="5" name="Idx" type="INT" notnull="true" default="'1'" desc="순서"/>
+		<Column seq="6" name="Idx2" type="INT" notnull="true" default="'2'" desc="순서"/>
+		<Column seq="7" name="Idx3" type="INT" notnull="true" default="'2'" desc="텍스트"/>
+		<Index name="PRIMARY" type="PRIMARY KEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" name="No" order="ASC"/>
+		</Index>
+		<Index name="PRIMARY" type="PRIMARY KEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="2" name="Seq" order="ASC"/>
+		</Index>
+	</Table>
+	<Table schemaname="" name="tbl_table2" desc="테스트2" auto_increment_value="0">
+		<Column seq="1" name="No" type="INT UNSIGNED" notnull="true" default="'2'" identity="0,0" desc="일련번호"/>
+		<Index name="PRIMARY" type="PRIMARY KEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" name="No" order="ASC"/>
+		</Index>
+	</Table>
+	<Table schemaname="" name="tbl_test2" desc="" auto_increment_value="0">
+		<Column seq="1" name="No" type="INT" notnull="true" default="'2'" desc=""/>
+		<Column seq="2" name="TestNo" type="INT" notnull="true" default="'2'" desc=""/>
+		<Column seq="3" name="TestSeq" type="INT" notnull="true" default="'2'" desc=""/>
+		<Column seq="4" name="Text" type="VARCHAR(45)" notnull="false" default="'2'" desc=""/>
+		<Column seq="5" name="Idx" type="INT" notnull="false" default="'2'" desc=""/>
+		<Index name="PRIMARY" type="PRIMARY KEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" name="No" order="ASC"/>
+		</Index>
+		<Index name="ix_tbl_Test2_idx" type="UNIQUE">
+			<UniqueKey/>
+			<Column seq="1" name="Idx" order="ASC"/>
+		</Index>
+		<Index name="fk_tbl_tabl1_idx" type="INDEX">
+			<Column seq="1" name="TestNo" order="DESC"/>
+		</Index>
+		<Index name="fk_tbl_tabl1_idx" type="INDEX">
+			<Column seq="2" name="TestSeq" order="DESC"/>
+		</Index>
+		<ForeignKey name="fk_tbl_tabl1" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable name="tbl_test2">
+				<Column name="TestNo"/>
+				<Column name="TestSeq"/>
+			</ForeignKeyTable>
+			<ReferenceKeyTable name="tbl_table1">
+				<Column name="No"/>
+				<Column name="Seq"/>
+			</ReferenceKeyTable>
+		</ForeignKey>
+	</Table>
+	<Table schemaname="" name="tblb_bbs" desc="일반형 게시판" auto_increment_value="10000000">
+		<Column seq="1" name="No" type="INT UNSIGNED" notnull="true" default="'2'" identity="0,0" desc="일련번호333"/>
+		<Column seq="2" name="Subject" type="VARCHAR(100)" notnull="true" default="'2'" desc="제목"/>
+		<Column seq="3" name="Content" type="LONGTEXT" notnull="true" default="'2'" desc="내용"/>
+		<Column seq="4" name="MbIdx" type="BIGINT UNSIGNED" notnull="true" default="'2'" desc="글쓴이 일련번호"/>
+		<Column seq="5" name="Name" type="VARCHAR(20)" notnull="true" default="'2'" desc="글쓴이 명"/>
+		<Column seq="6" name="IP" type="VARCHAR(20)" notnull="true" default="'2'" desc="글쓴이 IP"/>
+		<Column seq="7" name="HtmlFlag" type="BIT(1)" notnull="true" default="'2'" desc="HTML 여부(0/1 : 무/유)"/>
+		<Column seq="8" name="Hit" type="INT" notnull="true" default="'0'" desc="조회수"/>
+		<Column seq="9" name="Recom" type="INT" notnull="true" default="'0'" desc="추천수"/>
+		<Column seq="10" name="UnRecom" type="INT" notnull="true" default="'0'" desc="비추수"/>
+		<Column seq="11" name="CommentCnt" type="INT" notnull="true" default="'0'" desc="댓글수"/>
+		<Column seq="12" name="RegDate" type="DATETIME" notnull="true" default="Now()" desc="등록일시"/>
+		<Index name="PRIMARY" type="PRIMARY KEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" name="No" order="ASC"/>
+		</Index>
+		<Index name="ix_NC_tblb_bbs_Subject" type="INDEX">
+			<Column seq="1" name="RegDate" order="ASC"/>
+		</Index>
+		<Index name="ix_NC_tblb_bbs_Subject" type="INDEX">
+			<Column seq="2" name="Subject" order="ASC"/>
+		</Index>
+		<Index name="ix_NC_tblb_bbs_No" type="INDEX">
+			<Column seq="1" name="No" order="DESC"/>
+		</Index>
+		<Index name="ix_NC_tblb_bbs_Name" type="INDEX">
+			<Column seq="1" name="RegDate" order="ASC"/>
+		</Index>
+		<Index name="ix_NC_tblb_bbs_Name" type="INDEX">
+			<Column seq="2" name="Name" order="ASC"/>
+		</Index>
+	</Table>
+	<Table schemaname="" name="tblb_bbs2" desc="일반형 게시판" auto_increment_value="0">
+		<Column seq="1" name="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
+		<Column seq="2" name="Subject" type="VARCHAR(100)" notnull="true" default="Now()" desc="제목"/>
+		<Column seq="3" name="Content" type="LONGTEXT" notnull="true" default="Now()" desc="내용555"/>
+		<Column seq="4" name="MbIdx" type="BIGINT UNSIGNED" notnull="true" default="Now()" desc="글쓴이 일련번호"/>
+		<Column seq="5" name="Name" type="VARCHAR(20)" notnull="true" default="Now()" desc="글쓴이 명"/>
+		<Column seq="6" name="IP" type="VARCHAR(20)" notnull="true" default="Now()" desc="글쓴이 IP"/>
+		<Column seq="7" name="HtmlFlag" type="BIT(1)" notnull="true" default="Now()" desc="HTML 여부(0/1 : 무/유)"/>
+		<Column seq="8" name="Hit" type="INT" notnull="true" default="'0'" desc="조회수"/>
+		<Column seq="9" name="Recom" type="INT" notnull="true" default="'0'" desc="추천수"/>
+		<Column seq="10" name="UnRecom" type="INT" notnull="true" default="'0'" desc="비추수"/>
+		<Column seq="11" name="CommentCnt" type="INT" notnull="true" default="'0'" desc="댓글수"/>
+		<Column seq="12" name="RegDate" type="DATETIME" notnull="true" default="Now()" desc="등록일시"/>
+		<Index name="PRIMARY" type="PRIMARY KEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" name="No" order="ASC"/>
+		</Index>
+		<Index name="ix_NC_tblb_bbs_Subject" type="INDEX">
+			<Column seq="1" name="RegDate" order="ASC"/>
+		</Index>
+		<Index name="ix_NC_tblb_bbs_Subject" type="INDEX">
+			<Column seq="2" name="Subject" order="ASC"/>
+		</Index>
+		<Index name="ix_NC_tblb_bbs_No" type="INDEX">
+			<Column seq="1" name="No" order="DESC"/>
+		</Index>
+		<Index name="ix_NC_tblb_bbs_Name" type="INDEX">
+			<Column seq="1" name="RegDate" order="ASC"/>
+		</Index>
+		<Index name="ix_NC_tblb_bbs_Name" type="INDEX">
+			<Column seq="2" name="Name" order="ASC"/>
+		</Index>
+	</Table>
+	<Table schemaname="" name="tblb_bbs_attgenfile" desc="일반형 게시판 첨부 일반 파일 정보" auto_increment_value="0">
+		<Column seq="1" name="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
+		<Column seq="2" name="BbsNo" type="INT UNSIGNED" notnull="false" default="Now()" desc="게시물 일련번호"/>
+		<Column seq="3" name="FilePath" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 서브 경로"/>
+		<Column seq="4" name="FileName" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 명"/>
+		<Column seq="5" name="FileSize" type="INT" notnull="false" default="Now()" desc="첨부 파일 크기"/>
+		<Column seq="6" name="FileExt" type="VARCHAR(10)" notnull="false" default="Now()" desc="첨부 파일 확장자"/>
+		<Column seq="7" name="RegDate" type="DATETIME" notnull="false" default="Now()" desc="등록일시"/>
+		<Index name="PRIMARY" type="PRIMARY KEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" name="No" order="ASC"/>
+		</Index>
+		<Index name="ix_tblb_bbs_attgenfile_idx" type="INDEX">
+			<Column seq="1" name="BbsNo" order="ASC"/>
+		</Index>
+		<ForeignKey name="fk_tblb_bbs_attgenfile_tblb_bbs_BbsNo" update_rule="NO ACTION" delete_rule="SET NULL">
+			<ForeignKeyTable name="tblb_bbs_attgenfile">
+				<Column name="BbsNo"/>
+			</ForeignKeyTable>
+			<ReferenceKeyTable name="tblb_bbs">
+				<Column name="No"/>
+			</ReferenceKeyTable>
+		</ForeignKey>
+	</Table>
+	<Table schemaname="" name="tblb_bbs_attimgfile" desc="일반형 게시판 첨부 이미지 파일 정보5" auto_increment_value="0">
+		<Column seq="1" name="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
+		<Column seq="2" name="BbsNo" type="INT UNSIGNED" notnull="false" default="Now()" desc="게시물 일련번호"/>
+		<Column seq="3" name="FilePath" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 서브 경로"/>
+		<Column seq="4" name="FileName" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 명"/>
+		<Column seq="5" name="FileSize" type="INT" notnull="false" default="Now()" desc="첨부 파일 크기"/>
+		<Column seq="6" name="FileExt" type="VARCHAR(10)" notnull="false" default="Now()" desc="첨부 파일 확장자"/>
+		<Column seq="7" name="RegDate" type="DATETIME" notnull="false" default="Now()" desc="등록일시"/>
+		<Index name="PRIMARY" type="PRIMARY KEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" name="No" order="ASC"/>
+		</Index>
+		<Index name="ix_tblb_bbs_attimgfile_idx" type="INDEX">
+			<Column seq="1" name="BbsNo" order="ASC"/>
+		</Index>
+		<ForeignKey name="fk_tblb_bbs_attimgfile_tblb_bbs_BbsNo" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable name="tblb_bbs_attimgfile">
+				<Column name="BbsNo"/>
+			</ForeignKeyTable>
+			<ReferenceKeyTable name="tblb_bbs">
+				<Column name="No"/>
+			</ReferenceKeyTable>
+		</ForeignKey>
+	</Table>
+	<Table schemaname="" name="tblb_bbs_comment" desc="일반형 게시판 댓글" auto_increment_value="0">
+		<Column seq="1" name="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
+		<Column seq="2" name="BbsNo" type="INT UNSIGNED" notnull="true" default="Now()" desc="게시물 일련번호"/>
+		<Column seq="3" name="Memo" type="VARCHAR(1000)" notnull="true" default="Now()" desc="내용"/>
+		<Column seq="4" name="MbIdx" type="BIGINT UNSIGNED" notnull="true" default="Now()" desc="글쓴이 일련번호"/>
+		<Column seq="5" name="Name" type="VARCHAR(20)" notnull="true" default="Now()" desc="글쓴이 명"/>
+		<Column seq="6" name="IP" type="VARCHAR(20)" notnull="true" default="Now()" desc="글쓴이 IP"/>
+		<Column seq="7" name="RegDate" type="DATETIME" notnull="true" default="Now()" desc="등록일시"/>
+		<Index name="PRIMARY" type="PRIMARY KEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" name="No" order="ASC"/>
+		</Index>
+		<Index name="ix_tblb_bbs_comment_idx" type="INDEX">
+			<Column seq="1" name="BbsNo" order="ASC"/>
+		</Index>
+		<ForeignKey name="fk_tblb_bbs_comment_comment_tblm_member_MbIdx" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable name="tblb_bbs_comment">
+				<Column name="MbIdx"/>
+			</ForeignKeyTable>
+			<ReferenceKeyTable name="tblm_member">
+				<Column name="MbIdx"/>
+			</ReferenceKeyTable>
+		</ForeignKey>
+		<ForeignKey name="fk_tblb_bbs_comment_tblb_bbs_BbsNo" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable name="tblb_bbs_comment">
+				<Column name="BbsNo"/>
+			</ForeignKeyTable>
+			<ReferenceKeyTable name="tblb_bbs">
+				<Column name="No"/>
+			</ReferenceKeyTable>
+		</ForeignKey>
+	</Table>
+	<Table schemaname="" name="tblb_board" desc="일반형 게시판" auto_increment_value="2000000">
+		<Column seq="1" name="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
+		<Column seq="2" name="SegNo" type="INT UNSIGNED" notnull="true" default="Now()" desc="게시물 그룹 일련번호"/>
+		<Column seq="3" name="Subject" type="VARCHAR(100)" notnull="true" default="Now()" desc="제목"/>
+		<Column seq="4" name="Content" type="LONGTEXT" notnull="true" default="Now()" desc="내용"/>
+		<Column seq="5" name="MbIdx" type="BIGINT UNSIGNED" notnull="true" default="Now()" desc="글쓴이 일련번호"/>
+		<Column seq="6" name="Name" type="VARCHAR(20)" notnull="true" default="Now()" desc="글쓴이 명"/>
+		<Column seq="7" name="IP" type="VARCHAR(20)" notnull="true" default="Now()" desc="글쓴이 IP"/>
+		<Column seq="8" name="HtmlFlag" type="CHAR(1)" notnull="true" default="Now()" desc="HTML 여부(0/1 : 무/유)"/>
+		<Column seq="9" name="Hit" type="INT" notnull="true" default="'0'" desc="조회수"/>
+		<Column seq="10" name="Recom" type="INT" notnull="true" default="'0'" desc="추천수"/>
+		<Column seq="11" name="UnRecom" type="INT" notnull="true" default="'0'" desc="비추수"/>
+		<Column seq="12" name="CommentCnt" type="INT" notnull="true" default="'0'" desc="댓글수"/>
+		<Column seq="13" name="RegDate" type="DATETIME" notnull="true" default="Now()" desc="등록일시"/>
+		<Index name="PRIMARY" type="PRIMARY KEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" name="No" order="ASC"/>
+		</Index>
+		<Index name="ix_NC_tblb_board_Subject" type="INDEX">
+			<Column seq="1" name="RegDate" order="ASC"/>
+		</Index>
+		<Index name="ix_NC_tblb_board_Subject" type="INDEX">
+			<Column seq="2" name="Subject" order="ASC"/>
+		</Index>
+		<Index name="ix_NC_tblb_board_SegNo" type="INDEX">
+			<Column seq="1" name="SegNo" order="ASC"/>
+		</Index>
+		<Index name="ix_NC_tblb_board_Name" type="INDEX">
+			<Column seq="1" name="RegDate" order="ASC"/>
+		</Index>
+		<Index name="ix_NC_tblb_board_Name" type="INDEX">
+			<Column seq="2" name="Name" order="ASC"/>
+		</Index>
+		<ForeignKey name="fk_tblb_board_tblbm_board_segment_SegNo" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable name="tblb_board">
+				<Column name="SegNo"/>
+			</ForeignKeyTable>
+			<ReferenceKeyTable name="tblbm_board_segment">
+				<Column name="No"/>
+			</ReferenceKeyTable>
+		</ForeignKey>
+		<ForeignKey name="fk_tblb_board_tblm_member_MbIdx" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable name="tblb_board">
+				<Column name="MbIdx"/>
+			</ForeignKeyTable>
+			<ReferenceKeyTable name="tblm_member">
+				<Column name="MbIdx"/>
+			</ReferenceKeyTable>
+		</ForeignKey>
+	</Table>
+	<Table schemaname="" name="tblb_board_attgenfile" desc="일반형 게시판 첨부 일반 파일 정보" auto_increment_value="0">
+		<Column seq="1" name="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
+		<Column seq="2" name="BbsNo" type="INT UNSIGNED" notnull="false" default="Now()" desc="게시물 일련번호"/>
+		<Column seq="3" name="FilePath" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 서브 경로"/>
+		<Column seq="4" name="FileName" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 명"/>
+		<Column seq="5" name="FileSize" type="INT" notnull="false" default="Now()" desc="첨부 파일 크기"/>
+		<Column seq="6" name="FileExt" type="VARCHAR(10)" notnull="false" default="Now()" desc="첨부 파일 확장자"/>
+		<Column seq="7" name="RegDate" type="DATETIME" notnull="false" default="Now()" desc="등록일시"/>
+		<Index name="PRIMARY" type="PRIMARY KEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" name="No" order="ASC"/>
+		</Index>
+		<Index name="IX_NC_tblb_board_attgenfile_BbsNo" type="INDEX">
+			<Column seq="1" name="BbsNo" order="ASC"/>
+		</Index>
+		<ForeignKey name="fk_tblb_board_attgenfile_tblb_board_BbsNo" update_rule="CASCADE" delete_rule="NO ACTION">
+			<ForeignKeyTable name="tblb_board_attgenfile">
+				<Column name="BbsNo"/>
+			</ForeignKeyTable>
+			<ReferenceKeyTable name="tblb_board">
+				<Column name="No"/>
+			</ReferenceKeyTable>
+		</ForeignKey>
+	</Table>
+	<Table schemaname="" name="tblb_board_attimgfile" desc="일반형 게시판 첨부 이미지 파일 정보" auto_increment_value="0">
+		<Column seq="1" name="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
+		<Column seq="2" name="BbsNo" type="INT UNSIGNED" notnull="false" default="Now()" desc="게시물 일련번호"/>
+		<Column seq="3" name="FilePath" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 서브 경로"/>
+		<Column seq="4" name="FileName" type="VARCHAR(260)" notnull="false" default="Now()" desc="첨부 파일 명"/>
+		<Column seq="5" name="FileSize" type="INT" notnull="false" default="Now()" desc="첨부 파일 크기"/>
+		<Column seq="6" name="FileExt" type="VARCHAR(10)" notnull="false" default="Now()" desc="첨부 파일 확장자"/>
+		<Column seq="7" name="RegDate" type="DATETIME" notnull="false" default="Now()" desc="등록일시"/>
+		<Index name="PRIMARY" type="PRIMARY KEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" name="No" order="ASC"/>
+		</Index>
+		<ForeignKey name="fk_tblb_board_attimgfile_tblb_board_BbsNo" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable name="tblb_board_attimgfile">
+				<Column name="BbsNo"/>
+			</ForeignKeyTable>
+			<ReferenceKeyTable name="tblb_board">
+				<Column name="No"/>
+			</ReferenceKeyTable>
+		</ForeignKey>
+	</Table>
+	<Table schemaname="" name="tblb_board_comment" desc="일반형 게시판 댓글" auto_increment_value="0">
+		<Column seq="1" name="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
+		<Column seq="2" name="BbsNo" type="INT UNSIGNED" notnull="true" default="Now()" desc="게시물 일련번호"/>
+		<Column seq="3" name="Memo" type="VARCHAR(1000)" notnull="true" default="Now()" desc="내용"/>
+		<Column seq="4" name="MbIdx" type="BIGINT UNSIGNED" notnull="true" default="Now()" desc="글쓴이 일련번호"/>
+		<Column seq="5" name="Name" type="VARCHAR(20)" notnull="true" default="Now()" desc="글쓴이 명"/>
+		<Column seq="6" name="IP" type="VARCHAR(20)" notnull="true" default="Now()" desc="글쓴이 IP"/>
+		<Column seq="7" name="RegDate" type="DATETIME" notnull="true" default="Now()" desc="등록일시"/>
+		<Index name="PRIMARY" type="PRIMARY KEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" name="No" order="ASC"/>
+		</Index>
+		<Index name="ix_NC_tblb_board_comment_BbsNo" type="INDEX">
+			<Column seq="1" name="BbsNo" order="ASC"/>
+		</Index>
+		<ForeignKey name="fk_tblb_board_comment_tblb_board_BbsNo" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable name="tblb_board_comment">
+				<Column name="BbsNo"/>
+			</ForeignKeyTable>
+			<ReferenceKeyTable name="tblb_board">
+				<Column name="No"/>
+			</ReferenceKeyTable>
+		</ForeignKey>
+		<ForeignKey name="fk_tblb_board_comment_tblm_member_MbIdx" update_rule="NO ACTION" delete_rule="NO ACTION">
+			<ForeignKeyTable name="tblb_board_comment">
+				<Column name="MbIdx"/>
+			</ForeignKeyTable>
+			<ReferenceKeyTable name="tblm_member">
+				<Column name="MbIdx"/>
+			</ReferenceKeyTable>
+		</ForeignKey>
+	</Table>
+	<Table schemaname="" name="tblbm_bbsconfig" desc="게시판 정보" auto_increment_value="3">
+		<Column seq="1" name="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
+		<Column seq="2" name="TbName" type="VARCHAR(20)" notnull="true" default="Now()" desc="게시판 코드"/>
+		<Column seq="3" name="BbsName" type="VARCHAR(20)" notnull="true" default="Now()" desc="게시판 이름"/>
+		<Column seq="4" name="BbsInfo" type="VARCHAR(150)" notnull="false" default="Now()" desc="게시판 설명"/>
+		<Column seq="5" name="BbsClass" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="게시판 종류(0/1/2/3/4/5 : 공지사항/일반/갤러리/퀴즈/설문/이벤트)"/>
+		<Column seq="6" name="BbsCount" type="INT UNSIGNED" notnull="true" default="Now()" desc="게시물 수"/>
+		<Column seq="7" name="IsCategory" type="BIT(1)" notnull="true" default="Now()" desc="카테고리 사용여부(0/1 : 무/유)"/>
+		<Column seq="8" name="IsHtml" type="BIT(1)" notnull="true" default="Now()" desc="HTML 사용여부(0/1 : 무/유)"/>
+		<Column seq="9" name="IsComment" type="BIT(1)" notnull="true" default="Now()" desc="댓글 사용여부(0/1 : 무/유)"/>
+		<Column seq="10" name="IsVote" type="BIT(1)" notnull="true" default="Now()" desc="추천 사용여부(0/1 : 무/유)"/>
+		<Column seq="11" name="PgSize" type="SMALLINT UNSIGNED" notnull="true" default="Now()" desc="페이지당 게시물 수"/>
+		<Column seq="12" name="AttFileCnt" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="첨부 파일 수"/>
+		<Column seq="13" name="AllowFileExt" type="VARCHAR(100)" notnull="false" default="Now()" desc="첨부 가능 파일 확장자(Ex. png,jpg,gif)"/>
+		<Column seq="14" name="APaper" type="SMALLINT UNSIGNED" notnull="true" default="Now()" desc="도배방지 연속 글쓰기 제한 초"/>
+		<Column seq="15" name="CPaper" type="SMALLINT UNSIGNED" notnull="true" default="Now()" desc="도배방지 연속 댓글 제한 초"/>
+		<Column seq="16" name="BbsSearchTerm" type="SMALLINT UNSIGNED" notnull="true" default="Now()" desc="검색날짜제한(해당 기간사이에 쓰여진 글만 검색할 수 있게 제한)"/>
+		<Column seq="17" name="DenyWord" type="VARCHAR(300)" notnull="false" default="Now()" desc="불량 단어 제한"/>
+		<Column seq="18" name="Grant_Html" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="HTML 사용 권한(1~10)"/>
+		<Column seq="19" name="Grant_List" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="목록 보기 사용 권한(1~10)"/>
+		<Column seq="20" name="Grant_View" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="내용 보기 사용 권한(1~10)"/>
+		<Column seq="21" name="Grant_Comment" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="댓글 쓰기 사용 권한(1~10)"/>
+		<Column seq="22" name="Grant_Write" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="글 쓰기 사용 권한(1~10)"/>
+		<Column seq="23" name="Grant_Reply" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="답글 쓰기 사용 권한(1~10)"/>
+		<Column seq="24" name="Grant_Delete" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="글 삭제 사용 권한(1~10)"/>
+		<Column seq="25" name="Grant_Notice" type="TINYINT UNSIGNED" notnull="true" default="Now()" desc="공지사항 작성 권한(1~10)"/>
+		<Column seq="26" name="IsStatics" type="BIT(1)" notnull="true" default="Now()" desc="통계페이지 표시 여부(0/1 : 무/유)"/>
+		<Column seq="27" name="RegDate" type="DATETIME" notnull="true" default="Now()" desc="등록일시"/>
+		<Index name="PRIMARY" type="PRIMARY KEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" name="No" order="ASC"/>
+		</Index>
+		<Index name="ix_UNC_tblbm_bbsconfig_TbName" type="UNIQUE">
+			<UniqueKey/>
+			<Column seq="1" name="TbName" order="ASC"/>
+		</Index>
+	</Table>
+	<Table schemaname="" name="tblbm_board_segment" desc="게시물 그룹 정보" auto_increment_value="200">
+		<Column seq="1" name="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc="일련번호"/>
+		<Column seq="2" name="BbsCount" type="INT UNSIGNED" notnull="true" default="'0'" desc="해당 그룹에 게시물 수"/>
+		<Column seq="3" name="SumBbsCount" type="INT UNSIGNED" notnull="true" default="'0'" desc="해당 그룹까지 누적 게시물 수"/>
+		<Index name="PRIMARY" type="PRIMARY KEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" name="No" order="ASC"/>
+		</Index>
+	</Table>
+	<Table schemaname="" name="tblm_member" desc="유저 정보" auto_increment_value="35005">
+		<Column seq="1" name="MbIdx" type="BIGINT UNSIGNED" notnull="true" default="'0'" identity="0,0" desc="일련번호"/>
+		<Column seq="2" name="Name" type="VARCHAR(32)" notnull="true" default="'0'" desc="성명"/>
+		<Column seq="3" name="RegDate" type="DATETIME" notnull="true" default="Now()" desc="등록일시"/>
+		<Index name="PRIMARY" type="PRIMARY KEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" name="MbIdx" order="ASC"/>
+		</Index>
+	</Table>
+	<Table schemaname="" name="tblm_test" desc="" auto_increment_value="2749">
+		<Column seq="1" name="No" type="INT UNSIGNED" notnull="true" default="Now()" identity="0,0" desc=""/>
+		<Column seq="2" name="Name1" type="VARCHAR(50)" notnull="false" default="Now()" desc=""/>
+		<Column seq="3" name="Name2" type="VARCHAR(50)" notnull="false" default="Now()" desc=""/>
+		<Column seq="4" name="Flag" type="BIT(1)" notnull="false" default="Now()" desc=""/>
+		<Column seq="5" name="Age" type="INT" notnull="false" default="Now()" desc=""/>
+		<Index name="PRIMARY" type="PRIMARY KEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" name="No" order="ASC"/>
+		</Index>
+	</Table>
+	<Table schemaname="" name="users" desc="" auto_increment_value="1048560">
+		<Column seq="1" name="id" type="INT" notnull="true" default="Now()" identity="0,0" desc=""/>
+		<Column seq="2" name="name" type="VARCHAR(50)" notnull="true" default="Now()" desc=""/>
+		<Column seq="3" name="created_at" type="TIMESTAMP" notnull="false" default="Now()" desc=""/>
+		<Index name="PRIMARY" type="PRIMARY KEY">
+			<PrimaryKey/>
+			<UniqueKey/>
+			<Column seq="1" name="id" order="ASC"/>
+		</Index>
+		<Index name="ix_users_name" type="INDEX">
+			<Column seq="1" name="name" order="ASC"/>
+		</Index>
+	</Table>
+</GameDB>
+
