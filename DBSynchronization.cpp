@@ -51,14 +51,21 @@ int main()
 	BaseODBC.InitStmtHandle();
 	BaseODBC.DBMSInfo(tszServerName, tszDBMSName, tszDBMSVersion);
 
-	CDBSynchronizer dbSync(BaseODBC);
-	dbSync.Synchronize(_T("E:\\GitHub\\CPP\\DBSynchronization\\GameDB3.xml"));
+	CDBSchema dbSchema(BaseODBC);
+	dbSchema.GatherDBSchema();
+	//dbSchema.PrintDBSchema();
 
-	//dbSync.DBToSaveExcel(_tstring(findDBNode->m_tszDBName) + _tstring(_T(".xlsx")));
+	//CDBSchemaToExcel dbSchemaToExcel(dbSchema.GetDBModelTable());
+	//dbSchemaToExcel.SaveExcelFile(findDBNode->_dbClass, _tstring(findDBNode->_tszDBName) + _tstring(_T(".xlsx")));
 
-	//dbSync.PrintDBSchema();
-	dbSync.DBToCreateXml(_T("E:\\GitHub\\CPP\\DBSynchronization\\GameDB2.xml"));
+	CDBSchemaToXML dbSchemaToXML(dbSchema.GetDBModelTable(), dbSchema.GetDBModelProcedure(), dbSchema.GetDBModelFunction());
+	dbSchemaToXML.DBToCreateXml(_T("E:\\GitHub\\CPP\\DBSynchronization\\GameDB2.xml"));
 
+	/*
+	CDBSchemaToSync dbSchemaToSync(BaseODBC, dbSchema.GetDBModelTable(), dbSchema.GetDBModelProcedure(), dbSchema.GetDBModelFunction(),
+		dbSchemaToXML.GetXMLTable(), dbSchemaToXML.GetXMLProcedure(), dbSchemaToXML.GetXMLFunction(), dbSchemaToXML.GetXMLRemovedTable());
+	dbSchemaToSync.Synchronize();
+	*/
 
 	//CDBQueryProcess dbProcess(BaseODBC);
 	//TestDBInfo(dbProcess);

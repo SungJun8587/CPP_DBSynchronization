@@ -108,7 +108,7 @@
     <ClCompile Include="..\Library\UtilCore\DB\DBBind.cpp" />
     <ClCompile Include="..\Library\UtilCore\DB\DBModel.cpp" />
     <ClCompile Include="..\Library\UtilCore\DB\DBQueryProcess.cpp" />
-    <ClCompile Include="..\Library\UtilCore\DB\DBSynchronizer.cpp" />
+    <ClCompile Include="..\Library\UtilCore\DB\DBSchema.cpp" />
     <ClCompile Include="..\Library\UtilCore\Excel\XlntUtil.cpp" />
     <ClCompile Include="..\Library\UtilCore\JSON\RapidJSONUtil.cpp" />
     <ClCompile Include="..\Library\UtilCore\Memory\CustomAllocator.cpp" />
@@ -124,6 +124,9 @@
     <ClCompile Include="..\Library\UtilCore\Util\ShellUtil.cpp" />
     <ClCompile Include="..\Library\UtilCore\Util\StringUtil.cpp" />
     <ClCompile Include="..\Library\UtilCore\XML\RapidXMLUtil.cpp" />
+    <ClCompile Include="DBSchemaToExcel.cpp" />
+    <ClCompile Include="DBSchemaToXML.cpp" />
+    <ClCompile Include="DBSchemaToSync.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
@@ -149,7 +152,7 @@
     <ClInclude Include="..\Library\UtilCore\DB\DBQueryProcess.h" />
     <ClInclude Include="..\Library\UtilCore\DB\DBSQLQuery.h" />
     <ClInclude Include="..\Library\UtilCore\DB\DBSyncBind.h" />
-    <ClInclude Include="..\Library\UtilCore\DB\DBSynchronizer.h" />
+    <ClInclude Include="..\Library\UtilCore\DB\DBSchema.h" />
     <ClInclude Include="..\Library\UtilCore\Excel\XlntUtil.h" />
     <ClInclude Include="..\Library\UtilCore\JSON\RapidJSONUtil.h" />
     <ClInclude Include="..\Library\UtilCore\Memory\Containers.h" />
@@ -169,6 +172,9 @@
     <ClInclude Include="..\Library\UtilCore\Util\ShellUtil.h" />
     <ClInclude Include="..\Library\UtilCore\Util\StringUtil.h" />
     <ClInclude Include="..\Library\UtilCore\XML\RapidXMLUtil.h" />
+    <ClInclude Include="DBSchemaToExcel.h" />
+    <ClInclude Include="DBSchemaToXML.h" />
+    <ClInclude Include="DBSchemaToSync.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="TestFunction.h" />
   </ItemGroup>

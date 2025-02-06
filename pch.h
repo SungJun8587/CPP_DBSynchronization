@@ -59,6 +59,10 @@
 #include <DB/DBModel.h>
 #include <DB/DBSyncBind.h>
 #include <DB/DBQueryProcess.h>
-#include <DB/DBSynchronizer.h>
+#include <DB/DBSchema.h>
+
+#include "DBSchemaToExcel.h"
+#include "DBSchemaToXML.h"
+#include "DBSchemaToSync.h"
 
 #endif //PCH_H
